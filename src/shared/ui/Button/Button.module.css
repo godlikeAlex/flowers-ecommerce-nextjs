@@ -1,0 +1,73 @@
+.button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  font-size: clamp(14px, 0.83vw, 20px);
+  font-weight: 500;
+  line-height: 150%;
+  padding: clamp(10px, 0.83vw, 20px) clamp(20px, 1.66vw, 40px);
+  border-radius: 5px;
+  width: fit-content;
+  display: flex;
+  flex-shrink: 0;
+  border: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: 0.4s ease-in-out;
+  background-color: #f9ddf1 !important;
+  color: #43273a !important;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23985A86FF' stroke-width='2' stroke-dasharray='7' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button svg {
+  width: clamp(20px, 1.25vw, 32px);
+  height: clamp(20px, 1.25vw, 32px);
+}
+.button svg path {
+  transition: 0.4s ease-in-out;
+  fill: #43273a !important;
+}
+.button span {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  color: #be70a7;
+  border-radius: 50%;
+  transition:
+    width 0.4s ease-in-out,
+    height 0.4s ease-in-out;
+  transform: translate(-50%, -50%);
+  background: #be70a7;
+  z-index: -1;
+}
+.button:hover {
+  transition: 0.4s ease-in-out;
+  color: #fefafd !important;
+}
+.button:hover svg path {
+  transition: 0.4s ease-in-out;
+  fill: #fefafd !important;
+}
+.button:hover span {
+  width: 225%;
+  height: 562.5px;
+  z-index: -1;
+}
+
+.button.outline {
+  background-color: #fefafd !important;
+}
+.button.primary {
+  color: #fefafd !important;
+  background-color: #be70a7 !important;
+}
+.button.primary svg path {
+  fill: #fefafd !important;
+}
+.button.primary span {
+  color: #f9ddf1;
+}
