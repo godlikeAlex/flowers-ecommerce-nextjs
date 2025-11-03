@@ -1,25 +1,34 @@
 "use client";
 
 import { useRef } from "react";
-import type { MouseEvent, ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  MouseEvent,
+  ReactNode,
+  ElementType,
+  ComponentPropsWithoutRef,
+} from "react";
 import clsx from "clsx";
 
 import styles from "./Button.module.css";
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+type Props<C extends ElementType> = {
+  as?: C;
   variant?: "primary" | "ghost" | "outline";
   accessoryLeft?: ReactNode;
   accessoryRight?: ReactNode;
-}
+} & ComponentPropsWithoutRef<C>;
 
-export default function Button({
+export default function Button<C extends ElementType = "button">({
   variant = "ghost",
   children,
   accessoryLeft,
   accessoryRight,
+  as,
   ...props
-}: Props) {
-  const buttonRef = useRef<HTMLButtonElement>(null);
+}: Props<C>) {
+  const Component = as ?? "button";
+
+  const buttonRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLSpanElement>(null);
 
   const handleMouseMove = (e: MouseEvent<HTMLButtonElement>) => {
@@ -35,9 +44,8 @@ export default function Button({
   };
 
   return (
-    <button
+    <Component
       {...props}
-      ref={buttonRef}
       onMouseEnter={handleMouseMove}
       onMouseLeave={handleMouseMove}
       className={clsx(styles.button, {
@@ -45,13 +53,12 @@ export default function Button({
         [styles.primary]: variant === "primary",
       })}
     >
-      {accessoryLeft ? accessoryLeft : null}
-
-      {children}
-
-      {accessoryRight ? accessoryRight : null}
-
-      <span ref={backgroundRef} />
-    </button>
+      <div className={styles.buttonWrapper} ref={buttonRef}>
+        {accessoryLeft ? accessoryLeft : null}
+        {children}
+        {accessoryRight ? accessoryRight : null}
+        <span ref={backgroundRef} />
+      </div>
+    </Component>
   );
 }
