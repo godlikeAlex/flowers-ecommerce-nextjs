@@ -24,8 +24,9 @@ const bluemelleFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "BLUEMELLE - Flower boutique",
-  description: "Flower boutique",
+  title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
+  description:
+    "At BLUEMELLE, we create stylish, contemporary bouquets that speak your emotions. Fresh flowers, custom arrangements, and thoughtful floral gifts for every moment.",
 };
 
 export default function RootLayout({
