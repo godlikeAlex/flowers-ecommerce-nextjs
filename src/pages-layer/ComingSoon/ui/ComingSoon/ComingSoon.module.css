@@ -1,0 +1,33 @@
+.coming-soon-section {
+  background-color: var(--primary-color-beige);
+  background-image: url(/images/bg-flowers.webp);
+  background-size: 30vw;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+.content {
+  height: 100%;
+  padding: clamp(40px, 4.375vw, 160px) 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: clamp(24px, 1.66vw, 48px);
+
+  padding: clamp(48px, 4.167vw, 160px) 0;
+}
+
+.social-media-list {
+  font-size: 30px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  height: 30px;
+}
