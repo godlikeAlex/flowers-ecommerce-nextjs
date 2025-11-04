@@ -15,9 +15,11 @@
   align-items: center;
   gap: 8px;
   transition: 0.4s ease-in-out;
-  background-color: #f9ddf1 !important;
+  /* background-color: #f9ddf1 !important; */
+  background-color: rgba(var(--rgb-primary-color), 0.12) !important;
+
   color: #43273a !important;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23985A86FF' stroke-width='2' stroke-dasharray='7' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-image: var(--primary-dashed-border);
   border-radius: 5px;
   cursor: pointer;
   text-decoration: unset;
@@ -43,13 +45,13 @@
   display: block;
   width: 0;
   height: 0;
-  color: #be70a7;
+  color: var(--primary-color);
   border-radius: 50%;
   transition:
     width 0.4s ease-in-out,
     height 0.4s ease-in-out;
   transform: translate(-50%, -50%);
-  background: #be70a7;
+  background: var(--primary-color);
   z-index: -1;
 }
 .button:hover {
@@ -71,7 +73,10 @@
 }
 .button.primary {
   color: #fefafd !important;
-  background-color: #be70a7 !important;
+  background-color: var(--primary-color) !important;
+}
+.button.primary span {
+  display: none;
 }
 .button.primary svg path {
   fill: #fefafd !important;
