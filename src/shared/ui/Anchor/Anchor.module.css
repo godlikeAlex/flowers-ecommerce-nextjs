@@ -21,7 +21,7 @@
 }
 
 .link-text {
-  color: #43273a;
+  color: var(--text-color);
   transition: 0.4s;
   text-decoration: none;
 }
