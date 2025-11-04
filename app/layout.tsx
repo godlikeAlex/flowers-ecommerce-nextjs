@@ -1,8 +1,32 @@
+import localFont from "next/font/local";
 import type { Metadata } from "next";
 
+import "@/app/global.css";
+
+const bluemelleFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/bluemelle-regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/bluemelle-bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/bluemelle-black.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
+
 export const metadata: Metadata = {
-  title: "BLUEMELLE - Flower boutique",
-  description: "Flower boutique",
+  title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
+  description:
+    "At BLUEMELLE, we create stylish, contemporary bouquets that speak your emotions. Fresh flowers, custom arrangements, and thoughtful floral gifts for every moment.",
 };
 
 export default function RootLayout({
@@ -11,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html lang="en" className={bluemelleFont.className}>
       <body>{children}</body>
     </html>
   );
