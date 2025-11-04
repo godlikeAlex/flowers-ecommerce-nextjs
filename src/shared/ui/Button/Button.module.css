@@ -84,3 +84,8 @@
 .button.primary span {
   color: #f9ddf1;
 }
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

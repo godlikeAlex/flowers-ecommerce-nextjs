@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 
 import "@/app/global.css";
+import Providers from "@/app/Providers";
 
 const bluemelleFont = localFont({
   src: [
@@ -36,7 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={bluemelleFont.className}>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

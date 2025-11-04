@@ -24,15 +24,6 @@
   padding: clamp(48px, 4.167vw, 160px) 0;
 }
 
-.form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: clamp(12px, 0.83vw, 24px);
-  padding: 0;
-  overflow: hidden;
-}
-
 .social-media-list {
   font-size: 30px;
   display: flex;
