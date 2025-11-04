@@ -1,4 +1,4 @@
-import { Anchor, Button, Input } from "@/shared/ui";
+import { Anchor } from "@/shared/ui";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 

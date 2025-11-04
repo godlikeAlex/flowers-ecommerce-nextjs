@@ -1,1 +1,1 @@
-export { ComingSoonPage as default, metadata } from "@/pages/coming-soon";
+export { ComingSoonPage as default, metadata } from "@/pages-layer/ComingSoon";
