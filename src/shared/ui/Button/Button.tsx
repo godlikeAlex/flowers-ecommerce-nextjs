@@ -10,6 +10,7 @@ import type {
 import clsx from "clsx";
 
 import styles from "./Button.module.css";
+import { ThreeDots } from "react-loader-spinner";
 
 type Props<C extends ElementType> = {
   as?: C;
@@ -17,6 +18,8 @@ type Props<C extends ElementType> = {
   variant?: "primary" | "ghost" | "outline";
   accessoryLeft?: ReactNode;
   accessoryRight?: ReactNode;
+  loading?: boolean;
+  disabled?: boolean;
 } & ComponentPropsWithoutRef<C>;
 
 export default function Button<C extends ElementType = "button">({
@@ -26,9 +29,13 @@ export default function Button<C extends ElementType = "button">({
   accessoryRight,
   as,
   className,
+  loading = false,
+  disabled = false,
   ...props
 }: Props<C>) {
   const Component = as ?? "button";
+
+  const isDisabled = disabled || loading;
 
   const buttonRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLSpanElement>(null);
@@ -48,6 +55,7 @@ export default function Button<C extends ElementType = "button">({
   return (
     <Component
       {...props}
+      disabled={isDisabled}
       onMouseEnter={handleMouseMove}
       onMouseLeave={handleMouseMove}
       className={clsx(
@@ -56,13 +64,19 @@ export default function Button<C extends ElementType = "button">({
           [styles.outline]: variant === "outline",
           [styles.primary]: variant === "primary",
         },
+        loading && styles.loading,
         className,
       )}
     >
+      {loading && (
+        <ThreeDots visible={true} radius="9" wrapperClass={styles.loader} />
+      )}
+
       <div className={styles.buttonWrapper} ref={buttonRef}>
         {accessoryLeft ? accessoryLeft : null}
         {children}
         {accessoryRight ? accessoryRight : null}
+
         <span ref={backgroundRef} />
       </div>
     </Component>
