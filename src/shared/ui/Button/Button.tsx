@@ -13,6 +13,7 @@ import styles from "./Button.module.css";
 
 type Props<C extends ElementType> = {
   as?: C;
+  className?: string;
   variant?: "primary" | "ghost" | "outline";
   accessoryLeft?: ReactNode;
   accessoryRight?: ReactNode;
@@ -24,6 +25,7 @@ export default function Button<C extends ElementType = "button">({
   accessoryLeft,
   accessoryRight,
   as,
+  className,
   ...props
 }: Props<C>) {
   const Component = as ?? "button";
@@ -36,8 +38,8 @@ export default function Button<C extends ElementType = "button">({
 
     const buttonPosition = buttonRef.current.getBoundingClientRect();
 
-    const x = e.pageX - buttonPosition.left;
-    const y = e.pageY - buttonPosition.top;
+    const x = e.pageX - (buttonPosition.left + window.pageXOffset);
+    const y = e.pageY - (buttonPosition.top + window.pageYOffset);
 
     backgroundRef.current.style.left = `${x}px`;
     backgroundRef.current.style.top = `${y}px`;
@@ -48,10 +50,14 @@ export default function Button<C extends ElementType = "button">({
       {...props}
       onMouseEnter={handleMouseMove}
       onMouseLeave={handleMouseMove}
-      className={clsx(styles.button, {
-        [styles.outline]: variant === "outline",
-        [styles.primary]: variant === "primary",
-      })}
+      className={clsx(
+        styles.button,
+        {
+          [styles.outline]: variant === "outline",
+          [styles.primary]: variant === "primary",
+        },
+        className,
+      )}
     >
       <div className={styles.buttonWrapper} ref={buttonRef}>
         {accessoryLeft ? accessoryLeft : null}

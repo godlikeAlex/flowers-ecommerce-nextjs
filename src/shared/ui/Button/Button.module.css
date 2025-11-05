@@ -5,7 +5,6 @@
   font-size: clamp(14px, 0.83vw, 20px);
   font-weight: 500;
   line-height: 150%;
-  padding: clamp(10px, 0.83vw, 20px) clamp(20px, 1.66vw, 40px);
   border-radius: 5px;
   width: fit-content;
   display: flex;
@@ -30,6 +29,9 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  width: 100%;
+  position: relative;
+  padding: clamp(10px, 0.83vw, 20px) clamp(20px, 1.66vw, 40px);
 }
 
 .button svg {
