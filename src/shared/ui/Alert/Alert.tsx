@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from "react";
 import clsx from "clsx";
+import { Icon } from "@iconify/react";
 
 import styles from "./Alert.module.css";
-import { Icon } from "@iconify/react";
 
 type AlertType = "info" | "error" | "success";
 
