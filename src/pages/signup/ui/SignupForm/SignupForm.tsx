@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import { Button, ClickIcon, Input } from "@/shared/ui";
+import { Alert, Button, ClickIcon, Input } from "@/shared/ui";
 import { isLaravelValidationError } from "@/shared/lib";
 import { DEFAULT_REDIRECT_ROUTE } from "@/shared/config";
 
@@ -77,6 +77,12 @@ export default function SignupForm() {
           {...register("password")}
         />
       </div>
+
+      {errors.root && (
+        <Alert className="mb-16" title="Error" type="error">
+          {errors.root.message}
+        </Alert>
+      )}
 
       <Button
         className="w-100"
