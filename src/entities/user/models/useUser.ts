@@ -7,5 +7,6 @@ export default function useUser() {
   return useQuery({
     queryKey: [USER_ROOT_KEY],
     queryFn: () => getUser(),
+    staleTime: Infinity,
   });
 }
