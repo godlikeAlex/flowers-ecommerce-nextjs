@@ -2,25 +2,50 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import { Button, ClickIcon, Input } from "@/shared/ui";
-import { SigninFormValues, signinSchema } from "../../model/signin-schema";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
+import { Alert, Button, ClickIcon, Input } from "@/shared/ui";
+import { DEFAULT_REDIRECT_ROUTE } from "@/shared/config";
+import { isLaravelValidationError } from "@/shared/lib";
+
+import { SigninFormValues, signinSchema } from "../../model/signin-schema";
+import useSignin from "../../model/useSignin";
+
 export default function SigninForm() {
+  const router = useRouter();
+  const signinMutation = useSignin();
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(signinSchema),
   });
 
   const onSubmit = async (values: SigninFormValues) => {
-    console.log("Sign in form:", values);
-    toast.success("You have successfully logged into your account", {
-      position: "bottom-center",
-    });
+    try {
+      const { data } = await signinMutation.mutateAsync(values);
+
+      // eslint-disable-next-line react-hooks/immutability
+      document.cookie = `apiToken=${data.token}; path=/; max-age=${60 * 60 * 2}; SameSite=Lax`;
+
+      toast.success("You have successfully logged into your account 💙", {
+        position: "bottom-center",
+      });
+
+      router.replace(DEFAULT_REDIRECT_ROUTE);
+    } catch (error: unknown) {
+      if (isLaravelValidationError(error)) {
+        setError("root", {
+          type: "manual",
+          message: error.response.data.message,
+        });
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
+    }
   };
 
   return (
@@ -43,6 +68,12 @@ export default function SigninForm() {
           {...register("password")}
         />
       </div>
+
+      {errors.root && (
+        <Alert className="mb-16" title="Error" type="error">
+          {errors.root.message}
+        </Alert>
+      )}
 
       <Button
         className="w-100"
