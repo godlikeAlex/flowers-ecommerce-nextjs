@@ -1,5 +1,6 @@
 @import "modern-normalize/modern-normalize.css";
 @import "bootstrap/dist/css/bootstrap-grid.min.css";
+@import "bootstrap/dist/css/bootstrap-utilities.min.css";
 
 :root {
   --heading-color: #43273a;
@@ -14,6 +15,8 @@
   --additional-color-blue: #5ca4f2;
   --additional-color-pink: #ff92be;
 
+  --error-color: #d32f2f;
+
   /* RGB Colors */
   --rgb-primary-color-green: 162, 209, 34;
   --rgb-primary-color-beige: 255, 246, 210;
@@ -23,12 +26,15 @@
   --rgb-additional-color-blue: 92, 164, 242;
   --rgb-additional-color-pink: 255, 146, 190;
 
+  --rgb-error-color: 211, 47, 47;
+
   /* Selected Colors */
   --primary-color: var(--primary-color-blue);
   --rgb-primary-color: var(--rgb-primary-color-blue);
 
   /* Predefined Borders */
   --primary-dashed-border: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%230b5bb2ff' stroke-width='2' stroke-dasharray='4%2c 6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  --error-dashed-border: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23d32f2fff' stroke-width='2' stroke-dasharray='4%2c 6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
 }
 
 body {
@@ -230,4 +236,16 @@ h6,
   .h6 {
     font-size: clamp(14.45px, 4.146vw, 18px);
   }
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.py-80 {
+  padding-block: 80px;
 }

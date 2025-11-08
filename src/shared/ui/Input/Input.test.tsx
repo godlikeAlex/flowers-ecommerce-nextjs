@@ -43,4 +43,53 @@ describe("Input Component", () => {
 
     expect(onChangeHandler).not.toBeCalled();
   });
+
+  it("should show error message when error passed as string", () => {
+    const errorMessage = "Something went wrong";
+
+    render(<Input error={errorMessage} placeholder="Email" />);
+
+    const input = screen.getByRole("textbox");
+    const errorMessageElement = screen.getByText(errorMessage);
+
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAttribute("aria-errormessage");
+
+    expect(errorMessageElement).toBeInTheDocument();
+
+    expect(errorMessageElement).toHaveAttribute(
+      "id",
+      input.getAttribute("aria-errormessage"),
+    );
+  });
+
+  it("should show error message when error passed as string", () => {
+    const errorMessage = "Something went wrong";
+
+    render(<Input error={errorMessage} placeholder="Email" />);
+
+    const input = screen.getByRole("textbox");
+    const errorMessageElement = screen.getByText(errorMessage);
+
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAttribute("aria-errormessage");
+
+    expect(errorMessageElement).toBeInTheDocument();
+
+    expect(errorMessageElement).toHaveAttribute(
+      "id",
+      input.getAttribute("aria-errormessage"),
+    );
+  });
+
+  it("should error input indicates if error not string", () => {
+    render(<Input error placeholder="Email" />);
+
+    const input = screen.getByRole("textbox");
+
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).not.toHaveAttribute("aria-errormessage");
+
+    expect(input).toHaveClass("error");
+  });
 });

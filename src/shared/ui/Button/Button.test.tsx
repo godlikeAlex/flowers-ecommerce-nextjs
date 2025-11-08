@@ -48,4 +48,16 @@ describe("Button Component", () => {
     expect(background?.style.left).not.toBe("");
     expect(background?.style.top).not.toBe("");
   });
+
+  it("should disable button when button is loading", () => {
+    render(<Button loading>Click me</Button>);
+
+    expect(screen.getByRole("button")).toBeDisabled();
+  });
+
+  it("should show loading mock text while loading", () => {
+    render(<Button loading>Click me</Button>);
+
+    expect(screen.getByText(/loading/)).toBeInTheDocument();
+  });
 });

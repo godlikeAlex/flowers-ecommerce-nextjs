@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { apiClient } from "@/shared/api";
+import { ApiClient } from "@/shared/api";
 import { SubscribeFormValues } from "../model/subscribe-schema";
 
 interface SubscribeFormResponse {
@@ -9,7 +9,7 @@ interface SubscribeFormResponse {
 export default function useSubscribeForm() {
   return useMutation({
     mutationFn: (body: SubscribeFormValues) => {
-      return apiClient.post<SubscribeFormResponse>(
+      return ApiClient.POST<SubscribeFormResponse>(
         "/subscribe-coming-soon",
         body,
       );
