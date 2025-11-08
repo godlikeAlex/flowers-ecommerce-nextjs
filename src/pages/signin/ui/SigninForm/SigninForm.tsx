@@ -11,6 +11,7 @@ import { DEFAULT_REDIRECT_ROUTE } from "@/shared/config";
 import { isLaravelValidationError } from "@/shared/lib";
 
 import { SigninFormValues, signinSchema } from "../../model/signin-schema";
+import { getUser } from "@/entities/user";
 
 export default function SigninForm() {
   const router = useRouter();

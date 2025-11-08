@@ -10,7 +10,7 @@ export default class ApiClient {
 
   static async POST<T>(
     url: string,
-    data: unknown,
+    data?: unknown,
     config?: AxiosRequestConfig,
   ) {
     const client = await this.retrieveClient();
