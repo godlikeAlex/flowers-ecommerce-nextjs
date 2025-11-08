@@ -11,11 +11,17 @@
   cursor: pointer;
 }
 
+.icon-button svg,
+.icon-button path {
+  transition: all 0.5s ease-in;
+}
+
 .icon-button--primary {
   background-color: var(--primary-color);
 }
 
-.icon-button--primary svg {
+.icon-button--primary svg,
+.icon-button--primary path {
   fill: white;
 }
 
@@ -23,7 +29,8 @@
   background-color: transparent;
 }
 
-.icon-button--outline svg {
+.icon-button--outline svg,
+.icon-button--outline path {
   fill: var(--heading-color) !important;
 }
 
@@ -31,6 +38,7 @@
   background-color: var(--primary-color);
 }
 
-.icon-button--outline:hover svg {
+.icon-button--outline:hover svg,
+.icon-button--outline:hover path {
   fill: white !important;
 }
