@@ -1,0 +1,36 @@
+.icon-button {
+  display: flex;
+  font-size: clamp(16px, 1.042vw, 24px);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 0.83vw, 20px);
+  background-image: var(--primary-dashed-border-square);
+  border-radius: 10px;
+  transition: all 0.5s ease-in;
+  border: unset;
+  cursor: pointer;
+}
+
+.icon-button--primary {
+  background-color: var(--primary-color);
+}
+
+.icon-button--primary svg {
+  fill: white;
+}
+
+.icon-button--outline {
+  background-color: transparent;
+}
+
+.icon-button--outline svg {
+  fill: var(--heading-color) !important;
+}
+
+.icon-button--outline:hover {
+  background-color: var(--primary-color);
+}
+
+.icon-button--outline:hover svg {
+  fill: white !important;
+}
