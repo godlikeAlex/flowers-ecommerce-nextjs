@@ -1,11 +1,16 @@
 import { ApiClient, getCsrfToken } from "@/shared/api";
-import { SignupFormValues } from "../model/signup-schema";
+
+interface SignupDTO {
+  name: string;
+  email: string;
+  password: string;
+}
 
 interface SignupResponse {
   token: string;
 }
 
-export async function signup(data: SignupFormValues) {
+export default async function signup(data: SignupDTO) {
   await getCsrfToken();
 
   return ApiClient.POST<SignupResponse>("/auth/register", data);

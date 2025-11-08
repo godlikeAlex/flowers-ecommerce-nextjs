@@ -5,12 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
+import { useSignin } from "@/features/auth/model";
 import { Alert, Button, ClickIcon, Input } from "@/shared/ui";
 import { DEFAULT_REDIRECT_ROUTE } from "@/shared/config";
 import { isLaravelValidationError } from "@/shared/lib";
 
 import { SigninFormValues, signinSchema } from "../../model/signin-schema";
-import useSignin from "../../model/useSignin";
 
 export default function SigninForm() {
   const router = useRouter();
@@ -31,7 +31,7 @@ export default function SigninForm() {
       // eslint-disable-next-line react-hooks/immutability
       document.cookie = `apiToken=${data.token}; path=/; max-age=${60 * 60 * 2}; SameSite=Lax`;
 
-      toast.success("You have successfully logged into your account 💙", {
+      toast.success("💙 You have successfully logged into your account", {
         position: "bottom-center",
       });
 

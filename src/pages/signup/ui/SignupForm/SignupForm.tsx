@@ -5,12 +5,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
+import { useSignup } from "@/features/auth/model";
 import { Alert, Button, ClickIcon, Input } from "@/shared/ui";
 import { isLaravelValidationError } from "@/shared/lib";
 import { DEFAULT_REDIRECT_ROUTE } from "@/shared/config";
 
 import { SignupFormValues, signupSchema } from "../../model/signup-schema";
-import useSignup from "../../model/useSignup";
 
 export default function SignupForm() {
   const router = useRouter();
