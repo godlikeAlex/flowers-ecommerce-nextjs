@@ -97,7 +97,8 @@
 }
 
 .button.outline {
-  background-color: #fefafd !important;
+  background-color: transparent !important;
+  /* background-color: #fefafd !important; */
 }
 .button.primary {
   color: #fefafd !important;

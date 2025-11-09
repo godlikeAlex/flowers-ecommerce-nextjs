@@ -1,6 +1,9 @@
 import { Anchor } from "@/shared/ui";
 import Image from "next/image";
-import { Icon } from "@iconify/react";
+import { InstagramLogoIcon } from "@phosphor-icons/react/dist/ssr/InstagramLogo";
+import { PinterestLogoIcon } from "@phosphor-icons/react/dist/ssr/PinterestLogo";
+import { FacebookLogoIcon } from "@phosphor-icons/react/dist/ssr/FacebookLogo";
+import { TiktokLogoIcon } from "@phosphor-icons/react/dist/ssr/TiktokLogo";
 
 import { SubscribeForm } from "../SubscribeForm";
 
@@ -39,7 +42,7 @@ export default function ComingSoon() {
                 target="_blank"
                 href="https://www.instagram.com/bluemelle_flowers_nj?igsh=NDFld3liOWtsbHI0"
               >
-                <Icon icon="bxl:instagram" />
+                <InstagramLogoIcon />
               </Anchor>
 
               <Anchor
@@ -47,7 +50,7 @@ export default function ComingSoon() {
                 target="_blank"
                 href="https://www.instagram.com/bluemelle_flowers_nj?igsh=NDFld3liOWtsbHI0"
               >
-                <Icon icon="bxl:pinterest" />
+                <PinterestLogoIcon />
               </Anchor>
 
               <Anchor
@@ -55,7 +58,7 @@ export default function ComingSoon() {
                 target="_blank"
                 href="https://www.instagram.com/bluemelle_flowers_nj?igsh=NDFld3liOWtsbHI0"
               >
-                <Icon icon="bxl:facebook-circle" />
+                <FacebookLogoIcon />
               </Anchor>
 
               <Anchor
@@ -63,7 +66,7 @@ export default function ComingSoon() {
                 target="_blank"
                 href="https://www.instagram.com/bluemelle_flowers_nj?igsh=NDFld3liOWtsbHI0"
               >
-                <Icon icon="bxl:tiktok" />
+                <TiktokLogoIcon />
               </Anchor>
             </div>
 
