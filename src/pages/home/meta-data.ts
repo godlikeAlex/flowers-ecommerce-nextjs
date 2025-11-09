@@ -1,0 +1,5 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "BLUEMELLE Flower Boutique — Home",
+};

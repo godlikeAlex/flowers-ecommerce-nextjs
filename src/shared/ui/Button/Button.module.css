@@ -15,7 +15,7 @@
   gap: 8px;
   transition: 0.4s ease-in-out;
   /* background-color: #f9ddf1 !important; */
-  background-color: rgba(var(--rgb-primary-color), 0.12) !important;
+  background-color: var(--ghost-color) !important;
 
   color: var(--heading-color) !important;
   background-image: var(--primary-dashed-border);

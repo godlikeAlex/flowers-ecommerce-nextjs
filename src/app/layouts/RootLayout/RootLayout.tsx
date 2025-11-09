@@ -1,6 +1,6 @@
-import Providers from "@/app/Providers";
 import type { Metadata } from "next";
 
+import Providers from "@/app/Providers";
 import { bluemelleFont } from "@/app/bluemelleFont";
 
 import "@/app/bootstrap.scss";
