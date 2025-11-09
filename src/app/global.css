@@ -273,6 +273,15 @@ h6,
   padding-block: 80px;
 }
 
+.py-40 {
+  padding: clamp(24px, 2.083vw, 80px) 0;
+}
+@media (max-width: 575px) {
+  .py-40 {
+    padding: 20px 0;
+  }
+}
+
 @media (min-width: 1200px) {
   .container-fluid {
     padding: 0 5vw;
