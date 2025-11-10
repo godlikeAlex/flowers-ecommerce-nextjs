@@ -55,6 +55,7 @@ export default function ProductCard({
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 700px"
+          style={{ objectFit: "cover" }}
         />
       </figure>
       <div className={styles["text-block"]}>

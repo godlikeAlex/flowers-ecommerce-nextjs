@@ -2,8 +2,8 @@ import { HeroSection } from "../HeroSection";
 import { AdvantagesSection } from "../AdvantagesSection";
 import { FeaturedCategoriesSection } from "../FeaturedCategoriesSection";
 import { AboutSection } from "../AboutSection";
-import { ProductCard } from "@/widgets/product/ui";
 import { FeaturedCategoryShowcase } from "../FeaturedCategoryShowcase";
+import { OfferBanner } from "../OfferBanner";
 
 const CATEGORY_SHOW_CASES = [
   {
@@ -121,6 +121,8 @@ export default function Home() {
           products={category.products}
         />
       ))}
+      <AdvantagesSection />
+      <OfferBanner />
     </>
   );
 }
