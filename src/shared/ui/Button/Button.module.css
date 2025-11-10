@@ -19,6 +19,7 @@
 
   color: var(--heading-color) !important;
   background-image: var(--primary-dashed-border);
+  background-position: 0px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: unset;
