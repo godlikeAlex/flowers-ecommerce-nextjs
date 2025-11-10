@@ -7,6 +7,7 @@ import "@/app/bootstrap.scss";
 import "@/app/global.css";
 
 import Header from "./Header";
+import { Footer } from "@/shared/ui";
 
 export const metadata: Metadata = {
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
@@ -23,9 +24,11 @@ export default function RootLayout({
     <html lang="en" className={bluemelleFont.className}>
       <body>
         <main className="x-hidden">
-          <Header />
-
-          <Providers>{children}</Providers>
+          <Providers>
+            <Header />
+            {children}
+            <Footer />
+          </Providers>
         </main>
       </body>
     </html>

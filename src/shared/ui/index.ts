@@ -5,5 +5,6 @@ export { Alert } from "./Alert";
 export { IconButton } from "./IconButton";
 export { Feature } from "./Feature";
 export { QuantityControl } from "./QuantityControl";
+export { Footer } from "./Footer";
 
 export * from "./icons";
