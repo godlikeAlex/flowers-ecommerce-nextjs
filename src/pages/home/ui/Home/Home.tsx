@@ -1,6 +1,7 @@
 import { HeroSection } from "../HeroSection";
 import { AdvantagesSection } from "../AdvantagesSection";
 import { FeaturedCategoriesSection } from "../FeaturedCategoriesSection";
+import { AboutSection } from "../AboutSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection />
       <AdvantagesSection />
       <FeaturedCategoriesSection />
+      <AboutSection />
     </>
   );
 }
