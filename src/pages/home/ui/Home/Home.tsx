@@ -5,6 +5,7 @@ import { AboutSection } from "../AboutSection";
 import { FeaturedCategoryShowcase } from "../FeaturedCategoryShowcase";
 import { OfferBanner } from "../OfferBanner";
 import { ReviewsSection } from "../ReviewsSection";
+import { BlogSection } from "../BlogSection";
 
 const CATEGORY_SHOW_CASES = [
   {
@@ -125,6 +126,7 @@ export default function Home() {
       <AdvantagesSection />
       <OfferBanner />
       <ReviewsSection />
+      <BlogSection />
     </>
   );
 }

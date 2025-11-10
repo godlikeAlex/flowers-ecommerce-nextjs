@@ -1,6 +1,9 @@
 import clsx from "clsx";
-import styles from "./ReviewSection.module.css";
 import Image from "next/image";
+
+import { StarIcon } from "@phosphor-icons/react/dist/ssr/Star";
+
+import styles from "./ReviewSection.module.css";
 
 export default function ReviewsSection() {
   return (
@@ -38,11 +41,11 @@ export default function ReviewsSection() {
                   </div>
                   <div className={styles["text-block"]}>
                     <div className={clsx(styles.stars, "mb-8")}>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
                     </div>
                     <div className={clsx(styles.info, "mb-16")}>
                       <span className="h6 color-primary">Ethan Clarke</span>
@@ -82,11 +85,11 @@ export default function ReviewsSection() {
                   </div>
                   <div className={styles["text-block"]}>
                     <div className={clsx(styles.stars, "mb-8")}>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
+                      <StarIcon weight="fill" />
                     </div>
                     <div className={clsx(styles.info, "mb-16")}>
                       <span className="h6 color-primary">Ethan Clarke</span>

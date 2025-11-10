@@ -57,10 +57,8 @@
 .testimonial-card .text-block .stars {
   display: flex;
   gap: 4px;
-}
-.testimonial-card .text-block .stars i {
-  font-size: 14px;
   color: var(--primary-color);
+  font-size: 14px;
 }
 .testimonial-card .text-block .info {
   display: flex;
