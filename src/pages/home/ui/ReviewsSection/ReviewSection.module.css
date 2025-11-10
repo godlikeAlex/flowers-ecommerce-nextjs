@@ -1,0 +1,80 @@
+.testimonial-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: clamp(16px, 1.66vw, 48px);
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%230b5bb2ff' stroke-width='2' stroke-dasharray='10%2c 15' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-position: 0px;
+  border-radius: 30px;
+  margin-bottom: 2px;
+}
+@media (max-width: 767px) {
+  .testimonial-card {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%230b5bb2ff' stroke-width='2' stroke-dasharray='5%2c 7' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+    border-radius: 20px;
+  }
+}
+@media (max-width: 470px) {
+  .testimonial-card {
+    flex-direction: column;
+  }
+}
+.testimonial-card .img-block {
+  position: relative;
+  flex-shrink: 0;
+}
+.testimonial-card .img-block img {
+  border-radius: 20px;
+  width: clamp(150px, 12.708vw, 450px);
+}
+@media (max-width: 470px) {
+  .testimonial-card .img-block img {
+    width: 100%;
+  }
+}
+.testimonial-card .img-block .quote-icon {
+  position: absolute;
+  top: clamp(-10px, -1vw, -24px);
+  right: clamp(-12px, -1.25vw, -32px);
+  width: clamp(48px, 3.33vw, 84px);
+  height: clamp(48px, 3.33vw, 84px);
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50%;
+  background: var(--alt-bg-color);
+}
+.testimonial-card .img-block .quote-icon svg {
+  width: clamp(24px, 1.563vw, 40px);
+}
+.testimonial-card .img-block .quote-icon svg path {
+  fill: var(--primary-color);
+}
+.testimonial-card .text-block {
+  position: relative;
+}
+.testimonial-card .text-block .stars {
+  display: flex;
+  gap: 4px;
+}
+.testimonial-card .text-block .stars i {
+  font-size: 14px;
+  color: var(--primary-color);
+}
+.testimonial-card .text-block .info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.testimonial-card .text-block .info span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.testimonial-card .text-block .info span::before {
+  content: "-";
+}
+.testimonial-card .text-block .info span:first-child::before {
+  display: none;
+}
