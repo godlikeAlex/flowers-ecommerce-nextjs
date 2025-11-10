@@ -3,29 +3,27 @@ import { Button } from "@/shared/ui";
 
 export default function BlogSection() {
   return (
-    <section className="py-80">
-      <div className="container-fluid">
-        <div className="d-flex align-items-center justify-content-between mb-48">
-          <div className="heading">
-            <h2>
-              Our Latest <span>Articles</span>
-            </h2>
-          </div>
-          <Button>View All</Button>
+    <div className="container-fluid">
+      <div className="d-flex align-items-center justify-content-between mb-48">
+        <div className="heading">
+          <h2>
+            Our Latest <span>Articles</span>
+          </h2>
         </div>
+        <Button>View All</Button>
+      </div>
 
-        <div className="row">
-          <div className="col-md-4">
-            <ArticleCard />
-          </div>
-          <div className="col-md-4">
-            <ArticleCard />
-          </div>
-          <div className="col-md-4">
-            <ArticleCard />
-          </div>
+      <div className="row">
+        <div className="col-md-4">
+          <ArticleCard />
+        </div>
+        <div className="col-md-4">
+          <ArticleCard />
+        </div>
+        <div className="col-md-4">
+          <ArticleCard />
         </div>
       </div>
-    </section>
+    </div>
   );
 }

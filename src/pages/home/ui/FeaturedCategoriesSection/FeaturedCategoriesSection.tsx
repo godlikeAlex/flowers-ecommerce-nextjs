@@ -34,7 +34,7 @@ const CATEGORIES: {
 
 export default function FeaturedCategoriesSection() {
   return (
-    <section className="categories py-80">
+    <div className="categories">
       <div className="container-fluid">
         <div className="row row-gap-4 justify-content-center">
           {CATEGORIES.map((category, index) => (
@@ -44,6 +44,6 @@ export default function FeaturedCategoriesSection() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

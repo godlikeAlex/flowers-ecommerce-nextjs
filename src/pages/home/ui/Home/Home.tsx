@@ -6,6 +6,7 @@ import { FeaturedCategoryShowcase } from "../FeaturedCategoryShowcase";
 import { OfferBanner } from "../OfferBanner";
 import { ReviewsSection } from "../ReviewsSection";
 import { BlogSection } from "../BlogSection";
+import { HomeSection } from "../HomeSection";
 
 const CATEGORY_SHOW_CASES = [
   {
@@ -113,20 +114,37 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <AdvantagesSection />
-      <FeaturedCategoriesSection />
-      <AboutSection />
+      <HomeSection>
+        <AdvantagesSection />
+
+        <div className="mt-48">
+          <FeaturedCategoriesSection />
+        </div>
+      </HomeSection>
+
+      <section style={{ paddingBottom: 80 }}>
+        <AboutSection />
+      </section>
+
       {CATEGORY_SHOW_CASES.map((category, index) => (
-        <FeaturedCategoryShowcase
-          key={index}
-          title={category.categoryName}
-          products={category.products}
-        />
+        <section key={index} style={{ paddingBottom: 80 }}>
+          <FeaturedCategoryShowcase
+            title={category.categoryName}
+            products={category.products}
+          />
+        </section>
       ))}
-      <AdvantagesSection />
-      <OfferBanner />
-      <ReviewsSection />
-      <BlogSection />
+
+      <section style={{ paddingBottom: 80 }}>
+        <AdvantagesSection />
+        <OfferBanner />
+      </section>
+      <section style={{ paddingBottom: 80 }}>
+        <ReviewsSection />
+      </section>
+      <section style={{ paddingBottom: 80 }}>
+        <BlogSection />
+      </section>
     </>
   );
 }

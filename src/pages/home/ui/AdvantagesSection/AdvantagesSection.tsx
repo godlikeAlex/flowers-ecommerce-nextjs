@@ -30,20 +30,18 @@ const features = [
 
 export default function AdvantagesSection() {
   return (
-    <section className="py-40">
-      <div className="container-fluid">
-        <div className="row row-gap-4">
-          {features.map((feature, index) => (
-            <div key={index} className="col-xl-3 col-sm-6">
-              <Feature
-                title={feature.title}
-                description={feature.text}
-                icon={feature.icon}
-              />
-            </div>
-          ))}
-        </div>
+    <div className="container-fluid">
+      <div className="row row-gap-4">
+        {features.map((feature, index) => (
+          <div key={index} className="col-xl-3 col-sm-6">
+            <Feature
+              title={feature.title}
+              description={feature.text}
+              icon={feature.icon}
+            />
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
