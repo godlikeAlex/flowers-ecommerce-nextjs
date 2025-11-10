@@ -1,0 +1,109 @@
+.banner {
+  background: var(--alt-bg-color-accent);
+  border-radius: clamp(20px, 1.563vw, 40px);
+  padding: clamp(16px, 1.66vw, 42px);
+}
+
+.banner .content {
+  border-radius: clamp(20px, 1.563vw, 40px);
+  background: #fbfdff;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 575px) {
+  .banner .content {
+    padding-top: 32px;
+  }
+}
+
+.bg-shape-vector {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+  width: 44.375vw;
+}
+
+.banner .content .text-block {
+  position: relative;
+  text-align: center;
+  padding: 7.461vw 8px;
+}
+
+.banner .content .text-block span {
+  display: block;
+}
+
+.title-1 {
+  font-family: "Playfair Display", serif;
+  font-size: 8.333vw;
+  font-weight: 700;
+  line-height: 73%;
+  letter-spacing: -3.2px;
+  color: var(--heading-color);
+}
+
+@media (max-width: 991px) {
+  .title-1 {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 767px) {
+  .title-1 {
+    font-size: 75px;
+  }
+}
+
+@media (max-width: 575px) {
+  .title-1 {
+    font-size: 64px;
+  }
+}
+
+.title-2 {
+  color: var(--primary-color);
+  font-family: "Pacifico", cursive;
+  font-size: 4.688vw;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -1.8px;
+  margin-top: -2.083vw;
+}
+
+@media (max-width: 991px) {
+  .title-2 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .title-2 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .title-2 {
+    font-size: 36px;
+  }
+}
+
+.img-block {
+  position: relative;
+  height: 36.458vw;
+}
+
+@media (max-width: 991px) {
+  .img-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

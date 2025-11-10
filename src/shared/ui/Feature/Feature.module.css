@@ -1,0 +1,18 @@
+.feature-block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.25vw, 32px);
+  padding: clamp(16px, 1.66vw, 48px);
+  background-image: var(--primary-dashed-border);
+  border-radius: 5px;
+  background-position: 0px;
+}
+.feature-block .icon svg {
+  width: clamp(36px, 2.5vw, 64px);
+  height: clamp(36px, 2.5vw, 64px);
+  object-fit: cover;
+}
+.feature-block .icon svg path {
+  fill: var(--primary-color);
+}

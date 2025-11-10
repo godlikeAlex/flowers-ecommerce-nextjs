@@ -15,10 +15,11 @@
   gap: 8px;
   transition: 0.4s ease-in-out;
   /* background-color: #f9ddf1 !important; */
-  background-color: rgba(var(--rgb-primary-color), 0.12) !important;
+  background-color: var(--ghost-color) !important;
 
-  color: #43273a !important;
+  color: var(--heading-color) !important;
   background-image: var(--primary-dashed-border);
+  background-position: 0px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: unset;
@@ -66,7 +67,7 @@
 }
 .button svg path {
   transition: 0.4s ease-in-out;
-  fill: #43273a !important;
+  fill: var(--heading-color) !important;
 }
 .button span {
   position: absolute;
@@ -97,7 +98,8 @@
 }
 
 .button.outline {
-  background-color: #fefafd !important;
+  background-color: transparent !important;
+  /* background-color: #fefafd !important; */
 }
 .button.primary {
   color: #fefafd !important;

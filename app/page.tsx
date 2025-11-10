@@ -1,5 +1,1 @@
-import { redirect } from "next/navigation";
-
-export default function Home() {
-  return redirect("/coming-soon");
-}
+export { HomePage as default, metadata } from "@/pages/home";
