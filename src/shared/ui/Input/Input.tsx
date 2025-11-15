@@ -13,7 +13,7 @@ export default function Input({ error, className, ...props }: Props) {
   const errorMessage = typeof error === "string" ? error : null;
 
   return (
-    <label>
+    <label className="w-100">
       <input
         {...props}
         className={clsx(styles.input, error && styles.error, className)}
