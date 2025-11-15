@@ -1,5 +1,9 @@
 export const ROUTES = {
   HOME: "/",
+  SHOP: (categories: string[]) => {
+    const categoriesPath = categories.join("/");
+    return `/shop/${categoriesPath}`;
+  },
   ACCOUNT: "/account",
   SIGNIN: "/signin",
   SIGNUP: "/signup",

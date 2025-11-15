@@ -5,16 +5,48 @@ import Link from "next/link";
 import { PhoneIcon } from "@phosphor-icons/react/dist/ssr/Phone";
 import { EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/ssr/EnvelopeSimple";
 
-import { MenuItem } from "./Header";
-import styles from "./Header.module.css";
+import { MenuSegment, StaticMenuItem } from "../Header";
+import styles from "./MobileHeader.module.css";
+import MobileMenuItem from "./MobileMenuItem";
+import { CategoryMenu } from "@/entities/category";
+import { ROUTES } from "@/shared/config";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  menuItems: MenuItem[];
+  menuSegments: MenuSegment[];
 }
 
-export default function MobileHeader({ isOpen, onClose, menuItems }: Props) {
+export default function MobileHeader({ isOpen, onClose, menuSegments }: Props) {
+  const renderStaticMenu = (menuItems: StaticMenuItem[]) => {
+    return menuItems.map((menuItem) => (
+      <MobileMenuItem
+        key={menuItem.label}
+        label={menuItem.label}
+        path={menuItem.path}
+        subMenuItems={menuItem.items}
+        renderChildLabel={(childItem) => childItem.label}
+        renderChildPath={(childItem) => childItem.path}
+      />
+    ));
+  };
+
+  const renderCategoriesMenu = (categories: CategoryMenu[]) => {
+    return categories.map((category) => (
+      <MobileMenuItem
+        key={category.id}
+        label={category.name}
+        path={ROUTES.SHOP([category.slug])}
+        subMenuItems={category.children}
+        renderChildLabel={(childItem) => childItem.name}
+        renderChildPath={(childItem) => childItem.slug}
+        renderChildLink={(parentPath, targetPath) =>
+          `${parentPath}/${targetPath}`
+        }
+      />
+    ));
+  };
+
   return (
     <div
       className={clsx(styles["mobile-nav__wrapper"], isOpen && styles.expanded)}
@@ -22,10 +54,7 @@ export default function MobileHeader({ isOpen, onClose, menuItems }: Props) {
       <div
         onClick={onClose}
         aria-hidden="true"
-        className={clsx(
-          styles["mobile-nav__overlay"],
-          styles["mobile-nav__toggler"],
-        )}
+        className={clsx(styles["mobile-nav__overlay"])}
       />
       <div className={clsx(styles["mobile-nav__content"])}>
         <span
@@ -46,21 +75,11 @@ export default function MobileHeader({ isOpen, onClose, menuItems }: Props) {
         </div>
         <div className="mobile-nav__container">
           <ul className={styles["main-menu__list"]}>
-            {menuItems.map((menuItem) => (
-              <li key={menuItem.label}>
-                <Link href={menuItem.path}>{menuItem.label}</Link>
-
-                {menuItem.items?.length && (
-                  <ul className="sub-menu">
-                    {menuItem.items.map((subMenuItem) => (
-                      <li key={subMenuItem.label}>
-                        <Link href="#">{subMenuItem.label}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
+            {menuSegments.map((segment) =>
+              segment.type === "static"
+                ? renderStaticMenu(segment.menuItems)
+                : renderCategoriesMenu(segment.categories),
+            )}
           </ul>
         </div>
         <ul className={clsx(styles["mobile-nav__contact"], "list-unstyled")}>
