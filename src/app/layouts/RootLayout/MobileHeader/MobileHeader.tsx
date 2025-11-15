@@ -1,15 +1,16 @@
-import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import clsx from "clsx";
 
 import { PhoneIcon } from "@phosphor-icons/react/dist/ssr/Phone";
 import { EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/ssr/EnvelopeSimple";
 
 import { MenuSegment, StaticMenuItem } from "../Header";
-import styles from "./MobileHeader.module.css";
 import MobileMenuItem from "./MobileMenuItem";
 import { CategoryMenu } from "@/entities/category";
 import { ROUTES } from "@/shared/config";
+
+import styles from "./MobileHeader.module.css";
 
 interface Props {
   isOpen: boolean;

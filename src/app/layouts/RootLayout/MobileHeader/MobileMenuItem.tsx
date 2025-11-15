@@ -1,9 +1,9 @@
+import { MouseEvent, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr/CaretDown";
 
 import styles from "./MobileHeader.module.css";
-import { MouseEvent, useState } from "react";
 
 interface Props<T> {
   label: string;
