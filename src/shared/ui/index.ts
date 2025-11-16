@@ -6,5 +6,6 @@ export { IconButton } from "./IconButton";
 export { Feature } from "./Feature";
 export { QuantityControl } from "./QuantityControl";
 export { Footer } from "./Footer";
+export { PageBanner } from "./PageBanner";
 
 export * from "./icons";
