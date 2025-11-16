@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
@@ -8,58 +10,77 @@ import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingC
 import { UserIcon } from "@phosphor-icons/react/dist/ssr/User";
 import { HandPointingIcon } from "@phosphor-icons/react/dist/ssr/HandPointing";
 import { ListIcon } from "@phosphor-icons/react/dist/ssr/List";
-import { CaretRightIcon } from "@phosphor-icons/react/dist/ssr/CaretRight";
 
 import { ROUTES } from "@/shared/config";
 import { Button, IconButton } from "@/shared/ui";
 
 import styles from "./Header.module.css";
-import MobileHeader from "./MobileHeader";
-import { useState } from "react";
+import { MobileHeader } from "./MobileHeader";
+import { CategoryMenu } from "@/entities/category";
+import HeaderMenuItem from "./HeaderMenuItem";
 
-export interface MenuItem {
+export interface StaticMenuItem {
   label: string;
   path: string;
-  items?: MenuItem[];
+  items?: StaticMenuItem[];
 }
 
-const DEFAULT_MENU: MenuItem[] = [
+const START_MENU_ITEMS: StaticMenuItem[] = [
   { label: "Home", path: ROUTES.HOME },
-  {
-    label: "Gifts",
-    path: ROUTES.HOME,
-    items: [
-      { label: "Bouquets", path: ROUTES.HOME },
-      { label: "Plants in Pots", path: ROUTES.HOME },
-      { label: "Gift Sets", path: ROUTES.HOME },
-      { label: "Greeting Cards", path: ROUTES.HOME },
-    ],
-  },
-  {
-    label: "Seasonal Flowers",
-    path: ROUTES.HOME,
-    items: [
-      { label: "Spring Flowers", path: ROUTES.HOME },
-      { label: "Summer Flowers", path: ROUTES.HOME },
-      { label: "Autumn Flowers", path: ROUTES.HOME },
-      { label: "Winter Flowers", path: ROUTES.HOME },
-    ],
-  },
-  {
-    label: "Occasions",
-    path: ROUTES.HOME,
-    items: [
-      { label: "Birthday", path: ROUTES.HOME },
-      { label: "Wedding", path: ROUTES.HOME },
-      { label: "Anniversary", path: ROUTES.HOME },
-      { label: "Sympathy", path: ROUTES.HOME },
-    ],
-  },
-  { label: "Contacts", path: ROUTES.HOME },
 ];
 
-export default function Header() {
+const END_MENU_ITEMS = [{ label: "Contacts", path: ROUTES.HOME }];
+
+export type MenuSegment =
+  | { type: "static"; menuItems: StaticMenuItem[] }
+  | { type: "category"; categories: CategoryMenu[] };
+
+interface Props {
+  categories: CategoryMenu[];
+}
+
+export default function Header({ categories }: Props) {
   const [mobileMenuIsOpen, setMobileIsOpen] = useState(false);
+
+  const menuSegments: MenuSegment[] = [
+    { type: "static", menuItems: START_MENU_ITEMS },
+    {
+      type: "category",
+      categories: categories.map((category) => ({
+        ...category,
+      })),
+    },
+    { type: "static", menuItems: END_MENU_ITEMS },
+  ];
+
+  const renderStaticMenuItem = (menuItems: StaticMenuItem[]) => {
+    return menuItems.map((menuItem) => (
+      <HeaderMenuItem
+        key={menuItem.label}
+        label={menuItem.label}
+        path={menuItem.path}
+        subMenuItems={menuItem.items}
+        renderChildLabel={(childItem) => childItem.label}
+        renderChildPath={(childItem) => childItem.path}
+      />
+    ));
+  };
+
+  const renderCategoriesMenu = (categories: CategoryMenu[]) => {
+    return categories.map((category) => (
+      <HeaderMenuItem
+        key={category.id}
+        label={category.name}
+        path={ROUTES.SHOP([category.slug])}
+        subMenuItems={category.children}
+        renderChildLabel={(childItem) => childItem.name}
+        renderChildPath={(childItem) => childItem.slug}
+        renderChildLink={(parentPath, targetPath) =>
+          `${parentPath}/${targetPath}`
+        }
+      />
+    ));
+  };
 
   return (
     <>
@@ -80,57 +101,11 @@ export default function Header() {
                 </div>
                 <div className={clsx(styles["main-menu__nav"])}>
                   <ul className={clsx(styles["main-menu__list"])}>
-                    {DEFAULT_MENU.map((menuItem) => (
-                      <li key={menuItem.label}>
-                        <Link
-                          href={menuItem.path}
-                          // className={clsx(styles["active"])}
-                        >
-                          {menuItem.label}
-                        </Link>
-
-                        {menuItem.items?.length && (
-                          <ul className="sub-menu">
-                            {menuItem.items.map((subMenuItem) => (
-                              <li key={subMenuItem.label}>
-                                <Link href="#">
-                                  {subMenuItem.label}
-                                  <CaretRightIcon
-                                    className={clsx(styles["arrow-right"])}
-                                  />
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-
-                        {/* {menuItem.items?.map(subMenu => ())} */}
-
-                        {/* <ul className="sub-menu">
-                  
-                        </ul> */}
-                      </li>
-                    ))}
-
-                    {/* <li className="dropdown">
-                      <Link href="#">Shop</Link>
-                      <ul className="sub-menu">
-                        <li>
-                          <Link href="#">
-                            Roses
-                            <CaretRightIcon
-                              className={clsx(styles["arrow-right"])}
-                            />
-                          </Link>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <Link href="/">About us</Link>
-                    </li>
-                    <li>
-                      <a href="contact.html">Contact us</a>
-                    </li> */}
+                    {menuSegments.map((segment) =>
+                      segment.type === "static"
+                        ? renderStaticMenuItem(segment.menuItems)
+                        : renderCategoriesMenu(segment.categories),
+                    )}
                   </ul>
                 </div>
               </div>
@@ -149,7 +124,7 @@ export default function Header() {
                   variant="ghost"
                   className={clsx("d-xl-flex d-none")}
                   as={Link}
-                  href="/contact"
+                  href={ROUTES.HOME}
                   accessoryRight={<HandPointingIcon width={20} height={20} />}
                 >
                   Contact Us
@@ -167,7 +142,7 @@ export default function Header() {
       </header>
 
       <MobileHeader
-        menuItems={DEFAULT_MENU}
+        menuSegments={menuSegments}
         isOpen={mobileMenuIsOpen}
         onClose={() => setMobileIsOpen(false)}
       />
