@@ -7,5 +7,6 @@ export { Feature } from "./Feature";
 export { QuantityControl } from "./QuantityControl";
 export { Footer } from "./Footer";
 export { PageBanner } from "./PageBanner";
+export { Sidebar } from "./Sidebar";
 
 export * from "./icons";
