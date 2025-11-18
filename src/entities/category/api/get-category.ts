@@ -6,9 +6,15 @@ type Product = {
   name: string;
 };
 
+export type PriceRange = {
+  min_price: number;
+  max_price: number;
+};
+
 interface GetCategoryResponse {
   facets: {
     categories: CategoryFacet[];
+    price_range: PriceRange;
   };
   categories_breadcrumbs: Category[];
   products: PaginationResponse<Product>;
