@@ -53,6 +53,10 @@
   fill: var(--primary-color);
 }
 
+.button.primary .loader svg {
+  fill: white;
+}
+
 .button.loading .loader {
   opacity: 1;
 }

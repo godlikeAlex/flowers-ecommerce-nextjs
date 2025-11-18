@@ -3,9 +3,7 @@ import { notFound } from "next/navigation";
 
 import { getCategory, PriceRange } from "@/entities/category";
 import type { CategoryFacet } from "@/entities/category/models/types";
-import { CategoryNavigation } from "@/entities/category/ui";
-import { PageBanner, Sidebar } from "@/shared/ui";
-import { PriceRange } from "../PriceRange";
+import { PageBanner } from "@/shared/ui";
 import { Filters } from "../Filters";
 
 export default async function Shop({
