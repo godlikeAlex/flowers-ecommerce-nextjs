@@ -9,6 +9,7 @@ import "@/app/global.css";
 import Header from "./Header";
 import { Footer } from "@/shared/ui";
 import { CategoryMenu, getMenuCategories } from "@/entities/category";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
@@ -36,6 +37,8 @@ export default async function RootLayout({
       <body>
         <main className="x-hidden">
           <Providers>
+            <NextTopLoader color="#0b5bb2" />
+
             <Header categories={categories} />
             {children}
             <Footer />
