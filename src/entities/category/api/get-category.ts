@@ -1,10 +1,7 @@
 import { ApiClient } from "@/shared/api";
 import { PaginationResponse } from "@/shared/lib/utility-types";
 import { Category, CategoryFacet } from "../models/types";
-
-type Product = {
-  name: string;
-};
+import type { ProductCard } from "@/entities/product/@x/category";
 
 export type PriceRange = {
   min_price: number;
@@ -17,7 +14,7 @@ interface GetCategoryResponse {
     price_range: PriceRange;
   };
   categories_breadcrumbs: Category[];
-  products: PaginationResponse<Product>;
+  products: PaginationResponse<ProductCard>;
 }
 
 export async function getCategory(path: string) {

@@ -4,6 +4,7 @@ export const ROUTES = {
     const categoriesPath = categories.join("/");
     return `/shop/${categoriesPath}`;
   },
+  PRODUCT: (productSlug: string) => `/product/${productSlug}`,
   ACCOUNT: "/account",
   SIGNIN: "/signin",
   SIGNUP: "/signup",
