@@ -24,6 +24,15 @@
   margin-bottom: 0;
   flex-shrink: 0;
   height: 285px;
+  border-radius: 30px;
+}
+
+.product-card .figure img {
+  transition: 0.3s;
+}
+
+.product-card .figure:hover img {
+  transform: scale(1.1);
 }
 
 .product-card .figure .action-list {
