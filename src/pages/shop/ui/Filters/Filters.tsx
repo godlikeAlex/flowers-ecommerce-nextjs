@@ -1,14 +1,16 @@
 "use client";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useSearchParams } from "next/dist/client/components/navigation";
+
+import { FunnelIcon } from "@phosphor-icons/react/dist/ssr/Funnel";
+import { CategoryFacet } from "@/entities/category/models/types";
 
 import { Button, Sidebar } from "@/shared/ui";
 import { CategoryNavigation } from "@/entities/category/ui";
-import { PriceRange } from "../PriceRange";
-import { CategoryFacet } from "@/entities/category/models/types";
 import type { PriceRange as PriceRangeType } from "@/entities/category";
-import { useEffect, useState } from "react";
-import { FunnelIcon } from "@phosphor-icons/react/dist/ssr/Funnel";
-import { usePathname } from "next/navigation";
-import { useSearchParams } from "next/dist/client/components/navigation";
+
+import { PriceRange } from "../PriceRange";
 import useFilters from "../../model/useFilters";
 
 interface Props {

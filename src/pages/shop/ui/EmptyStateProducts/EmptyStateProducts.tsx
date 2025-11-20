@@ -6,10 +6,9 @@ import Image from "next/image";
 import { ArrowClockwiseIcon } from "@phosphor-icons/react/dist/ssr/ArrowClockwise";
 import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
 import { EmptyState, Button } from "@/shared/ui";
+import useFilters from "../../model/useFilters";
 
 import image from "./empty-image.png";
-
-import useFilters from "../../model/useFilters";
 
 export default function EmptyStateProducts() {
   const { resetFilters } = useFilters();

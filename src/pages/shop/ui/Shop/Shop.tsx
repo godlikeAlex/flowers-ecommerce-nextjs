@@ -5,16 +5,16 @@ import clsx from "clsx";
 import { getCategory, PriceRange } from "@/entities/category";
 import type { CategoryFacet } from "@/entities/category/models/types";
 import { PageBanner, Pagination } from "@/shared/ui";
-import { Filters } from "../Filters";
 import type { ProductCard as IProductCard } from "@/entities/product";
 import { ProductCard } from "@/widgets/product/ui";
 import { PaginationResponse } from "@/shared/lib/utility-types";
 import { catalogFiltersSchema } from "../../model/catalog-filters-schema";
 import { buildFilterQueryString } from "../../lib/filter-helpers";
+import { EmptyStateProducts } from "../EmptyStateProducts";
+import { Filters } from "../Filters";
 import { SortSelect } from "../SortSelect";
 
 import styles from "./Shop.module.css";
-import { EmptyStateProducts } from "../EmptyStateProducts";
 
 export default async function Shop({
   params,
