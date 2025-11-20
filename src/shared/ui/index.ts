@@ -8,5 +8,7 @@ export { QuantityControl } from "./QuantityControl";
 export { Footer } from "./Footer";
 export { PageBanner } from "./PageBanner";
 export { Sidebar } from "./Sidebar";
+export { Pagination } from "./Pagination";
+export { Select } from "./Select";
 
 export * from "./icons";
