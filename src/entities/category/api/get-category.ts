@@ -17,6 +17,8 @@ interface GetCategoryResponse {
   products: PaginationResponse<ProductCard>;
 }
 
-export async function getCategory(path: string) {
-  return ApiClient.GET<GetCategoryResponse>(`/categories/${path}`);
+export async function getCategory(path: string, queryString?: URLSearchParams) {
+  return ApiClient.GET<GetCategoryResponse>(
+    `/categories/${path}?${queryString?.toString()}`,
+  );
 }

@@ -8,8 +8,8 @@ import type { PriceRange as PriceRangeType } from "@/entities/category";
 import { useEffect, useState } from "react";
 import { FunnelIcon } from "@phosphor-icons/react/dist/ssr/Funnel";
 import { usePathname } from "next/navigation";
-import { useRouter } from "nextjs-toploader/app";
 import { useSearchParams } from "next/dist/client/components/navigation";
+import useFilters from "../../model/useFilters";
 
 interface Props {
   categories: CategoryFacet[];
@@ -22,14 +22,24 @@ export default function Filters({
   currentPath,
   priceRange,
 }: Props) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
+
+  const { filters, applyFilters } = useFilters();
   const [isFetching, setIsFetching] = useState<boolean>(false);
-  const [priceRangeState, setPriceRangeState] = useState(() => ({
-    from: priceRange.min_price / 100,
-    to: priceRange.max_price / 100,
-  }));
+  const [priceRangeState, setPriceRangeState] = useState(() => {
+    if (filters.priceRange) {
+      return {
+        from: filters.priceRange.from / 100,
+        to: filters.priceRange.to / 100,
+      };
+    }
+
+    return {
+      from: priceRange.min_price / 100,
+      to: priceRange.max_price / 100,
+    };
+  });
 
   useEffect(() => {
     setIsFetching(false); // eslint-disable-line react-hooks/set-state-in-effect
@@ -50,17 +60,8 @@ export default function Filters({
     });
   };
 
-  const applyFilters = () => {
-    const currentParams = new URLSearchParams(searchParams?.toString());
-
-    currentParams.delete("page");
-
-    currentParams.set("from", `${priceRangeState.from * 100}`);
-    currentParams.set("to", `${priceRangeState.to * 100}`);
-
-    const query = currentParams.toString();
-
-    router.replace(`${pathname}?${query}`, { scroll: false });
+  const handleApplyFilters = () => {
+    applyFilters({ priceRange: priceRangeState });
     setIsFetching(true);
   };
 
@@ -88,7 +89,7 @@ export default function Filters({
       <Button
         className="w-100"
         accessoryRight={<FunnelIcon />}
-        onClick={applyFilters}
+        onClick={handleApplyFilters}
         loading={isFetching}
         variant="primary"
       >
