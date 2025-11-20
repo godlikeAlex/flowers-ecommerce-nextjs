@@ -1,0 +1,15 @@
+.price-range-container {
+  display: flex;
+  gap: 20px;
+}
+
+.input {
+  text-align: center;
+  font-weight: bold;
+  color: var(--heading-color) !important;
+}
+
+.label {
+  color: var(--heading-color) !important;
+  margin-bottom: 8px;
+}
