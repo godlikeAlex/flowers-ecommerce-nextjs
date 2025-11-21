@@ -11,5 +11,6 @@ export { Sidebar } from "./Sidebar";
 export { Pagination } from "./Pagination";
 export { Select } from "./Select";
 export { EmptyState } from "./EmptyState";
+export { Carousel } from "./Carousel";
 
 export * from "./icons";
