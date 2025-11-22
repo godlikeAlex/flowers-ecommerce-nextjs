@@ -1,4 +1,9 @@
 .button {
+  --background: var(--primary-color);
+  --background--image: var(--primary-dashed-border);
+  --text-color: var(--heading-color);
+  --span-color: var(--primary-color);
+
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -14,15 +19,29 @@
   align-items: center;
   gap: 8px;
   transition: 0.4s ease-in-out;
-  /* background-color: #f9ddf1 !important; */
-  background-color: var(--ghost-color) !important;
+  background-color: white;
 
-  color: var(--heading-color) !important;
-  background-image: var(--primary-dashed-border);
+  color: var(--text-color) !important;
+  background-image: var(--background--image);
   background-position: 0px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: unset;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: var(--background) !important;
+}
+
+.ghost::before {
+  opacity: 0.12;
 }
 
 .buttonWrapper {
@@ -78,13 +97,13 @@
   display: block;
   width: 0;
   height: 0;
-  color: var(--primary-color);
+  color: var(--span-color);
   border-radius: 50%;
   transition:
     width 0.4s ease-in-out,
     height 0.4s ease-in-out;
   transform: translate(-50%, -50%);
-  background: var(--primary-color);
+  background: var(--span-color);
   z-index: -1;
 }
 .button:hover {
@@ -96,18 +115,18 @@
   fill: #fefafd !important;
 }
 .button:hover span {
-  width: 225%;
+  width: 300%;
   height: 562.5px;
   z-index: -1;
 }
 
 .button.outline {
-  background-color: transparent !important;
-  /* background-color: #fefafd !important; */
+  --background: transparent !important;
 }
 .button.primary {
+  --background: var(--primary-color) !important;
+
   color: #fefafd !important;
-  background-color: var(--primary-color) !important;
 }
 .button.primary span {
   display: none;
@@ -122,4 +141,21 @@
 .button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.danger {
+  --background: #fa5252;
+  --span-color: #fa5252;
+
+  --background--image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23fa5252' stroke-width='2' stroke-dasharray='4%2c 6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+
+  color: #fa5252 !important;
+}
+
+.danger svg path {
+  fill: #fa5252 !important;
+}
+
+.danger::before {
+  opacity: 0.12;
 }

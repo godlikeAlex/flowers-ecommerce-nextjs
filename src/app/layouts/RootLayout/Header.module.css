@@ -1,6 +1,5 @@
 .main-menu {
   width: 100%;
-  z-index: 9999;
   height: 112px;
   display: grid;
   align-content: center;
@@ -74,7 +73,7 @@
   padding-top: 8px;
   padding-bottom: 8px;
   position: relative;
-  z-index: 999999;
+  z-index: 99;
 }
 .main-menu .main-menu__nav .main-menu__list > li > a {
   font-size: clamp(17px, 1.042vw, 24px);

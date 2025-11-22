@@ -65,7 +65,7 @@
   --thumb-size: 80px;
 
   position: sticky;
-  top: 20px;
+  top: 35px;
 }
 
 @media (max-width: 1559px) {

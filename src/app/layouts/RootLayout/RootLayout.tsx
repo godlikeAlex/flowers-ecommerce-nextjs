@@ -34,7 +34,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={bluemelleFont.className}>
-      <body>
+      <body style={bluemelleFont.style}>
         <main className="x-hidden">
           <Providers>
             <NextTopLoader color="#0b5bb2" />

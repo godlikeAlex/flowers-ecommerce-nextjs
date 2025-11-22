@@ -15,7 +15,9 @@ import { ThreeDots } from "react-loader-spinner";
 type Props<C extends ElementType> = {
   as?: C;
   className?: string;
+  classNameWrapper?: string;
   variant?: "primary" | "ghost" | "outline";
+  status?: "primary" | "danger";
   accessoryLeft?: ReactNode;
   accessoryRight?: ReactNode;
   loading?: boolean;
@@ -24,11 +26,13 @@ type Props<C extends ElementType> = {
 
 export default function Button<C extends ElementType = "button">({
   variant = "ghost",
+  status = "primary",
   children,
   accessoryLeft,
   accessoryRight,
   as,
   className,
+  classNameWrapper,
   loading = false,
   disabled = false,
   ...props
@@ -63,6 +67,10 @@ export default function Button<C extends ElementType = "button">({
         {
           [styles.outline]: variant === "outline",
           [styles.primary]: variant === "primary",
+          [styles.ghost]: variant === "ghost",
+        },
+        {
+          [styles.danger]: status === "danger",
         },
         loading && styles.loading,
         className,
@@ -72,7 +80,10 @@ export default function Button<C extends ElementType = "button">({
         <ThreeDots visible={true} radius="9" wrapperClass={styles.loader} />
       )}
 
-      <div className={styles.buttonWrapper} ref={buttonRef}>
+      <div
+        className={clsx(styles.buttonWrapper, classNameWrapper)}
+        ref={buttonRef}
+      >
         {accessoryLeft ? accessoryLeft : null}
         {children}
         {accessoryRight ? accessoryRight : null}

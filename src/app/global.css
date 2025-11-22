@@ -54,6 +54,10 @@ body {
   color: var(--heading-color);
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 .dash-line {
   height: 1px;
   opacity: 1;
