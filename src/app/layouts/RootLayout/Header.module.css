@@ -1,12 +1,18 @@
 .main-menu {
   width: 100%;
-  height: 112px;
+  height: var(--header-height);
   display: grid;
   align-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 98;
+  background-color: var(--body-background);
+  border-bottom: 1px solid rgba(230, 230, 230, 0.32);
 }
+
 @media (max-width: 1199px) {
   .main-menu {
-    height: 80px;
+    --header-height: 80px;
   }
 }
 .main-menu .main-menu__block {
@@ -45,7 +51,7 @@
   transition: all 0.5s ease-in;
 }
 .main-menu .main-menu__right .icon-btn:hover svg path {
-  fill: #fefafd;
+  fill: var(--body-background);
   transition: all 0.5s ease-in;
 }
 .main-menu .main-menu__logo .logo {
@@ -117,7 +123,7 @@
   transform: scaleY(0) translateZ(100px);
   transition: 0.3s cubic-bezier(0.18, 0.55, 1, 1);
   z-index: 99;
-  background-color: #fefafd;
+  background-color: var(--body-background);
   box-shadow: 0px 10px 60px 0px rgba(255, 255, 255, 0.07);
   padding: 15px 16px 10px;
   /* dashed border */
@@ -150,7 +156,7 @@
   font-size: 14px;
   font-weight: 400;
   content: "\f105";
-  color: #fefafd;
+  color: var(--body-background);
   visibility: hidden;
   opacity: 0;
   transition: all 500ms ease;
@@ -160,7 +166,7 @@
 .main-menu .main-menu__nav .main-menu__list li ul li:hover > a {
   background-color: var(--primary-color);
   transition: all 500ms ease;
-  color: #fefafd;
+  color: var(--body-background);
 }
 .main-menu .main-menu__nav .main-menu__list li ul li.current > a .arrow-right,
 .main-menu

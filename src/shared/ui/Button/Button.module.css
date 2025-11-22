@@ -108,11 +108,11 @@
 }
 .button:hover {
   transition: 0.4s ease-in-out;
-  color: #fefafd !important;
+  color: var(--body-background) !important;
 }
 .button:hover svg path {
   transition: 0.4s ease-in-out;
-  fill: #fefafd !important;
+  fill: var(--body-background) !important;
 }
 .button:hover span {
   width: 300%;
@@ -126,13 +126,13 @@
 .button.primary {
   --background: var(--primary-color) !important;
 
-  color: #fefafd !important;
+  color: var(--body-background) !important;
 }
 .button.primary span {
   display: none;
 }
 .button.primary svg path {
-  fill: #fefafd !important;
+  fill: var(--body-background) !important;
 }
 .button.primary span {
   color: #f9ddf1;

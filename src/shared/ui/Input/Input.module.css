@@ -1,6 +1,6 @@
 .input {
   width: 100%;
-  background-color: #fefafd;
+  background-color: var(--body-background);
   padding: 0 clamp(12px, 0.83vw, 24px);
   height: clamp(42px, 2.917vw, 72px);
   color: #808080;
