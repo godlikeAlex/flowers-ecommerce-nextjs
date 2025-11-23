@@ -1,6 +1,9 @@
 .hero-banner {
   position: relative;
 }
+.title {
+  font-size: clamp(30px, 2.5vw, 112px);
+}
 .hero-banner .content {
   position: relative;
 }
