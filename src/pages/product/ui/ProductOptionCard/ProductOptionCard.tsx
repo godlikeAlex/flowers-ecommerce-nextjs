@@ -25,9 +25,7 @@ export default function ProductOptionCard({ productOption }: Props) {
         <CheckIcon />
       </div>
 
-      <h6 className={styles.price}>
-        {formatPrice(productOption.price + 50000)}
-      </h6>
+      <h6 className={styles.price}>{formatPrice(productOption.price)}</h6>
 
       {productOption.title && (
         <h5 className={styles.title}>{productOption.title}</h5>
