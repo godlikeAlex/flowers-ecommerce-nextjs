@@ -8,6 +8,7 @@ import { ProductOrderControls } from "../ProductOrderControls";
 import { ProductSelectionProvider } from "../../model/product-selection-context";
 import { getProduct, Product } from "@/entities/product";
 import { notFound } from "next/navigation";
+import { ProductTabs } from "../ProductTabs";
 
 export default async function ProductPage({
   params,
@@ -28,7 +29,6 @@ export default async function ProductPage({
   return (
     <section className="py-80">
       <div className="container-fluid">
-        {/*<div className="col-md-12 mx-auto">*/}
         <div className="col-md-12 col-xxl-10 mx-auto">
           <div className="pb-80">
             <div className="row row-gap-4">
@@ -48,9 +48,7 @@ export default async function ProductPage({
                     <StarIcon weight="fill" />
                   </div>
 
-                  <div
-                    dangerouslySetInnerHTML={{ __html: product.description }}
-                  />
+                  <div>{product.card_description}</div>
                 </div>
 
                 <ProductSelectionProvider selectedOption={product.options[0]}>
@@ -70,6 +68,10 @@ export default async function ProductPage({
                 <hr className="dash-line mb-16" />
               </div>
             </div>
+          </div>
+
+          <div>
+            <ProductTabs description={product.description} />
           </div>
         </div>
       </div>

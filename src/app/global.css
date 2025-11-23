@@ -308,6 +308,10 @@ h6,
   margin-bottom: 16px;
 }
 
+.pb-80 {
+  padding-bottom: clamp(48px, 4.167vw, 160px);
+}
+
 .mt-16 {
   margin-top: 16px;
 }

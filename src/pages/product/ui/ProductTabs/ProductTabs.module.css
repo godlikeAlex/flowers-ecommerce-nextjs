@@ -1,0 +1,15 @@
+.button {
+  padding: clamp(12px, 0.83vw, 20px);
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+
+  color: var(--heading-color);
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.button[data-selected] {
+  background-color: var(--ghost-color);
+}

@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   slug: string;
   description: string;
+  card_description: string;
   options: ProductOption[];
   addons: ProductAddon[];
   slider_assets: SliderAsset[];
