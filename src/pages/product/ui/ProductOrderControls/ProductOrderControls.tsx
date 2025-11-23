@@ -9,6 +9,8 @@ import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingC
 
 import { ProductAddons } from "../ProductAddons";
 import { useProductSelection } from "../../model/product-selection-context";
+import ProductOptionCard from "../ProductOptionCard/ProductOptionCard";
+import { ProductOptionsList } from "../ProductOptionsList";
 
 interface Props {
   productOptions: ProductOption[];
@@ -60,10 +62,12 @@ export default function ProductOrderControls({
   return (
     <>
       <div className="price mb-16">
-        <h3>{basicPrice}</h3>
+        {productOptions.length > 1 ? (
+          <ProductOptionsList options={productOptions} />
+        ) : (
+          <h3>{basicPrice}</h3>
+        )}
       </div>
-
-      {/* OPTIONS IF HAS */}
 
       {productAddons.length > 0 && (
         <div>
