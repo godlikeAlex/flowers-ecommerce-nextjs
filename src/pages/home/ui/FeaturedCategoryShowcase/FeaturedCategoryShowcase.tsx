@@ -30,6 +30,7 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
         {products.map((product) => (
           <div className="col-md-3 mb-16" key={product.title}>
             <ProductCard
+              slug="/"
               title={product.title}
               description={product.description}
               price={product.price}
