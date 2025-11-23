@@ -1,24 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Carousel } from "@/shared/ui";
-import styles from "./ProductCarousel.module.css";
-import { CaretRightIcon } from "@phosphor-icons/react/dist/ssr/CaretRight";
-import { CaretLeftIcon } from "@phosphor-icons/react/dist/ssr/CaretLeft";
 import { EmblaCarouselType } from "embla-carousel";
 import clsx from "clsx";
+import { Carousel } from "@/shared/ui";
+import { CaretRightIcon } from "@phosphor-icons/react/dist/ssr/CaretRight";
+import { CaretLeftIcon } from "@phosphor-icons/react/dist/ssr/CaretLeft";
+import { SliderAsset } from "@/entities/product";
 
-const slides = [
-  "https://static.euroflorist.com/img/crop/600/600/ergonode/542738fd-bab8-4bcc-8037-54c0b6306fcc.jpg",
-  "https://newyorkflowersonline.com/wp-content/uploads/2022/05/PhotoRoom_20231020_164630.jpeg",
-  "https://newyorkflowersonline.com/wp-content/uploads/2022/05/IMG_4185-2048x1536.jpeg",
-  "https://engraveforfun.nl/wp-content/uploads/2025/08/Photoroom_004_20250829_031223.png",
-  "https://engraveforfun.nl/wp-content/uploads/2024/04/globelamp2.png",
-  "https://engraveforfun.nl/wp-content/uploads/2024/04/lampvert2.png",
-  "https://engraveforfun.nl/wp-content/uploads/2024/03/NaambordjeDino.png",
-];
+import styles from "./ProductCarousel.module.css";
+import Image from "next/image";
 
-export default function ProductCarousel() {
+interface Props {
+  slides: SliderAsset[];
+}
+
+export default function ProductCarousel({ slides }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [mainCarouselApi, setMainCarouselApi] = useState<EmblaCarouselType>();
   const [thumbCarouselApi, setThumbCarouselApi] = useState<EmblaCarouselType>();
@@ -59,19 +56,20 @@ export default function ProductCarousel() {
         >
           <Carousel.Content>
             <Carousel.ContainerSlides className={styles.thumbContainer}>
-              {slides.map((path, idx) => (
+              {slides.map(({ thumb_url }, idx) => (
                 <Carousel.Item
-                  key={path}
+                  key={thumb_url}
                   className={clsx(
                     styles.slideThumb,
                     idx === selectedIndex && styles.slideThumbActive,
                   )}
                   onClick={() => onThumbClick(idx)}
                 >
-                  <img
-                    src={path}
-                    onMouseEnter={() => onThumbClick(idx)}
+                  <Image
+                    fill
+                    src={thumb_url}
                     alt=""
+                    onMouseEnter={() => onThumbClick(idx)}
                   />
                 </Carousel.Item>
               ))}
@@ -87,9 +85,9 @@ export default function ProductCarousel() {
       >
         <Carousel.Content>
           <Carousel.ContainerSlides className={styles["main-container"]}>
-            {slides.map((path) => (
-              <Carousel.Item className={styles.slide} key={`1${path}`}>
-                <img src={path} alt="" />
+            {slides.map(({ compressed_url }) => (
+              <Carousel.Item className={styles.slide} key={compressed_url}>
+                <Image src={compressed_url} alt="" fill />
               </Carousel.Item>
             ))}
           </Carousel.ContainerSlides>

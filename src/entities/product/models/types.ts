@@ -33,7 +33,7 @@ export interface ProductOption {
   price: number;
 }
 
-interface SliderAsset {
+export interface SliderAsset {
   id: number;
   mime_type: string;
   uuid: string;

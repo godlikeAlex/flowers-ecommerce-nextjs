@@ -33,7 +33,7 @@ export default async function ProductPage({
           <div className="pb-80">
             <div className="row row-gap-4">
               <div className="col-md-6">
-                <ProductCarousel />
+                <ProductCarousel slides={product.slider_assets} />
               </div>
 
               <div className="col-md-6 ">
