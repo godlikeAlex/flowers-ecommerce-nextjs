@@ -1,0 +1,36 @@
+.button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 28px;
+
+  color: var(--primary-color);
+  background-color: #d3e6fb;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button--wa {
+  color: #25d366;
+  background-color: #c8ffdc;
+}
+
+.button--tg {
+  color: #25a3e3;
+  background-color: #bae8ff;
+}
+
+.button--fb {
+  color: #0965fe;
+  background-color: #bed6ff;
+}
+
+.share-container {
+  display: flex;
+  gap: 10px;
+}

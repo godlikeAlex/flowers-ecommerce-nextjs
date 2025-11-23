@@ -1,0 +1,12 @@
+.rating {
+  color: var(--primary-color);
+  display: flex;
+  gap: 5px;
+  font-size: 22px;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

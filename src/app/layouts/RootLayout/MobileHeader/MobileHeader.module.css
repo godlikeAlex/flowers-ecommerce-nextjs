@@ -121,7 +121,7 @@
   background-color: var(--primary-color);
   border: none;
   outline: none;
-  color: #fefafd;
+  color: var(--body-background);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,7 +142,7 @@
   top: 20px;
   right: 15px;
   font-size: 18px;
-  color: #fefafd;
+  color: var(--body-background);
   cursor: pointer;
 }
 
@@ -181,7 +181,7 @@
   text-align: center;
   font-size: 16px;
   margin-right: 10px;
-  color: #fefafd;
+  color: var(--body-background);
 }
 
 .mobile-nav__container .main-menu__logo,

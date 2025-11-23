@@ -8,6 +8,12 @@ import { ChangeEvent } from "react";
 
 interface Props {
   value: number;
+  classNames?: {
+    wrapper?: string;
+    decrement?: string;
+    increment?: string;
+    input?: string;
+  };
   onIncrement: () => void;
   onDecrement: () => void;
   onChange?: (quantity: number) => void;

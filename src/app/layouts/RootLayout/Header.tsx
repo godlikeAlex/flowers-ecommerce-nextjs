@@ -29,7 +29,7 @@ const START_MENU_ITEMS: StaticMenuItem[] = [
   { label: "Home", path: ROUTES.HOME },
 ];
 
-const END_MENU_ITEMS = [{ label: "Contacts", path: ROUTES.HOME }];
+const END_MENU_ITEMS: StaticMenuItem[] = [];
 
 export type MenuSegment =
   | { type: "static"; menuItems: StaticMenuItem[] }
