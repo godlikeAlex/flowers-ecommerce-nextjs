@@ -1,12 +1,14 @@
 "use client";
 
-import { Button, QuantityControl } from "@/shared/ui";
 import { useState } from "react";
-import ProductAddons from "../ProductAddons/ProductAddons";
-import { ProductAddon, ProductOption } from "@/entities/product";
-import { useProductSelection } from "../../model/product-selection-context";
+
 import { formatPrice } from "@/shared/lib";
+import { Button, QuantityControl } from "@/shared/ui";
+import { ProductAddon, ProductOption } from "@/entities/product";
 import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
+
+import { ProductAddons } from "../ProductAddons";
+import { useProductSelection } from "../../model/product-selection-context";
 
 interface Props {
   productOptions: ProductOption[];
