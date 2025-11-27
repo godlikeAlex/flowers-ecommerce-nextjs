@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import styles from "./CartListItem.module.css";
 import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
-import { IconButton, QuantityControl } from "@/shared/ui";
+import { QuantityControl } from "@/shared/ui";
 import { formatPrice } from "@/shared/lib";
 import { useDeleteCartItem, useSetQuantity } from "@/features/cart";
 import { toast } from "sonner";

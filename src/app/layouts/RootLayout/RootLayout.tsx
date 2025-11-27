@@ -2,12 +2,6 @@ import type { Metadata } from "next";
 
 import Providers from "@/app/Providers";
 import { bluemelleFont } from "@/app/bluemelleFont";
-import {
-  Playfair_Display,
-  Cormorant_Garamond,
-  Montserrat,
-  Lora,
-} from "next/font/google";
 
 import "@/app/bootstrap.scss";
 import "@/app/global.css";
