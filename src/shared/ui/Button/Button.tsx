@@ -17,7 +17,7 @@ type Props<C extends ElementType> = {
   className?: string;
   classNameWrapper?: string;
   variant?: "primary" | "ghost" | "outline";
-  status?: "primary" | "danger";
+  status?: "primary" | "danger" | "success";
   accessoryLeft?: ReactNode;
   accessoryRight?: ReactNode;
   loading?: boolean;
@@ -71,6 +71,7 @@ export default function Button<C extends ElementType = "button">({
         },
         {
           [styles.danger]: status === "danger",
+          [styles.success]: status === "success",
         },
         loading && styles.loading,
         className,
