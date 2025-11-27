@@ -1,15 +1,18 @@
 "use client";
 
+import type { ChangeEvent, ReactNode } from "react";
+
 import { PlusIcon } from "@phosphor-icons/react/dist/ssr/Plus";
 import { MinusIcon } from "@phosphor-icons/react/dist/ssr/Minus";
 
 import styles from "./QuantityControl.module.css";
-import { ChangeEvent } from "react";
 import clsx from "clsx";
 
 interface Props {
   value: number;
   disabled?: boolean;
+  iconDecrement?: ReactNode;
+  iconIncrement?: ReactNode;
   classNames?: {
     wrapper?: string;
     decrement?: string;
@@ -29,6 +32,8 @@ export default function QuantityControl({
   onChange,
   onBlur,
   classNames,
+  iconIncrement,
+  iconDecrement,
 }: Props) {
   const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -50,7 +55,7 @@ export default function QuantityControl({
         aria-label="Decrement"
         disabled={disabled}
       >
-        <MinusIcon />
+        {iconDecrement ? iconDecrement : <MinusIcon />}
       </button>
 
       <input
@@ -70,7 +75,7 @@ export default function QuantityControl({
         className={clsx(styles.increment, classNames?.increment)}
         disabled={disabled}
       >
-        <PlusIcon />
+        {iconIncrement ? iconIncrement : <PlusIcon />}
       </button>
     </div>
   );

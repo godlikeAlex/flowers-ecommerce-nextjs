@@ -12,6 +12,7 @@ import Link from "next/link";
 import styles from "./ProductOrderControls.module.css";
 import clsx from "clsx";
 import { useProductCart } from "@/widgets/product";
+import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
 
 interface Props {
   productOptions: ProductOption[];
@@ -53,7 +54,7 @@ export default function ProductOrderControls({
   })();
 
   const onIncrement = () => {
-    setQuantity((quantity) => Math.max(quantity + 1));
+    setQuantity((quantity) => quantity + 1);
   };
 
   const onDecrement = () => {
@@ -120,6 +121,11 @@ export default function ProductOrderControls({
           onChange={onChangeQuantity}
           onBlur={onBlurQuantity}
           disabled={quantityIsDisabled}
+          iconDecrement={
+            productStatus === "EDIT" && quantity === 1 ? (
+              <TrashSimpleIcon fill="#FA5252" />
+            ) : undefined
+          }
         />
 
         {productStatus === "ADD" ? (
