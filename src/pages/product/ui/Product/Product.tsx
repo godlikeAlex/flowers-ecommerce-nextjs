@@ -5,10 +5,10 @@ import styles from "./Product.module.css";
 import { ShareButtons } from "../ShareButtons";
 import clsx from "clsx";
 import { ProductOrderControls } from "../ProductOrderControls";
-import { ProductSelectionProvider } from "../../model/product-selection-context";
 import { getProduct, Product } from "@/entities/product";
 import { notFound } from "next/navigation";
 import { ProductTabs } from "../ProductTabs";
+import { ProductSelectionProvider } from "@/widgets/product";
 
 export default async function ProductPage({
   params,

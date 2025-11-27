@@ -5,11 +5,14 @@ import { createContext, PropsWithChildren, useContext, useState } from "react";
 
 interface ProductSelectionState {
   selectedAddons: ProductAddon[];
-  selectedOption: ProductOption | null;
+  selectedOption: ProductOption;
+  quantity: number;
 
   selectOption: (option: ProductOption) => void;
   selectAddon: (addon: ProductAddon) => void;
+  setQuantity: (quantity: number) => void;
   removeAddon: (id: number) => void;
+  removeAllAddons: () => void;
 }
 
 const ProductSelectionContext = createContext<ProductSelectionState | null>(
@@ -33,10 +36,14 @@ export function ProductSelectionProvider({
   selectedOption,
 }: PropsWithChildren<{ selectedOption: ProductOption }>) {
   const [state, setState] = useState<
-    Pick<ProductSelectionState, "selectedOption" | "selectedAddons">
+    Pick<
+      ProductSelectionState,
+      "selectedOption" | "selectedAddons" | "quantity"
+    >
   >({
     selectedOption,
     selectedAddons: [],
+    quantity: 1,
   });
 
   const selectOption = (option: ProductOption) => {
@@ -59,6 +66,20 @@ export function ProductSelectionProvider({
     }));
   };
 
+  const removeAllAddons = () => {
+    setState((currentState) => ({
+      ...currentState,
+      selectedAddons: [],
+    }));
+  };
+
+  const setQuantity = (quantity: number) => {
+    setState((currentState) => ({
+      ...currentState,
+      quantity,
+    }));
+  };
+
   return (
     <ProductSelectionContext.Provider
       value={{
@@ -67,6 +88,9 @@ export function ProductSelectionProvider({
         selectOption,
         selectedAddons: state.selectedAddons,
         selectedOption: state.selectedOption,
+        quantity: state.quantity,
+        removeAllAddons,
+        setQuantity,
       }}
     >
       {children}

@@ -2,15 +2,18 @@ import { formatPrice } from "@/shared/lib";
 import styles from "./ProductOptionCard.module.css";
 import { CheckIcon } from "@phosphor-icons/react/dist/ssr/Check";
 import { ProductOption } from "@/entities/product";
-import { useProductSelection } from "../../model/product-selection-context";
 import clsx from "clsx";
+import { useProductCart } from "@/widgets/product";
 
 interface Props {
   productOption: ProductOption;
 }
 
 export default function ProductOptionCard({ productOption }: Props) {
-  const { selectedOption, selectOption } = useProductSelection();
+  const {
+    productState: { selectedOption },
+    selectOption,
+  } = useProductCart();
 
   return (
     <article
