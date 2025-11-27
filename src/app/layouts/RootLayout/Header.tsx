@@ -92,9 +92,9 @@ export default function Header({ categories }: Props) {
                 <div className={clsx(styles["main-menu__logo"])}>
                   <Link href={ROUTES.HOME} className={clsx(styles.logo)}>
                     <Image
-                      src="/images/logo-width.svg"
-                      width={195}
-                      height={89}
+                      src="/images/logo.webp"
+                      width={110}
+                      height={110}
                       alt="BLUEMELLE Flower Boutique"
                     />
                   </Link>
