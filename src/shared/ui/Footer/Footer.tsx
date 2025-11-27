@@ -237,7 +237,7 @@ export default function Footer() {
             <div className="row row-gap-4">
               <div className="col-sm-9">
                 <p className="accent-dark text-sm-start text-center">
-                  @2025 All Rights Copyright bluemelle.
+                  @2025 All Rights Copyright BLUEMELLE.
                 </p>
               </div>
               <div className="col-sm-3 text-sm-end text-center">
