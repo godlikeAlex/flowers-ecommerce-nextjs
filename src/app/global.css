@@ -2,6 +2,17 @@
 @import "bootstrap/dist/css/bootstrap-grid.min.css";
 @import "bootstrap/dist/css/bootstrap-utilities.min.css";
 
+/*a *,*/
+/*a,*/
+/*button *,*/
+/*li *,*/
+/*li {*/
+/*font-family: "Cormorant Garamond", "Cormorant Garamond Fallback" !important;*/
+/*font-family:*/
+/*Lora,*/
+/*Lora Fallback !important;*/
+/*}*/
+
 :root {
   --heading-color: #43273a;
   --text-color: #808080;

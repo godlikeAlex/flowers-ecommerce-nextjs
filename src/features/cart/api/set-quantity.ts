@@ -2,7 +2,7 @@ import { Cart } from "@/entities/cart";
 import { ApiClient } from "@/shared/api";
 
 export interface SetQuantityDTO {
-  option_id: number;
+  cart_item_id: number;
   quantity: number;
 }
 

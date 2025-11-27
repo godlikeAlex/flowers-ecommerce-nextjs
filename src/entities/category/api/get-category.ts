@@ -18,7 +18,6 @@ interface GetCategoryResponse {
 }
 
 export async function getCategory(path: string, queryString?: URLSearchParams) {
-  console.log(queryString);
   return ApiClient.GET<GetCategoryResponse>(
     `/categories/${path}?${queryString?.toString()}`,
   );

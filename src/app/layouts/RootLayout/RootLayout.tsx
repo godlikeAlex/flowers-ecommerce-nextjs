@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 
 import Providers from "@/app/Providers";
 import { bluemelleFont } from "@/app/bluemelleFont";
+import {
+  Playfair_Display,
+  Cormorant_Garamond,
+  Montserrat,
+  Lora,
+} from "next/font/google";
 
 import "@/app/bootstrap.scss";
 import "@/app/global.css";
@@ -10,6 +16,8 @@ import Header from "./Header";
 import { Footer } from "@/shared/ui";
 import { CategoryMenu, getMenuCategories } from "@/entities/category";
 import NextTopLoader from "nextjs-toploader";
+
+import "react-loading-skeleton/dist/skeleton.css";
 
 export const metadata: Metadata = {
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",

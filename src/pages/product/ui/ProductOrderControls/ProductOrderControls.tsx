@@ -27,7 +27,6 @@ export default function ProductOrderControls({
     productState: { selectedOption, selectedAddons, quantity, productStatus },
     setQuantity,
     setLocalQuantity,
-    setServerQuantity,
     addToCart,
     deleteCartItem,
     quantityIsDisabled,
@@ -66,7 +65,7 @@ export default function ProductOrderControls({
       const targetQty = quantity - 1;
 
       if (targetQty >= 1) {
-        setServerQuantity(() => targetQty);
+        setQuantity(targetQty);
       } else {
         deleteCartItem();
       }

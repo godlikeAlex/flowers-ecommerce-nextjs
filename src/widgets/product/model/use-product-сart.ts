@@ -66,7 +66,11 @@ export function useProductCart() {
   };
 
   const deleteCartItem = () => {
-    deleteCartItemMutation.mutate(localProduct.selectedOption.id);
+    if (!productInCart.cartItem?.id) {
+      return;
+    }
+
+    deleteCartItemMutation.mutate(productInCart.cartItem.id);
     setLocalQuantity(1);
     localProduct.removeAllAddons();
   };
@@ -79,24 +83,22 @@ export function useProductCart() {
     }
   };
 
-  const setServerQuantity = (quantitySetter: QuantitySetter) => {
-    if (typeof quantitySetter === "function") {
-      setQuantityMutation.mutate({
-        option_id: localProduct.selectedOption.id,
-        quantity: quantitySetter(productState.quantity),
-      });
-    } else {
-      setQuantityMutation.mutate({
-        option_id: localProduct.selectedOption.id,
-        quantity: quantitySetter,
-      });
-    }
-  };
-
   const setQuantity = (quantitySetter: QuantitySetter) =>
     executeByProductContext(productInCart.cartItem, {
       ADD: () => setLocalQuantity(quantitySetter),
-      EDIT: () => setServerQuantity(quantitySetter),
+      EDIT: (cartItem) => {
+        if (typeof quantitySetter === "function") {
+          setQuantityMutation.mutate({
+            cart_item_id: cartItem.id,
+            quantity: quantitySetter(productState.quantity),
+          });
+        } else {
+          setQuantityMutation.mutate({
+            cart_item_id: cartItem.id,
+            quantity: quantitySetter,
+          });
+        }
+      },
     });
 
   const removeAddon = (addon: ProductAddon) => {
@@ -140,7 +142,6 @@ export function useProductCart() {
     addToCart,
     setQuantity,
     setLocalQuantity,
-    setServerQuantity,
     productState,
     deleteCartItem,
     addAddon,

@@ -9,18 +9,21 @@ export function createAxiosBrowserInstance(config?: CreateAxiosDefaults) {
     },
   });
 
-  instance.interceptors.response.use((response) => {
-    const incomingCartToken = response.data?.cart_token;
+  instance.interceptors.response.use(
+    (response) => {
+      const incomingCartToken = response.data?.cart_token;
 
-    if (incomingCartToken) {
-      Cookies.set("cart_token", incomingCartToken, {
-        expires: 30,
-        sameSite: "Lax",
-      });
-    }
+      if (incomingCartToken) {
+        Cookies.set("cart_token", incomingCartToken, {
+          expires: 30,
+          sameSite: "Lax",
+        });
+      }
 
-    return response;
-  });
+      return response;
+    },
+    (error) => Promise.reject(error),
+  );
 
   instance.interceptors.request.use((config) => {
     const cartToken = Cookies.get("cart_token");

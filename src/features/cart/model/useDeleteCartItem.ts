@@ -8,13 +8,9 @@ export function useDeleteCartItem() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (productOptionID: number) => {
-      const response = await deleteCartItem(productOptionID);
-
-      return response.data;
-    },
+    mutationFn: deleteCartItem,
     onSuccess: (cart) => {
-      queryClient.setQueryData([QUERY_CART_KEY], cart);
+      queryClient.setQueryData([QUERY_CART_KEY], cart.data);
     },
   });
 }
