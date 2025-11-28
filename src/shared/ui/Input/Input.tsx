@@ -1,10 +1,13 @@
-import { useId, type InputHTMLAttributes } from "react";
+import { RefCallback, RefObject, useId, type InputHTMLAttributes } from "react";
 import clsx from "clsx";
 
 import styles from "./Input.module.css";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   error?: string | boolean;
+  ref?:
+    | RefObject<HTMLInputElement | null>
+    | RefCallback<HTMLInputElement | null>;
 }
 
 export default function Input({ error, className, ...props }: Props) {

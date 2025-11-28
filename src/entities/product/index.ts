@@ -7,3 +7,4 @@ export type {
 } from "./models/types";
 
 export { default as getProduct } from "./api/get-product";
+export { selectAddonID } from "./lib/selectAddonID";

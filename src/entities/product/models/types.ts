@@ -28,7 +28,7 @@ export interface ProductCard {
 }
 
 export interface ProductOption {
-  id: 1;
+  id: number;
   title: string | null;
   description: string | null;
   price: number;

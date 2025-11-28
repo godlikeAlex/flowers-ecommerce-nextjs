@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
-
 import { formatPrice } from "@/shared/lib";
 import { Button, QuantityControl } from "@/shared/ui";
 import { ProductAddon, ProductOption } from "@/entities/product";
 import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
 
 import { ProductAddons } from "../ProductAddons";
-import { useProductSelection } from "../../model/product-selection-context";
-import ProductOptionCard from "../ProductOptionCard/ProductOptionCard";
 import { ProductOptionsList } from "../ProductOptionsList";
+import Link from "next/link";
+
+import styles from "./ProductOrderControls.module.css";
+import clsx from "clsx";
+import { useProductCart } from "@/widgets/product";
+import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
 
 interface Props {
   productOptions: ProductOption[];
@@ -21,10 +23,17 @@ export default function ProductOrderControls({
   productOptions,
   productAddons,
 }: Props) {
-  const { selectedOption, selectedAddons } = useProductSelection();
-  const [quantity, setQuantity] = useState(1);
+  const {
+    productState: { selectedOption, selectedAddons, quantity, productStatus },
+    setQuantity,
+    setLocalQuantity,
+    addToCart,
+    deleteCartItem,
+    quantityIsDisabled,
+  } = useProductCart();
 
   const basicPrice = formatPrice(selectedOption?.price ?? 0);
+
   const totalPrice = (() => {
     const basicPrice = selectedOption?.price ?? 0;
 
@@ -43,20 +52,38 @@ export default function ProductOrderControls({
     return formatPrice(total);
   })();
 
-  const onIncrement = () => setQuantity((quantity) => Math.max(quantity + 1));
+  const onIncrement = () => {
+    setQuantity((quantity) => quantity + 1);
+  };
 
   const onDecrement = () => {
-    setQuantity((quantity) => Math.max(quantity - 1, 1));
+    if (productStatus === "ADD") {
+      setLocalQuantity((quantity) => Math.max(quantity - 1, 1));
+    }
+
+    if (productStatus === "EDIT") {
+      const targetQty = quantity - 1;
+
+      if (targetQty >= 1) {
+        setQuantity(targetQty);
+      } else {
+        deleteCartItem();
+      }
+    }
   };
 
   const onChangeQuantity = (newQuantity: number) => {
-    setQuantity(newQuantity);
+    setLocalQuantity(newQuantity);
   };
 
   const onBlurQuantity = () => {
     if (quantity < 1 || !quantity) {
-      setQuantity(1);
+      setLocalQuantity(1);
     }
+  };
+
+  const handleAddToCart = async () => {
+    await addToCart();
   };
 
   return (
@@ -81,24 +108,51 @@ export default function ProductOrderControls({
         <span className="bold-text">{totalPrice}</span>
       </h3>
 
-      <div className="d-flex justify-content-between align-items-center gap-2 gap-md-5 mb-16">
+      <div className="d-flex justify-content-between align-items-stretch gap-3 mb-16">
         <QuantityControl
+          classNames={{
+            increment: styles.quantityButton,
+            decrement: styles.quantityButton,
+          }}
           value={quantity}
           onIncrement={onIncrement}
           onDecrement={onDecrement}
           onChange={onChangeQuantity}
           onBlur={onBlurQuantity}
+          disabled={quantityIsDisabled}
+          iconDecrement={
+            productStatus === "EDIT" && quantity === 1 ? (
+              <TrashSimpleIcon fill="#FA5252" />
+            ) : undefined
+          }
         />
 
-        <Button
-          accessoryRight={<ShoppingCartSimpleIcon width={20} height={20} />}
-          className="w-100"
-          style={{ flexShrink: 1 }}
-          variant="primary"
-        >
-          Add To Cart{" "}
-          <div className="bold-text d-none d-md-block"> = {totalPrice}</div>
-        </Button>
+        {productStatus === "ADD" ? (
+          <Button
+            accessoryRight={<ShoppingCartSimpleIcon width={20} height={20} />}
+            className={clsx("w-100", styles["button-add-to-cart"])}
+            style={{ flexShrink: 1 }}
+            variant="primary"
+            loading={quantityIsDisabled}
+            onClick={handleAddToCart}
+          >
+            Add To Cart
+            <div className="bold-text d-none d-md-block"> = {totalPrice}</div>
+          </Button>
+        ) : (
+          <Button
+            as={Link}
+            href="/cart"
+            accessoryRight={<ShoppingCartSimpleIcon width={20} height={20} />}
+            className={clsx("w-100", styles["button-add-to-cart"])}
+            style={{ flexShrink: 1 }}
+            status="success"
+            variant="primary"
+            loading={quantityIsDisabled}
+          >
+            Go to cart
+          </Button>
+        )}
       </div>
     </>
   );

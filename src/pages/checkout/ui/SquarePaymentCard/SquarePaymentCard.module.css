@@ -1,0 +1,4 @@
+.payment-form {
+  background-image: var(--primary-dashed-border);
+  padding: 2px;
+}

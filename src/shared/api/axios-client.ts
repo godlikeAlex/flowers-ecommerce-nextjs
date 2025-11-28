@@ -1,5 +1,5 @@
-import axios from "axios";
 import { createAxiosServerInstance } from "./axios-client.server";
+import { createAxiosBrowserInstance } from "./axios-client.browser";
 
 const axiosConfig = {
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
@@ -16,5 +16,5 @@ export async function createAxiosInstance() {
     return createAxiosServerInstance(axiosConfig);
   }
 
-  return axios.create(axiosConfig);
+  return createAxiosBrowserInstance(axiosConfig);
 }

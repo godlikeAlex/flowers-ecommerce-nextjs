@@ -13,5 +13,9 @@ export { Select } from "./Select";
 export { EmptyState } from "./EmptyState";
 export { Carousel } from "./Carousel";
 export { Modal } from "./Modal";
+export { Checkbox } from "./Checkbox";
+export { GooglePlaces } from "./GooglePlaces";
+export { Textarea } from "./Textarea";
+export { InputErrorMessage } from "./InputErrorMessage";
 
 export * from "./icons";

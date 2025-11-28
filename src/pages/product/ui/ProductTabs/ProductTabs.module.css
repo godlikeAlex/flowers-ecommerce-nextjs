@@ -13,3 +13,7 @@
 .button[data-selected] {
   background-color: var(--ghost-color);
 }
+
+.description p {
+  margin-bottom: 20px;
+}

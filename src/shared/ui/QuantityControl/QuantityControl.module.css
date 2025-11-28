@@ -90,3 +90,17 @@
     font-size: clamp(14.45px, 4.146vw, 18px);
   }
 }
+
+.quantity-wrap .decrement:disabled,
+.quantity-wrap .increment:disabled {
+  background-color: rgb(244, 244, 244);
+  opacity: 1 !important;
+  color: gray;
+  cursor: not-allowed;
+}
+
+.quantity-wrap input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}

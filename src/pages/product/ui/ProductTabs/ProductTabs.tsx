@@ -1,11 +1,12 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
-import styles from "./ProductTabs.module.css";
 import { Button, EmptyState } from "@/shared/ui";
 import { StarIcon } from "@phosphor-icons/react/dist/ssr/Star";
 import Image from "next/image";
 
 import image from "./empty-reviews.png";
+
+import styles from "./ProductTabs.module.css";
 
 interface Props {
   description: string;
@@ -21,7 +22,10 @@ export default function ProductTabs({ description }: Props) {
       <hr className="dash-line mb-32" />
       <TabPanels>
         <TabPanel>
-          <div dangerouslySetInnerHTML={{ __html: description ?? "" }} />
+          <div
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: description ?? "" }} // Sanitized by backed
+          />
         </TabPanel>
         <TabPanel>
           <EmptyState>

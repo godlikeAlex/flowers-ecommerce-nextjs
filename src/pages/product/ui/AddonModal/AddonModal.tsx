@@ -8,7 +8,7 @@ import { ProductAddon } from "@/entities/product";
 import Image from "next/image";
 import { formatPrice } from "@/shared/lib";
 import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
-import { useProductSelection } from "../../model/product-selection-context";
+import { useProductCart } from "@/widgets/product";
 
 interface Props {
   onClose: () => void;
@@ -16,7 +16,12 @@ interface Props {
 }
 
 export default function AddonModal({ addon, onClose }: Props) {
-  const { selectedAddons, selectAddon, removeAddon } = useProductSelection();
+  const {
+    addAddon,
+    removeAddon,
+    addonIsDisabled,
+    productState: { selectedAddons },
+  } = useProductCart();
 
   if (!addon) return;
 
@@ -24,8 +29,9 @@ export default function AddonModal({ addon, onClose }: Props) {
 
   const baseOption = options.at(0);
   const localPrice = baseOption ? formatPrice(baseOption.price) : undefined;
-  const selectedAddon = selectedAddons.find(
-    (selectedAddon) => selectedAddon.id === addon.id,
+
+  const isAdded = Boolean(
+    selectedAddons.find((selectedAddon) => selectedAddon.id === addon.id),
   );
 
   return (
@@ -55,11 +61,12 @@ export default function AddonModal({ addon, onClose }: Props) {
             <>
               <h3 className="mb-16">{localPrice}</h3>
 
-              {!selectedAddon ? (
+              {!isAdded ? (
                 <Button
                   className="w-100"
                   accessoryRight={<PlusIcon />}
-                  onClick={() => selectAddon(addon)}
+                  loading={addonIsDisabled}
+                  onClick={() => addAddon(addon)}
                 >
                   Add
                 </Button>
@@ -67,8 +74,9 @@ export default function AddonModal({ addon, onClose }: Props) {
                 <Button
                   className="w-100"
                   accessoryRight={<TrashSimpleIcon />}
-                  onClick={() => removeAddon(addon.id)}
                   status="danger"
+                  loading={addonIsDisabled}
+                  onClick={() => removeAddon(addon)}
                 >
                   Remove
                 </Button>

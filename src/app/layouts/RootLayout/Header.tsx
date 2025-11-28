@@ -92,9 +92,9 @@ export default function Header({ categories }: Props) {
                 <div className={clsx(styles["main-menu__logo"])}>
                   <Link href={ROUTES.HOME} className={clsx(styles.logo)}>
                     <Image
-                      src="/images/logo-width.svg"
-                      width={195}
-                      height={89}
+                      src="/images/logo.webp"
+                      width={90}
+                      height={90}
                       alt="BLUEMELLE Flower Boutique"
                     />
                   </Link>
@@ -113,11 +113,15 @@ export default function Header({ categories }: Props) {
                 <IconButton
                   variant="outline"
                   className={clsx("d-xl-flex d-none")}
+                  as={Link}
+                  href={ROUTES.SIGNIN}
                   icon={<UserIcon width={20} height={20} />}
                 />
                 <IconButton
                   variant="outline"
                   className={clsx("d-xl-flex d-none")}
+                  as={Link}
+                  href={ROUTES.CART}
                   icon={<ShoppingCartSimpleIcon width={20} height={20} />}
                 />
                 <Button
