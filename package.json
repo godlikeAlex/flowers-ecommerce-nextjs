@@ -24,6 +24,7 @@
     "embla-carousel": "^8.6.0",
     "embla-carousel-fade": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "geolib": "^3.3.4",
     "js-cookie": "^3.0.5",
     "modern-normalize": "^3.0.1",
     "next": "16.0.2-canary.7",
@@ -31,6 +32,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-dropdown-select": "^4.12.2",
+    "react-google-autocomplete": "^2.7.5",
     "react-hook-form": "^7.66.0",
     "react-loader-spinner": "^8.0.0",
     "react-loading-skeleton": "^3.5.0",
@@ -40,7 +42,9 @@
     "react-range-slider-input": "^3.3.2",
     "react-select": "^5.10.2",
     "react-share": "^5.2.2",
+    "react-square-web-payments-sdk": "3.2.4-beta.1",
     "sonner": "^2.0.7",
+    "use-places-autocomplete": "^4.0.1",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -52,6 +56,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/google.maps": "^3.58.1",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
