@@ -34,10 +34,11 @@ export default function Footer() {
                 </Link>
 
                 <p className="mb-24">
-                  Lorem ipsum dolor sit amet consectetur. Mauris amet ultrices
-                  aliquet arcu libero aliquam est nullam sit. psum dolor sit
-                  amet consectetur. Mauris amet ultrices aliquet arcu libero
-                  aliquam...
+                  At BLUEMELLE Boutique, we bring joy and beauty to every day.
+                  From fresh bouquets to unique floral arrangements, each
+                  creation is made with love and care to brighten your life and
+                  the lives of those you cherish. Explore our selection and let
+                  nature’s elegance speak for you.
                 </p>
                 <div className={styles.time}>
                   <div className={styles.icon}>

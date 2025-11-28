@@ -93,8 +93,8 @@ export default function Header({ categories }: Props) {
                   <Link href={ROUTES.HOME} className={clsx(styles.logo)}>
                     <Image
                       src="/images/logo.webp"
-                      width={110}
-                      height={110}
+                      width={90}
+                      height={90}
                       alt="BLUEMELLE Flower Boutique"
                     />
                   </Link>

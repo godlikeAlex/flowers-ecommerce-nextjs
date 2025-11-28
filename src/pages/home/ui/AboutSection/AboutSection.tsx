@@ -6,6 +6,8 @@ import styles from "./AboutSection.module.css";
 import clsx from "clsx";
 import Image from "next/image";
 
+import imageAbout from "./about.png";
+
 export default function AboutSection() {
   return (
     <div className="container-fluid">
@@ -57,12 +59,7 @@ export default function AboutSection() {
               </div>
               <div className="col-xl-5 col-lg-5 col-md-6 col-sm-7 col-10">
                 <div className={clsx(styles["img-block"], "mx-auto")}>
-                  <Image
-                    width={432}
-                    height={616}
-                    src="/images/about/about-1.png"
-                    alt=""
-                  />
+                  <Image src={imageAbout} alt="" />
                   <Image
                     width={220}
                     height={220}

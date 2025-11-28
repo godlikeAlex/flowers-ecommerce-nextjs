@@ -23,6 +23,7 @@ export default function ProductTabs({ description }: Props) {
       <TabPanels>
         <TabPanel>
           <div
+            className={styles.description}
             dangerouslySetInnerHTML={{ __html: description ?? "" }} // Sanitized by backed
           />
         </TabPanel>
