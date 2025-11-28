@@ -16,5 +16,6 @@ export { Modal } from "./Modal";
 export { Checkbox } from "./Checkbox";
 export { GooglePlaces } from "./GooglePlaces";
 export { Textarea } from "./Textarea";
+export { InputErrorMessage } from "./InputErrorMessage";
 
 export * from "./icons";

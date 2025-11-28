@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Skeleton from "react-loading-skeleton";
 import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
 import { Button } from "@/shared/ui";
 import { Sidebar } from "@/widgets/cart/ui";
 import { useCart } from "@/entities/cart";
-import Skeleton from "react-loading-skeleton";
+import { ROUTES } from "@/shared/config";
 
 export default function CartSidebar() {
   const cart = useCart();
@@ -23,7 +24,7 @@ export default function CartSidebar() {
 
       <Button
         as={Link}
-        href="/cart/checkout"
+        href={ROUTES.CHECKOUT}
         accessoryRight={<ShoppingCartSimpleIcon />}
         className="w-100 mt-4"
       >

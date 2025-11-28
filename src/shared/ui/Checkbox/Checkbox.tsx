@@ -14,10 +14,9 @@ export default function Checkbox({ label, checked, onChange }: Props) {
   return (
     <Field className="d-flex align-items-center gap-2">
       <HeadlessCheckbox
-        checked={checked}
+        checked={Boolean(checked)}
         onChange={onChange}
         className={styles.checkbox}
-        // className="group block size-4 rounded border bg-white data-checked:bg-blue-500"
       >
         <CheckIcon weight="bold" />
       </HeadlessCheckbox>

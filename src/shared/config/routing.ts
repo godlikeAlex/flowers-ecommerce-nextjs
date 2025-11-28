@@ -8,6 +8,8 @@ export const ROUTES = {
   ACCOUNT: "/account",
   SIGNIN: "/signin",
   SIGNUP: "/signup",
+  CART: "/cart",
+  CHECKOUT: "/cart/checkout",
 };
 
 export const DEFAULT_REDIRECT_ROUTE = ROUTES.ACCOUNT;

@@ -113,11 +113,15 @@ export default function Header({ categories }: Props) {
                 <IconButton
                   variant="outline"
                   className={clsx("d-xl-flex d-none")}
+                  as={Link}
+                  href={ROUTES.SIGNIN}
                   icon={<UserIcon width={20} height={20} />}
                 />
                 <IconButton
                   variant="outline"
                   className={clsx("d-xl-flex d-none")}
+                  as={Link}
+                  href={ROUTES.CART}
                   icon={<ShoppingCartSimpleIcon width={20} height={20} />}
                 />
                 <Button
