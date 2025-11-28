@@ -1,0 +1,33 @@
+.checkbox {
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  border: 2px solid rgb(185, 185, 185);
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--primary-color);
+  font-size: 16px;
+
+  transition: 0.4s border-color;
+  cursor: pointer;
+}
+
+.checkbox svg {
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.checkbox:hover {
+  opacity: 0.8;
+}
+
+.checkbox[data-checked] {
+  border-color: var(--primary-color);
+}
+
+.checkbox[data-checked] svg {
+  opacity: 1;
+}
