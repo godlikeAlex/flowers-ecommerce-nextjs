@@ -14,7 +14,7 @@ export default function CartSidebar() {
 
   return (
     <Sidebar heading="Cart Total" sticky>
-      <Sidebar.PriceListItem title="Subtotal" price={2500} />
+      <Sidebar.PriceListItem title="Subtotal" price={cart.data.total} />
       <Sidebar.PriceListItem title="Shipping" price={0} />
 
       <div className="mt-4">
