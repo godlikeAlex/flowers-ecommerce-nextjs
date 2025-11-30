@@ -69,6 +69,8 @@ export default function ProductCarousel({ slides }: Props) {
                     fill
                     src={thumb_url}
                     preload
+                    priority
+                    fetchPriority="high"
                     alt=""
                     onMouseEnter={() => onThumbClick(idx)}
                   />
@@ -88,7 +90,14 @@ export default function ProductCarousel({ slides }: Props) {
           <Carousel.ContainerSlides className={styles["main-container"]}>
             {slides.map(({ compressed_url }) => (
               <Carousel.Item className={styles.slide} key={compressed_url}>
-                <Image src={compressed_url} alt="" preload fill />
+                <Image
+                  src={compressed_url}
+                  alt=""
+                  preload
+                  priority
+                  fetchPriority="high"
+                  fill
+                />
               </Carousel.Item>
             ))}
           </Carousel.ContainerSlides>
