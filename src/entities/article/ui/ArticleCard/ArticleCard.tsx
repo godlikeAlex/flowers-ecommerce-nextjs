@@ -35,7 +35,7 @@ export default function ArticleCard({ postCard }: Props) {
       <div className={styles["text-block"]}>
         <div className={clsx(styles["top-row"], "mb-24")}>
           <div className={styles.author}>
-            <Anchor href="keri" className="bold-text color-primary">
+            <Anchor href="#" className="bold-text color-primary">
               Category: {category.name}
             </Anchor>
           </div>
