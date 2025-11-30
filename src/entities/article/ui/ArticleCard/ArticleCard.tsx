@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 
-import { Button } from "@/shared/ui";
+import { Anchor, Button } from "@/shared/ui";
 
 import { EyesIcon } from "@phosphor-icons/react/dist/ssr/Eyes";
 
@@ -21,8 +21,9 @@ export default function ArticleCard() {
       <div className={styles["text-block"]}>
         <div className={clsx(styles["top-row"], "mb-24")}>
           <div className={styles.author}>
-            <img src="/images/blogs/users/ua-1.png" alt="" />
-            <span className="bold-text color-primary">By: Williams</span>
+            <Anchor href="keri" className="bold-text color-primary">
+              Category: Williams
+            </Anchor>
           </div>
           <span className={styles.date}>14 April, 2024</span>
         </div>

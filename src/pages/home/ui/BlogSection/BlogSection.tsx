@@ -1,5 +1,11 @@
+"use client";
+
 import { ArticleCard } from "@/entities/article/ui";
-import { Button } from "@/shared/ui";
+import { Button, Carousel } from "@/shared/ui";
+
+import styles from "./BlogSection.module.css";
+
+import { SliderNavigation } from "../SliderNavigation";
 
 export default function BlogSection() {
   return (
@@ -13,16 +19,30 @@ export default function BlogSection() {
         <Button>View All</Button>
       </div>
 
-      <div className="row">
-        <div className="col-md-4">
-          <ArticleCard />
-        </div>
-        <div className="col-md-4">
-          <ArticleCard />
-        </div>
-        <div className="col-md-4">
-          <ArticleCard />
-        </div>
+      <div style={{ position: "relative" }}>
+        <Carousel options={{ align: "start" }}>
+          <SliderNavigation />
+
+          <Carousel.Content>
+            <Carousel.ContainerSlides>
+              <Carousel.Item className={styles.slide}>
+                <ArticleCard />
+              </Carousel.Item>
+
+              <Carousel.Item className={styles.slide}>
+                <ArticleCard />
+              </Carousel.Item>
+
+              <Carousel.Item className={styles.slide}>
+                <ArticleCard />
+              </Carousel.Item>
+
+              <Carousel.Item className={styles.slide}>
+                <ArticleCard />
+              </Carousel.Item>
+            </Carousel.ContainerSlides>
+          </Carousel.Content>
+        </Carousel>
       </div>
     </div>
   );
