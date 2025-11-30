@@ -7,6 +7,9 @@ import { OfferBanner } from "../OfferBanner";
 import { ReviewsSection } from "../ReviewsSection";
 import { BlogSection } from "../BlogSection";
 import { HomeSection } from "../HomeSection";
+import { getHomePageData } from "../../api/get-home-page-data";
+import { PostCard } from "@/entities/post";
+import { ProductCard } from "@/entities/product";
 
 const CATEGORY_SHOW_CASES = [
   {
@@ -110,7 +113,19 @@ const CATEGORY_SHOW_CASES = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  let posts: PostCard[] = [];
+  let featuredCategories: { name: string; products: ProductCard[] }[] = [];
+
+  try {
+    const { data } = await getHomePageData();
+
+    posts = data.latest_posts;
+    featuredCategories = data.categories;
+  } catch (e) {
+    console.log("Error while loading data", e);
+  }
+
   return (
     <>
       <HeroSection />
@@ -126,10 +141,10 @@ export default function Home() {
         <AboutSection />
       </section>
 
-      {CATEGORY_SHOW_CASES.map((category, index) => (
+      {featuredCategories.map((category, index) => (
         <section key={index} style={{ paddingBottom: 80 }}>
           <FeaturedCategoryShowcase
-            title={category.categoryName}
+            title={category.name}
             products={category.products}
           />
         </section>
@@ -143,7 +158,7 @@ export default function Home() {
         <ReviewsSection />
       </section>
       <section style={{ paddingBottom: 80 }}>
-        <BlogSection />
+        <BlogSection posts={posts} />
       </section>
     </>
   );

@@ -18,6 +18,7 @@ export default function HeroSection() {
                 <Image
                   src="/images/hero/image-vector-1.png"
                   alt=""
+                  preload
                   width={216}
                   height={195}
                   className={clsx(styles["banner-vector"], styles["vector-1"])}
@@ -26,19 +27,20 @@ export default function HeroSection() {
                   src="/images/hero/flower-vector.png"
                   className={clsx(styles["banner-vector"], styles["vector-2"])}
                   alt=""
+                  preload
                   width={39}
                   height={51}
                 />
                 <h1 className={clsx(styles.title)}>
-                  Bring the Outdoors In <br /> with our{" "}
-                  <span className="color-primary"> Beautiful </span>{" "}
-                  <span className="color-primary"> Flowers</span>
-                  <br /> and Plant
+                  Bring Celebration Home <br /> with our{" "}
+                  <span className="color-primary"> Bouquets </span>{" "}
+                  {/*<span className="color-primary"> Bouquets</span>*/}
+                  <br /> and Gifts
                 </h1>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur. Mauris amet ultrices
-                  aliquet arcu. Libero aliquam est nullam sit. Congue mauris in
-                  convallis ut.
+                  Celebrate every moment with our stunning bouquets crafted for
+                  special occasions. Fresh, vibrant flowers that make every
+                  event unforgettable.
                 </p>
                 <div className={clsx(styles["btn-block"])}>
                   <Button accessoryRight={<FlowerTulipIcon />}>Shop Now</Button>
@@ -54,11 +56,13 @@ export default function HeroSection() {
                   height={51}
                   src="/images/hero/flower-vector.png"
                   alt=""
+                  preload
                   className={clsx(styles["banner-vector"], styles["vector-3"])}
                 />
                 <Image
                   width={179}
                   height={162}
+                  preload
                   src="/images/hero/image-vector-3.png"
                   alt=""
                   className={clsx(styles["banner-vector"], styles["vector-4"])}
@@ -71,6 +75,7 @@ export default function HeroSection() {
                   quality={95}
                   width={970}
                   height={659}
+                  preload
                   src="/images/hero/hero-image.png"
                   alt=""
                 />
@@ -82,6 +87,7 @@ export default function HeroSection() {
           src="/images/hero/image-vector-2.png"
           width={196}
           height={189}
+          preload
           alt=""
           className={clsx(styles["banner-vector"], styles["vector-5"])}
         />
