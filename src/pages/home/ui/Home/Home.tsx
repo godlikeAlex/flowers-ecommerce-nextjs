@@ -7,6 +7,8 @@ import { OfferBanner } from "../OfferBanner";
 import { ReviewsSection } from "../ReviewsSection";
 import { BlogSection } from "../BlogSection";
 import { HomeSection } from "../HomeSection";
+import { getHomePageData } from "../../api/get-home-page-data";
+import { PostCard } from "@/entities/post";
 
 const CATEGORY_SHOW_CASES = [
   {
@@ -110,7 +112,17 @@ const CATEGORY_SHOW_CASES = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  let posts: PostCard[] = [];
+
+  try {
+    const { data } = await getHomePageData();
+
+    posts = data.latest_posts;
+  } catch (e) {
+    console.log("Error while loading data", e);
+  }
+
   return (
     <>
       <HeroSection />
@@ -143,7 +155,7 @@ export default function Home() {
         <ReviewsSection />
       </section>
       <section style={{ paddingBottom: 80 }}>
-        <BlogSection />
+        <BlogSection posts={posts} />
       </section>
     </>
   );

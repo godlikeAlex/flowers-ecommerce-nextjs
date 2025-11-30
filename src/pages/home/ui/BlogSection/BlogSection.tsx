@@ -6,8 +6,13 @@ import { Button, Carousel } from "@/shared/ui";
 import styles from "./BlogSection.module.css";
 
 import { SliderNavigation } from "../SliderNavigation";
+import { PostCard } from "@/entities/post";
 
-export default function BlogSection() {
+interface Props {
+  posts: PostCard[];
+}
+
+export default function BlogSection({ posts }: Props) {
   return (
     <div className="container-fluid">
       <div className="d-flex align-items-center justify-content-between mb-48">
@@ -25,21 +30,11 @@ export default function BlogSection() {
 
           <Carousel.Content>
             <Carousel.ContainerSlides>
-              <Carousel.Item className={styles.slide}>
-                <ArticleCard />
-              </Carousel.Item>
-
-              <Carousel.Item className={styles.slide}>
-                <ArticleCard />
-              </Carousel.Item>
-
-              <Carousel.Item className={styles.slide}>
-                <ArticleCard />
-              </Carousel.Item>
-
-              <Carousel.Item className={styles.slide}>
-                <ArticleCard />
-              </Carousel.Item>
+              {posts.map((postCard) => (
+                <Carousel.Item className={styles.slide} key={postCard.id}>
+                  <ArticleCard postCard={postCard} />
+                </Carousel.Item>
+              ))}
             </Carousel.ContainerSlides>
           </Carousel.Content>
         </Carousel>
