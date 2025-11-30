@@ -1,0 +1,24 @@
+.check {
+  background-color: var(--alt-bg-color);
+  position: relative;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.check::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  left: 0;
+  height: 30px;
+  border: none;
+  background: var(--alt-bg-color);
+  -webkit-mask: conic-gradient(
+      from -45deg at bottom,
+      #0000,
+      #000 1deg 89deg,
+      #0000 90deg
+    )
+    40%/12px 100%;
+}
