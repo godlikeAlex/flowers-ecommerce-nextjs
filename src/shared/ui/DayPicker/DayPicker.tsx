@@ -16,10 +16,16 @@ import "react-day-picker/style.css";
 
 type Props = {
   placeholder?: string;
+  inputDisabled?: boolean;
   error?: string | boolean;
 } & DayPickerProps;
 
-export default function DayPicker({ placeholder, error, ...props }: Props) {
+export default function DayPicker({
+  placeholder,
+  error,
+  inputDisabled,
+  ...props
+}: Props) {
   const [isShowingCalendar, setIsShowingCalendar] = useState(false);
   const defaultClassNames = getDefaultClassNames();
 
@@ -35,6 +41,7 @@ export default function DayPicker({ placeholder, error, ...props }: Props) {
       <Input
         placeholder={placeholder}
         readOnly
+        disabled={inputDisabled}
         onClick={() => setIsShowingCalendar((isShowing) => !isShowing)}
         style={{ cursor: "pointer" }}
         error={error}
