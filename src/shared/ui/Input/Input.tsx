@@ -2,6 +2,7 @@ import { RefCallback, RefObject, useId, type InputHTMLAttributes } from "react";
 import clsx from "clsx";
 
 import styles from "./Input.module.css";
+import InputMask from "./InputMask";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   error?: string | boolean;
@@ -31,3 +32,5 @@ export default function Input({ error, className, ...props }: Props) {
     </label>
   );
 }
+
+Input.Mask = InputMask;

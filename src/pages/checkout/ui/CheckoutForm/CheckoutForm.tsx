@@ -1,8 +1,12 @@
 import { Controller, useFormContext } from "react-hook-form";
+import { DayPicker, GooglePlaces, Input, Textarea } from "@/shared/ui";
+import TimeField from "react-simple-timefield";
+
 import type { CheckoutForm as ICheckoutForm } from "../../model/checkout-schema";
-import { GooglePlaces, Input, Textarea } from "@/shared/ui";
-import { SquarePaymentCard } from "../SquarePaymentCard";
-import { handleSquareClickPay } from "../SquarePaymentCard/handle-square-pay";
+import { ROUTES, US_TELEPHONE_MASK } from "@/shared/config";
+import { useCreateOrder } from "@/features/order";
+import { toUTCDatetime } from "@/shared/lib";
+import { useRouter } from "nextjs-toploader/app";
 
 interface Props {
   checkoutFormID: string;
@@ -21,12 +25,34 @@ export default function CheckoutForm({
     handleSubmit,
     formState: { errors },
   } = useFormContext<ICheckoutForm>();
+  const createOrderMutation = useCreateOrder();
+  const router = useRouter();
 
-  const onSubmit = (values: ICheckoutForm) => {
-    // We click to hidden pay button square to process payment.
-    // Process payment logic in SquarePaymentCard component
+  const onSubmit = async ({
+    shippingAddress,
+    shippingNotes,
+    notes,
+    deliveryDate,
+    deliveryTime,
+    ...values
+  }: ICheckoutForm) => {
     setPaymentIsProccessing(true);
-    handleSquareClickPay();
+
+    try {
+      const response = await createOrderMutation.mutateAsync({
+        ...values,
+        address: shippingAddress.formatted_address ?? "Address not selected",
+        shipping_notes: shippingNotes,
+        notes: notes,
+        delivery_date_time: toUTCDatetime(deliveryDate, deliveryTime),
+      });
+
+      return router.replace(ROUTES.PAY(response.data.orderUUID));
+    } catch (e) {
+      console.log("ERROR", e);
+    } finally {
+      setPaymentIsProccessing(false);
+    }
   };
 
   return (
@@ -38,6 +64,7 @@ export default function CheckoutForm({
           <Input
             placeholder="Your name"
             error={errors.name?.message}
+            disabled={paymentIsProccessing}
             {...register("name")}
           />
         </div>
@@ -47,14 +74,17 @@ export default function CheckoutForm({
         <div className="col-md-6">
           <Input
             placeholder="Your Email"
+            disabled={paymentIsProccessing}
             error={errors.email?.message}
             {...register("email")}
           />
         </div>
 
         <div className="col-md-6">
-          <Input
-            placeholder="+1"
+          <Input.Mask
+            {...US_TELEPHONE_MASK}
+            showMask
+            disabled={paymentIsProccessing}
             error={errors.phone?.message}
             {...register("phone")}
           />
@@ -66,6 +96,7 @@ export default function CheckoutForm({
           <Textarea
             rows={6}
             label="Order notes (optional)"
+            disabled={paymentIsProccessing}
             error={errors.notes?.message}
             {...register("notes")}
           />
@@ -76,14 +107,57 @@ export default function CheckoutForm({
 
       <div className="mb-32">
         <div className="row row-gap-3">
+          <div className="col-md-6">
+            <Controller
+              control={control}
+              disabled={paymentIsProccessing}
+              name="deliveryDate"
+              render={({ field }) => (
+                <DayPicker
+                  animate
+                  inputDisabled={field.disabled}
+                  mode="single"
+                  selected={field.value}
+                  onSelect={field.onChange}
+                  placeholder="Select Shipping Date"
+                  disabled={{ before: new Date() }}
+                  error={errors.deliveryDate?.message}
+                />
+              )}
+            />
+          </div>
+
+          <div className="col-md-6">
+            <Controller
+              control={control}
+              name="deliveryTime"
+              disabled={paymentIsProccessing}
+              render={({ field }) => (
+                <TimeField
+                  value={field.value}
+                  onChange={(event, value) => field.onChange(value)}
+                  input={
+                    <Input
+                      error={errors.deliveryTime?.message}
+                      disabled={field.disabled}
+                    />
+                  }
+                  colon=":"
+                />
+              )}
+            />
+          </div>
+
           <div className="col-md-12">
             <Controller
               control={control}
               name="shippingAddress"
+              disabled={paymentIsProccessing}
               render={({ field }) => (
                 <GooglePlaces
                   onSelect={field.onChange}
                   error={errors.shippingAddress?.message}
+                  disabled={field.disabled}
                 />
               )}
             />
@@ -92,6 +166,7 @@ export default function CheckoutForm({
             <Textarea
               rows={6}
               label="Shipping notes (optional)"
+              disabled={paymentIsProccessing}
               error={errors.shippingNotes?.message}
               {...register("shippingNotes")}
             />

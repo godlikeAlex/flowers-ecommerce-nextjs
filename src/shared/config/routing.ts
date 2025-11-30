@@ -10,6 +10,7 @@ export const ROUTES = {
   SIGNUP: "/signup",
   CART: "/cart",
   CHECKOUT: "/cart/checkout",
+  PAY: (orderUUID: string) => `/cart/checkout/pay/${orderUUID}`,
 };
 
 export const DEFAULT_REDIRECT_ROUTE = ROUTES.ACCOUNT;

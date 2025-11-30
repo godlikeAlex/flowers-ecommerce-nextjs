@@ -1,10 +1,18 @@
+"use client";
+
 import { CreditCard, PaymentForm } from "react-square-web-payments-sdk";
 
 import styles from "./SquarePaymentCard.module.css";
+import { formatPrice } from "@/shared/lib";
+import { OrderPay } from "@/entities/order";
 
 export const PAY_BUTTON_CLASS = "pay_button_square-unique";
 
-export default function SquarePaymentCard() {
+interface Props {
+  orderForPay: OrderPay;
+}
+
+export default function SquarePaymentCard({ orderForPay }: Props) {
   return (
     <PaymentForm
       applicationId={"sandbox-sq0idb-6CEzpDjag4YcSAcCzaZBlw"}
@@ -41,13 +49,25 @@ export default function SquarePaymentCard() {
             borderColor: "#0b5bb2",
           },
         }}
-        buttonProps={
-          {
-            // style: { display: "none" },
-          }
-        }
+        buttonProps={{
+          css: {
+            backgroundColor: "var(--primary-color)",
+            fontSize: "18px",
+            color: "#fff",
+            "&:hover": {
+              opacity: 0.9,
+            },
+          },
+        }}
       >
-        <div className={PAY_BUTTON_CLASS}>pay</div>
+        <div
+          style={{
+            fontWeight: "700",
+          }}
+        >
+          <span style={{ opacity: "0.9", fontWeight: "400" }}>Pay </span>
+          {formatPrice(orderForPay.total_amount)}
+        </div>
       </CreditCard>
     </PaymentForm>
   );

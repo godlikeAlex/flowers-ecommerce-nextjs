@@ -17,5 +17,6 @@ export { Checkbox } from "./Checkbox";
 export { GooglePlaces } from "./GooglePlaces";
 export { Textarea } from "./Textarea";
 export { InputErrorMessage } from "./InputErrorMessage";
+export { DayPicker } from "./DayPicker";
 
 export * from "./icons";
