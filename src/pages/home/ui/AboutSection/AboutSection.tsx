@@ -19,33 +19,31 @@ export default function AboutSection() {
                 <div className="row">
                   <div className="col-xxl-10 col-xl-11">
                     <h2 className="mb-16 title">
-                      Bloom Chronicles,
-                      <br /> Crafting Beauty,{" "}
-                      <span className="color-primary">One Flower</span> <br />
-                      at a Time
+                      Floral Journeys,
+                      <br /> Making Magic,{" "}
+                      <span className="color-primary">One Bloom</span> at a Time
                     </h2>
                     <p className="mb-16">
-                      Lorem ipsum dolor sit amet consectetur. Posuere odio a
-                      interdum morbi velit elit id ac et. Congue elit risus
-                      senectus arcu tortor maecenas commodo magna. Sed lobortis
-                      egestas fringilla elementum vulputate pellentesque velit.
-                      Lectus adipiscing faucibus semper quis gravida ut odio
-                      faucibus. Orci sit aliquam vestibulum varius ultricies
-                      sed. Ligula amet amet in curabitur sed nunc imperdiet sit
-                      venenatis. Habitasse aenean auctor sed odio et. Sed
-                      iaculis pulvinar morbi in commodo malesuada sed.
+                      Every bloom tells a story, and we are here to bring those
+                      stories to life. Our floral arrangements are crafted with
+                      care, combining color, texture, and natural elegance to
+                      highlight the beauty in every moment. Whether celebrating
+                      a special occasion or adding charm to your everyday, our
+                      flowers are chosen for their freshness, character, and
+                      ability to inspire. Each bouquet is thoughtfully designed
+                      to create a sense of warmth and harmony, turning simple
+                      stems into meaningful expressions.
                     </p>
 
                     <p className="mb-16">
-                      Sed quisque ipsum risus senectus quis curabitur quis.
-                      Lorem auctor cras elit quis rhoncus pretium arcu eget
-                      malesuada. Facilisi gravida maecenas aliquam eget nunc
-                      porttitor. In et ac magna cursus quisque. Aliquam laoreet
-                      ut quis velit. Euismod duis sem integer dolor facilisis
-                      ut. Tortor aenean aliquet quis aliquam diam vel.
-                      Ullamcorper risus semper hendrerit amet velit mauris
-                      donec. Sed sollicitudin at lacus donec velit. Ornare
-                      dignissim purus tincidunt dictum odio ac ut ut.
+                      We believe flowers hold the power to transform spaces and
+                      emotions alike. Guided by creativity and a passion for
+                      detail, we blend artistic craftsmanship with the timeless
+                      grace of nature. From festive gifts to personal gestures,
+                      our arrangements are made to elevate your moments with
+                      color, fragrance, and joy. Let our blooms accompany your
+                      celebrations and add a touch of beauty to the stories you
+                      continue to write.
                     </p>
 
                     <Button
