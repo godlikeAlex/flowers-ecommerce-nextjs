@@ -49,6 +49,11 @@
   background-color: rgba(var(--rgb-error-color), 0.04) !important;
 }
 
+.input:read-only {
+  pointer-events: none;
+  background-color: var(--body-background) !important;
+}
+
 .errorMessage {
   color: var(--error-color);
   margin-top: 2px;
