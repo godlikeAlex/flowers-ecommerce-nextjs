@@ -10,7 +10,10 @@ import { CheckoutForm } from "../CheckoutForm";
 export default function CheckoutPage() {
   const [paymentProcessing, setPaymentProcessing] = useState<boolean>(false);
   const checkoutFormID = useId();
-  const form = useForm({ resolver: zodResolver(checkoutSchema) });
+  const form = useForm({
+    defaultValues: { deliveryTime: "12:30" },
+    resolver: zodResolver(checkoutSchema),
+  });
 
   return (
     <FormProvider {...form}>

@@ -8,6 +8,8 @@ export const checkoutSchema = z
   .object({
     name: nameSchema,
     email: emailSchema,
+    deliveryDate: z.date({ error: "Please select delivery date" }),
+    deliveryTime: z.string({ error: "Please select delivery time" }),
     phone: z.string(),
     notes: z.string().optional(),
     shippingNotes: z.string().optional(),

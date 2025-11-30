@@ -1,8 +1,8 @@
 import { Controller, useFormContext } from "react-hook-form";
+import { DayPicker, GooglePlaces, Input, Textarea } from "@/shared/ui";
+import TimeField from "react-simple-timefield";
+
 import type { CheckoutForm as ICheckoutForm } from "../../model/checkout-schema";
-import { GooglePlaces, Input, Textarea } from "@/shared/ui";
-import { SquarePaymentCard } from "../SquarePaymentCard";
-import { handleSquareClickPay } from "../SquarePaymentCard/handle-square-pay";
 
 interface Props {
   checkoutFormID: string;
@@ -26,7 +26,7 @@ export default function CheckoutForm({
     // We click to hidden pay button square to process payment.
     // Process payment logic in SquarePaymentCard component
     setPaymentIsProccessing(true);
-    handleSquareClickPay();
+    // handleSquareClickPay();
   };
 
   return (
@@ -76,6 +76,38 @@ export default function CheckoutForm({
 
       <div className="mb-32">
         <div className="row row-gap-3">
+          <div className="col-md-6">
+            <Controller
+              control={control}
+              name="deliveryDate"
+              render={({ field }) => (
+                <DayPicker
+                  animate
+                  mode="single"
+                  selected={field.value}
+                  onSelect={field.onChange}
+                  placeholder="Select Shipping Date"
+                  error={errors.deliveryDate?.message}
+                />
+              )}
+            />
+          </div>
+
+          <div className="col-md-6">
+            <Controller
+              control={control}
+              name="deliveryTime"
+              render={({ field }) => (
+                <TimeField
+                  value={field.value}
+                  onChange={(event, value) => field.onChange(value)}
+                  input={<Input error={errors.deliveryTime?.message} />}
+                  colon=":"
+                />
+              )}
+            />
+          </div>
+
           <div className="col-md-12">
             <Controller
               control={control}
