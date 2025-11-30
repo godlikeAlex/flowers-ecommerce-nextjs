@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 
-import { Button } from "@/shared/ui";
+import { Button, Carousel } from "@/shared/ui";
 import { ProductCard } from "@/widgets/product/ui";
 
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
+import { SliderNavigation } from "../SliderNavigation";
+
+import styles from "./FeaturedCategoryShowcase.module.css";
 
 interface Props {
   title: string;
@@ -26,31 +29,39 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
         </div>
       </div>
 
-      <div className="row gap-y-4">
-        {products.map((product) => (
-          <div className="col-md-3 mb-16" key={product.title}>
-            <ProductCard
-              slug="/"
-              title={product.title}
-              description={product.description}
-              price={product.price}
-              image={product.image}
-            />
-          </div>
-        ))}
+      <div style={{ position: "relative" }}>
+        <Carousel options={{ align: "start" }}>
+          <SliderNavigation />
 
-        <div className="col-md-12 mt-48 text-center">
-          <Button
-            as={Link}
-            href=""
-            className="mx-auto"
-            variant="ghost"
-            accessoryRight={<ArrowUpRightIcon />}
-            style={{ width: 220 }}
-          >
-            View All
-          </Button>
-        </div>
+          <Carousel.Content>
+            <Carousel.ContainerSlides>
+              {products.map((product) => (
+                <Carousel.Item className={styles.slide} key={product.title}>
+                  <ProductCard
+                    slug="/"
+                    title={product.title}
+                    description={product.description}
+                    price={product.price}
+                    image={product.image}
+                  />
+                </Carousel.Item>
+              ))}
+            </Carousel.ContainerSlides>
+          </Carousel.Content>
+        </Carousel>
+      </div>
+
+      <div className="col-md-12 mt-48 text-center">
+        <Button
+          as={Link}
+          href=""
+          className="mx-auto"
+          variant="ghost"
+          accessoryRight={<ArrowUpRightIcon />}
+          style={{ width: 220 }}
+        >
+          View All
+        </Button>
       </div>
     </div>
   );

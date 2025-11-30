@@ -1,0 +1,28 @@
+.slide {
+  --slide-spacing-lg: 2rem;
+  --slide-size-sm: 100%;
+  --slide-size-md: calc(100% / 3);
+  --slide-size-lg: calc(100% / 4);
+
+  min-width: 0;
+  flex: 0 0 var(--slide-size-sm);
+  padding-left: 1rem;
+}
+
+@media (min-width: 800px) {
+  .slide {
+    flex: 0 0 calc(100% / 2);
+  }
+}
+
+@media (min-width: 1000px) {
+  .slide {
+    flex: 0 0 var(--slide-size-md);
+  }
+}
+
+@media (min-width: 1200px) {
+  .slide {
+    flex: 0 0 var(--slide-size-lg);
+  }
+}

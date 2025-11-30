@@ -76,3 +76,19 @@
 .testimonial-card .text-block .info span:first-child::before {
   display: none;
 }
+
+.slide {
+  --slide-spacing-lg: 2rem;
+  --slide-size-sm: 100%;
+  --slide-size-md: calc(100% / 2);
+
+  min-width: 0;
+  flex: 0 0 var(--slide-size-sm);
+  padding-left: 1rem;
+}
+
+@media (min-width: 990px) {
+  .slide {
+    flex: 0 0 var(--slide-size-md);
+  }
+}
