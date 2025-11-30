@@ -1,5 +1,9 @@
 import z from "zod";
-import { emailSchema, nameSchema } from "@/shared/model/schemas";
+import {
+  emailSchema,
+  nameSchema,
+  usTelephoneSchema,
+} from "@/shared/model/schemas";
 import { isPointWithinRadius } from "geolib";
 import { DELIVERY_DISTANCE, SHOP_POSITION } from "@/shared/config";
 import { milesToMeters } from "@/shared/lib";
@@ -10,7 +14,7 @@ export const checkoutSchema = z
     email: emailSchema,
     deliveryDate: z.date({ error: "Please select delivery date" }),
     deliveryTime: z.string({ error: "Please select delivery time" }),
-    phone: z.string(),
+    phone: usTelephoneSchema,
     notes: z.string().optional(),
     shippingNotes: z.string().optional(),
     shippingAddress: z.custom<google.maps.places.PlaceResult>(

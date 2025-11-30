@@ -3,6 +3,7 @@ import { DayPicker, GooglePlaces, Input, Textarea } from "@/shared/ui";
 import TimeField from "react-simple-timefield";
 
 import type { CheckoutForm as ICheckoutForm } from "../../model/checkout-schema";
+import { US_TELEPHONE_MASK } from "@/shared/config";
 
 interface Props {
   checkoutFormID: string;
@@ -53,8 +54,9 @@ export default function CheckoutForm({
         </div>
 
         <div className="col-md-6">
-          <Input
-            placeholder="+1"
+          <Input.Mask
+            {...US_TELEPHONE_MASK}
+            showMask
             error={errors.phone?.message}
             {...register("phone")}
           />
