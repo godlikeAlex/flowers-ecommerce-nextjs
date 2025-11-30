@@ -7,7 +7,7 @@
   top: 0;
   z-index: 98;
   background-color: var(--body-background);
-  border-bottom: 1px solid rgba(230, 230, 230, 0.32);
+  border-bottom: 1px solid #e6e6e69e;
 }
 
 @media (max-width: 1199px) {

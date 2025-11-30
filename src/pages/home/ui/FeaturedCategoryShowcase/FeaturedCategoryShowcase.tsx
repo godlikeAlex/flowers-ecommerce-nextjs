@@ -9,15 +9,12 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { SliderNavigation } from "../SliderNavigation";
 
 import styles from "./FeaturedCategoryShowcase.module.css";
+import type { ProductCard as IProductCard } from "@/entities/product";
+import { ROUTES } from "@/shared/config";
 
 interface Props {
   title: string;
-  products: {
-    title: string;
-    price: number;
-    description: string;
-    image: string;
-  }[];
+  products: IProductCard[];
 }
 
 export default function FeaturedCategoryShowcase({ title, products }: Props) {
@@ -36,13 +33,13 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
           <Carousel.Content>
             <Carousel.ContainerSlides>
               {products.map((product) => (
-                <Carousel.Item className={styles.slide} key={product.title}>
+                <Carousel.Item className={styles.slide} key={product.id}>
                   <ProductCard
-                    slug="/"
-                    title={product.title}
-                    description={product.description}
+                    slug={product.slug}
+                    title={product.name}
+                    description={product.card_description}
                     price={product.price}
-                    image={product.image}
+                    image={product.cover}
                   />
                 </Carousel.Item>
               ))}
