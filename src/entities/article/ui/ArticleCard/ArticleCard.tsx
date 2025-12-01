@@ -25,6 +25,8 @@ export default function ArticleCard({ postCard }: Props) {
     <div className={styles["blog-card"]}>
       <figure className={styles.figure}>
         <Image
+          placeholder="blur"
+          blurDataURL={postCard.blur_preview}
           src={cover}
           alt={title}
           fill

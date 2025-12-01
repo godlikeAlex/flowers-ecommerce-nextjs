@@ -9,6 +9,7 @@ export interface Post {
   slug: string;
   published_at: string;
   cover: string;
+  blur_preview: string;
 }
 
 export interface PostCard {
@@ -22,4 +23,5 @@ export interface PostCard {
   card_description: string;
   published_at: string;
   cover: string;
+  blur_preview: string;
 }

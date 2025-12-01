@@ -25,6 +25,7 @@ export interface ProductCard {
   card_description: string;
   price: number;
   cover: string;
+  blur_preview: string;
 }
 
 export interface ProductOption {
@@ -40,5 +41,6 @@ export interface SliderAsset {
   uuid: string;
   original_url: string;
   compressed_url: string;
+  blur_preview: string;
   thumb_url: string;
 }

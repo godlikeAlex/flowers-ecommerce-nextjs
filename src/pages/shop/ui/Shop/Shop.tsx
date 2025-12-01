@@ -93,6 +93,7 @@ export default async function Shop({
                           description={productCard.card_description}
                           image={productCard.cover}
                           price={productCard.price}
+                          blur_preview={productCard.blur_preview}
                         />
                       </div>
                     ))}

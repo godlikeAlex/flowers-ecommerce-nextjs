@@ -19,6 +19,7 @@ interface Props {
   slug: string;
   image: string;
   price: number;
+  blur_preview: string;
 }
 
 export default function ProductCard({
@@ -27,6 +28,7 @@ export default function ProductCard({
   price,
   image,
   slug,
+  blur_preview,
 }: Props) {
   const [quantity, setQuantity] = useState(1);
 
@@ -56,6 +58,8 @@ export default function ProductCard({
       <Link href={ROUTES.PRODUCT(slug)}>
         <figure className={styles.figure}>
           <Image
+            placeholder="blur"
+            blurDataURL={blur_preview}
             src={image}
             alt={title}
             fill

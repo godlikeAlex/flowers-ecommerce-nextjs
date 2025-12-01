@@ -35,6 +35,8 @@ export default async function PostPage({
               <div className="blog-detail">
                 <figure className={clsx(styles.image, "mb-24s")}>
                   <Image
+                    placeholder="blur"
+                    blurDataURL={post.blur_preview}
                     src={post.cover}
                     alt={post.title}
                     fill

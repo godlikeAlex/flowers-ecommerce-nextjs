@@ -15,8 +15,16 @@ export default function PageBanner({ title }: Props) {
       <div className={styles.content}>
         <h2>{title}</h2>
       </div>
-      <Image src={vector1} alt="" className={styles["left-vector"]} />
       <Image
+        src={vector1}
+        alt=""
+        className={styles["left-vector"]}
+        loading="eager"
+        unoptimized
+      />
+      <Image
+        loading="eager"
+        unoptimized
         src={vector2}
         width={vector2.width}
         height={vector2.height}

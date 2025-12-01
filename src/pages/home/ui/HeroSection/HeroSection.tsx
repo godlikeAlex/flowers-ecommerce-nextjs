@@ -18,7 +18,7 @@ export default function HeroSection() {
                 <Image
                   src="/images/hero/image-vector-1.png"
                   alt=""
-                  preload
+                  loading="eager"
                   width={216}
                   height={195}
                   className={clsx(styles["banner-vector"], styles["vector-1"])}
@@ -27,7 +27,7 @@ export default function HeroSection() {
                   src="/images/hero/flower-vector.png"
                   className={clsx(styles["banner-vector"], styles["vector-2"])}
                   alt=""
-                  preload
+                  loading="eager"
                   width={39}
                   height={51}
                 />
@@ -54,9 +54,9 @@ export default function HeroSection() {
                 <Image
                   width={39}
                   height={51}
+                  loading="eager"
                   src="/images/hero/flower-vector.png"
                   alt=""
-                  preload
                   className={clsx(styles["banner-vector"], styles["vector-3"])}
                 />
                 <Image
@@ -65,6 +65,7 @@ export default function HeroSection() {
                   preload
                   src="/images/hero/image-vector-3.png"
                   alt=""
+                  loading="eager"
                   className={clsx(styles["banner-vector"], styles["vector-4"])}
                 />
               </div>

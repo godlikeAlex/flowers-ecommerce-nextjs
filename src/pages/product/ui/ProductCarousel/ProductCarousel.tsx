@@ -56,7 +56,7 @@ export default function ProductCarousel({ slides }: Props) {
         >
           <Carousel.Content>
             <Carousel.ContainerSlides className={styles.thumbContainer}>
-              {slides.map(({ thumb_url }, idx) => (
+              {slides.map(({ thumb_url, blur_preview }, idx) => (
                 <Carousel.Item
                   key={thumb_url}
                   className={clsx(
@@ -67,10 +67,10 @@ export default function ProductCarousel({ slides }: Props) {
                 >
                   <Image
                     fill
+                    blurDataURL={blur_preview}
                     src={thumb_url}
-                    loading="eager"
-                    fetchPriority="high"
                     alt=""
+                    placeholder="blur"
                     onMouseEnter={() => onThumbClick(idx)}
                   />
                 </Carousel.Item>
@@ -87,13 +87,13 @@ export default function ProductCarousel({ slides }: Props) {
       >
         <Carousel.Content>
           <Carousel.ContainerSlides className={styles["main-container"]}>
-            {slides.map(({ compressed_url }) => (
+            {slides.map(({ compressed_url, blur_preview }) => (
               <Carousel.Item className={styles.slide} key={compressed_url}>
                 <Image
+                  blurDataURL={blur_preview}
+                  placeholder="blur"
                   src={compressed_url}
                   alt=""
-                  loading="eager"
-                  fetchPriority="high"
                   fill
                 />
               </Carousel.Item>

@@ -40,6 +40,7 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
                     description={product.card_description}
                     price={product.price}
                     image={product.cover}
+                    blur_preview={product.blur_preview}
                   />
                 </Carousel.Item>
               ))}

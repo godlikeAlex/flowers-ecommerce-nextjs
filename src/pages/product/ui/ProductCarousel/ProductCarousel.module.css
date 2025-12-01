@@ -5,6 +5,11 @@
   height: 100%;
 }
 
+.slide {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8++5/PQAIxQNL8bnOKgAAAABJRU5ErkJggg==");
+  border-radius: 5px;
+}
+
 .slide img {
   border-radius: 5px;
   width: 100%;
@@ -108,6 +113,17 @@
   flex: 0 0 var(--thumb-size);
   padding-left: 0;
   position: relative;
+}
+.slideThumb::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8++5/PQAIxQNL8bnOKgAAAABJRU5ErkJggg==");
+  transform: translate(-50%, -50%);
+  z-index: -1;
 }
 
 .slideThumbActive {
