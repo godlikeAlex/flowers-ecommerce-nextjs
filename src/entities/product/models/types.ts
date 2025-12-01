@@ -16,6 +16,7 @@ export interface ProductAddon {
   cover: string;
   description: string;
   options: ProductOption[];
+  blur_preview: string;
 }
 
 export interface ProductCard {

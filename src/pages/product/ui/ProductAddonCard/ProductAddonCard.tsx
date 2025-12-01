@@ -20,7 +20,7 @@ export default function ProductAddonCard({
   isAdded,
   onSelectAddon,
 }: Props) {
-  const { options, name, cover } = addon;
+  const { options, name, cover, blur_preview } = addon;
 
   const { addAddon, removeAddon, addonIsDisabled } = useProductCart();
 
@@ -31,6 +31,8 @@ export default function ProductAddonCard({
     <article className={styles.card}>
       <div className={styles["image-container"]}>
         <Image
+          placeholder="blur"
+          blurDataURL={blur_preview}
           fill
           src={cover}
           className={styles.image}
