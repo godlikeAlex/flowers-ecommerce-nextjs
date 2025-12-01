@@ -49,6 +49,7 @@ export default function CheckoutSidebar({
                 checked={field.value}
                 onChange={field.onChange}
                 label="I Agree To The BLUEMELLE Terms"
+                disabled={paymentIsProccessing}
               />
 
               {errors.termsAccepted && (

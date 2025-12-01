@@ -49,9 +49,8 @@ export default function CheckoutForm({
 
       return router.replace(ROUTES.PAY(response.data.orderUUID));
     } catch (e) {
-      console.log("ERROR", e);
-    } finally {
       setPaymentIsProccessing(false);
+      console.log("ERROR", e);
     }
   };
 
