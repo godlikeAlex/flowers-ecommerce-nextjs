@@ -92,7 +92,8 @@ export default function Header({ categories }: Props) {
                 <div className={clsx(styles["main-menu__logo"])}>
                   <Link href={ROUTES.HOME} className={clsx(styles.logo)}>
                     <Image
-                      preload
+                      loading="eager"
+                      fetchPriority="high"
                       src="/images/logo.webp"
                       width={90}
                       height={90}

@@ -68,8 +68,7 @@ export default function ProductCarousel({ slides }: Props) {
                   <Image
                     fill
                     src={thumb_url}
-                    preload
-                    priority
+                    loading="eager"
                     fetchPriority="high"
                     alt=""
                     onMouseEnter={() => onThumbClick(idx)}
@@ -93,8 +92,7 @@ export default function ProductCarousel({ slides }: Props) {
                 <Image
                   src={compressed_url}
                   alt=""
-                  preload
-                  priority
+                  loading="eager"
                   fetchPriority="high"
                   fill
                 />
