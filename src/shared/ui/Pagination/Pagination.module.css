@@ -6,6 +6,7 @@
   gap: clamp(16px, 1.25vw, 32px);
   justify-content: center;
   list-style: none !important;
+  padding-left: 0px;
 }
 
 @media (max-width: 575px) {
@@ -15,8 +16,8 @@
 }
 
 .pagination-item a {
-  width: clamp(40px, 3vw, 84px);
-  height: clamp(40px, 3vw, 84px);
+  width: clamp(30px, 3vw, 84px);
+  height: clamp(30px, 3vw, 84px);
   display: flex;
   align-items: center;
   justify-content: center;
