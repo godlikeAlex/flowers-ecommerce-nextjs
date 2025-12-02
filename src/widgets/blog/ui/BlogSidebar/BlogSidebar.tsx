@@ -1,11 +1,6 @@
 import { Sidebar } from "@/shared/ui";
 import { CategoryItem } from "../CategoryItem";
-import {
-  getAllPostCategories,
-  getRecentPosts,
-  PostCard,
-  PostCategory,
-} from "@/entities/post";
+import { getAllPostCategories, PostCategory } from "@/entities/post";
 import { Suspense } from "react";
 import { RecentPosts } from "../RecentPosts";
 

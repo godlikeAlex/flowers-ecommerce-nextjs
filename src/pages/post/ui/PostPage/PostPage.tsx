@@ -26,7 +26,7 @@ export default async function PostPage({
 
   return (
     <>
-      <PageBanner title="Post Page" />
+      <PageBanner title={post.title} />
 
       <section className="py-80">
         <div className="container-fluid">
