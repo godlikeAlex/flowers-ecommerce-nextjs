@@ -12,6 +12,7 @@ import styles from "./ArticleCard.module.css";
 
 import { ROUTES } from "@/shared/config";
 import { PostCard } from "../../model/types";
+import { PostPublishedDate } from "../PostPublishedDate";
 
 interface Props {
   postCard: PostCard;
@@ -46,9 +47,7 @@ export default function ArticleCard({ postCard }: Props) {
               Category: {category.name}
             </Anchor>
           </div>
-          <span className={styles.date}>
-            {format(new Date(published_at), "d MMMM yyyy")}
-          </span>
+          <PostPublishedDate published_at={published_at} />
         </div>
         <Anchor
           as={Link}
