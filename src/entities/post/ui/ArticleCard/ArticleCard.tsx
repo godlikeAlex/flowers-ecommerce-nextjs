@@ -1,15 +1,17 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
-
 import { Anchor, Button } from "@/shared/ui";
+import { format } from "date-fns";
+import Link from "next/link";
 
 import { EyesIcon } from "@phosphor-icons/react/dist/ssr/Eyes";
 
 import styles from "./ArticleCard.module.css";
-import { PostCard } from "@/entities/post";
-import { format } from "date-fns";
+
 import { ROUTES } from "@/shared/config";
-import Link from "next/link";
+import { PostCard } from "../../model/types";
 
 interface Props {
   postCard: PostCard;
@@ -22,7 +24,7 @@ export default function ArticleCard({ postCard }: Props) {
   const linkToPost = ROUTES.POST_SHOW(slug);
 
   return (
-    <div className={styles["blog-card"]}>
+    <article className={styles["blog-card"]}>
       <figure className={styles.figure}>
         <Image
           placeholder="blur"
@@ -58,6 +60,6 @@ export default function ArticleCard({ postCard }: Props) {
           Read More
         </Button>
       </div>
-    </div>
+    </article>
   );
 }
