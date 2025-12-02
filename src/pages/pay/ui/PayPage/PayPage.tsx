@@ -96,9 +96,19 @@ export default async function PayPage({
                   <span className="bold-text">Subtotal</span>
 
                   <span className="bold-text color-primary">
-                    {formatPrice(order.total_amount)}
+                    {formatPrice(order.subtotal_amount)}
                   </span>
                 </li>
+
+                {order.discount_amount > 0 && (
+                  <li className="d-flex gap-2 justify-content-between py-1 accent-dark">
+                    <span className="bold-text">Discount</span>
+
+                    <span className="bold-text color-primary">
+                      {formatPrice(order.discount_amount)}
+                    </span>
+                  </li>
+                )}
 
                 <li className="d-flex gap-2 justify-content-between py-1 accent-dark">
                   <span className="bold-text">Shipping</span>
