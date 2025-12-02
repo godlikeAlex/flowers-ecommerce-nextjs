@@ -51,8 +51,6 @@ export default function Header({ categories }: Props) {
   const [mobileMenuIsOpen, setMobileIsOpen] = useState(false);
   const selectedLayoutSegment = useSelectedLayoutSegment();
 
-  console.log(selectedLayoutSegment);
-
   const menuSegments: MenuSegment[] = [
     { type: "static", menuItems: START_MENU_ITEMS },
     {

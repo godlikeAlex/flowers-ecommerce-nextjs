@@ -5,6 +5,9 @@ export interface Cart {
   cart_token: string;
   items: CartItem[];
   total: number;
+  discount_code: number;
+  sub_total: number;
+  discount_amount: number;
 }
 
 export interface CartItem {
