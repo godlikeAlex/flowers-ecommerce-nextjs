@@ -36,6 +36,8 @@ export default function Pagination({ pageCount, currentPage }: Props) {
     router.push(buildURL(selectedPage + 1), { scroll: true });
   };
 
+  if (pageCount <= 1) return null;
+
   return (
     <ReactPaginate
       hrefBuilder={(page, pageCount) =>

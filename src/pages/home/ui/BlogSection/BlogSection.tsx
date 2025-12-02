@@ -1,6 +1,6 @@
 "use client";
 
-import { ArticleCard } from "@/entities/article/ui";
+import { ArticleCard } from "@/entities/post/ui";
 import { Button, Carousel } from "@/shared/ui";
 
 import styles from "./BlogSection.module.css";

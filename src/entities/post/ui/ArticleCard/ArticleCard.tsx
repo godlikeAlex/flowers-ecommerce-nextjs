@@ -1,15 +1,18 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
-
 import { Anchor, Button } from "@/shared/ui";
+import { format } from "date-fns";
+import Link from "next/link";
 
 import { EyesIcon } from "@phosphor-icons/react/dist/ssr/Eyes";
 
 import styles from "./ArticleCard.module.css";
-import { PostCard } from "@/entities/post";
-import { format } from "date-fns";
+
 import { ROUTES } from "@/shared/config";
-import Link from "next/link";
+import { PostCard } from "../../model/types";
+import { PostPublishedDate } from "../PostPublishedDate";
 
 interface Props {
   postCard: PostCard;
@@ -22,7 +25,7 @@ export default function ArticleCard({ postCard }: Props) {
   const linkToPost = ROUTES.POST_SHOW(slug);
 
   return (
-    <div className={styles["blog-card"]}>
+    <article className={styles["blog-card"]}>
       <figure className={styles.figure}>
         <Image
           placeholder="blur"
@@ -37,13 +40,14 @@ export default function ArticleCard({ postCard }: Props) {
       <div className={styles["text-block"]}>
         <div className={clsx(styles["top-row"], "mb-24")}>
           <div className={styles.author}>
-            <Anchor href="#" className="bold-text color-primary">
+            <Anchor
+              href={ROUTES.BLOG(category.slug)}
+              className="bold-text color-primary"
+            >
               Category: {category.name}
             </Anchor>
           </div>
-          <span className={styles.date}>
-            {format(new Date(published_at), "d MMMM yyyy")}
-          </span>
+          <PostPublishedDate published_at={published_at} />
         </div>
         <Anchor
           as={Link}
@@ -58,6 +62,6 @@ export default function ArticleCard({ postCard }: Props) {
           Read More
         </Button>
       </div>
-    </div>
+    </article>
   );
 }

@@ -1,11 +1,13 @@
 import { getPost, Post } from "@/entities/post";
-import { PageBanner, Sidebar } from "@/shared/ui";
+import { Anchor, PageBanner } from "@/shared/ui";
 import clsx from "clsx";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import styles from "./PostPage.module.css";
-import { CategoryItem } from "../CategoryItem";
+import { BlogSidebar } from "@/widgets/blog";
+import { PostPublishedDate } from "@/entities/post/ui";
+import { ROUTES } from "@/shared/config";
 
 export default async function PostPage({
   params,
@@ -26,14 +28,14 @@ export default async function PostPage({
 
   return (
     <>
-      <PageBanner title="Post Page" />
+      <PageBanner title={post.title} />
 
       <section className="py-80">
         <div className="container-fluid">
           <div className="row row-gap-5">
             <div className="col-md-8">
               <div className="blog-detail">
-                <figure className={clsx(styles.image, "mb-24s")}>
+                <figure className={clsx(styles.image, "mb-24")}>
                   <Image
                     placeholder="blur"
                     blurDataURL={post.blur_preview}
@@ -45,6 +47,17 @@ export default async function PostPage({
                   />
                 </figure>
 
+                <div className="d-flex justify-content-between align-items-center gap-2 mb-24">
+                  <Anchor
+                    href={ROUTES.BLOG(post.category.slug)}
+                    className="bold-text color-primary"
+                  >
+                    Category: {post.category.name}
+                  </Anchor>
+
+                  <PostPublishedDate published_at={post.published_at} />
+                </div>
+
                 <h3 className="mb-24">{post.title}</h3>
 
                 <div
@@ -55,14 +68,7 @@ export default async function PostPage({
             </div>
 
             <div className="col-md-4">
-              <Sidebar>
-                <Sidebar.Section title="Categories">
-                  <CategoryItem title="News" />
-                  <CategoryItem title="Holidays & Events" />
-                  <CategoryItem title="Deals & Discounts" />
-                  <CategoryItem title="Gift Ideas" />
-                </Sidebar.Section>
-              </Sidebar>
+              <BlogSidebar />
             </div>
           </div>
         </div>

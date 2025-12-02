@@ -7,6 +7,7 @@ import styles from "./Header.module.css";
 interface Props<T> {
   label: string;
   path: string;
+  isActive?: boolean;
   subMenuItems?: T[];
   renderChildPath: (target: T) => string;
   renderChildLabel: (target: T) => string;
@@ -21,10 +22,13 @@ export default function HeaderMenuItem<T>({
   renderChildPath,
   renderChildLink,
   subMenuItems = [],
+  isActive = false,
 }: Props<T>) {
   return (
     <li>
-      <Link href={path}>{label}</Link>
+      <Link className={clsx(isActive && styles.active)} href={path}>
+        {label}
+      </Link>
 
       {subMenuItems.length > 0 && (
         <ul className="sub-menu">
