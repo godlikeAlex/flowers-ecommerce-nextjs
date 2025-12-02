@@ -1,6 +1,13 @@
 import { Sidebar } from "@/shared/ui";
 import { CategoryItem } from "../CategoryItem";
-import { getAllPostCategories, PostCategory } from "@/entities/post";
+import {
+  getAllPostCategories,
+  getRecentPosts,
+  PostCard,
+  PostCategory,
+} from "@/entities/post";
+import { Suspense } from "react";
+import { RecentPosts } from "../RecentPosts";
 
 export default async function BlogSidebar() {
   let categories: PostCategory[] = [];
@@ -23,6 +30,12 @@ export default async function BlogSidebar() {
             key={category.id}
           />
         ))}
+      </Sidebar.Section>
+
+      <Sidebar.Section title="Recent Posts">
+        <Suspense fallback={<RecentPosts.Skeleton />}>
+          <RecentPosts />
+        </Suspense>
       </Sidebar.Section>
     </Sidebar>
   );
