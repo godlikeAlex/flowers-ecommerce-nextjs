@@ -7,7 +7,9 @@
   background-image: var(--primary-dashed-border);
   border-radius: 5px;
   background-position: 0px;
+  height: 100%;
 }
+
 .feature-block .icon svg {
   width: clamp(36px, 2.5vw, 64px);
   height: clamp(36px, 2.5vw, 64px);
