@@ -1,11 +1,11 @@
 import { getPost, Post } from "@/entities/post";
-import { PageBanner, Sidebar } from "@/shared/ui";
+import { PageBanner } from "@/shared/ui";
 import clsx from "clsx";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import styles from "./PostPage.module.css";
-import { CategoryItem } from "../CategoryItem";
+import { BlogSidebar } from "@/widgets/blog";
 
 export default async function PostPage({
   params,
@@ -55,14 +55,7 @@ export default async function PostPage({
             </div>
 
             <div className="col-md-4">
-              <Sidebar>
-                <Sidebar.Section title="Categories">
-                  <CategoryItem title="News" />
-                  <CategoryItem title="Holidays & Events" />
-                  <CategoryItem title="Deals & Discounts" />
-                  <CategoryItem title="Gift Ideas" />
-                </Sidebar.Section>
-              </Sidebar>
+              <BlogSidebar />
             </div>
           </div>
         </div>

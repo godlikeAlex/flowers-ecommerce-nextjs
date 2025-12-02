@@ -9,3 +9,7 @@
   color: #43273a;
   border: none;
 }
+
+.button:hover {
+  color: var(--primary-color);
+}

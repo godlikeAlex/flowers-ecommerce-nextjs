@@ -1,10 +1,13 @@
+export interface PostCategory {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Post {
   id: number;
   title: string;
-  category: {
-    name: string;
-    slug: string;
-  };
+  category: PostCategory;
   content: string;
   slug: string;
   published_at: string;
@@ -15,10 +18,7 @@ export interface Post {
 export interface PostCard {
   id: number;
   title: string;
-  category: {
-    name: string;
-    slug: string;
-  };
+  category: PostCategory;
   slug: string;
   card_description: string;
   published_at: string;
