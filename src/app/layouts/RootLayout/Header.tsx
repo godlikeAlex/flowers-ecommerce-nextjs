@@ -18,18 +18,26 @@ import styles from "./Header.module.css";
 import { MobileHeader } from "./MobileHeader";
 import { CategoryMenu } from "@/entities/category";
 import HeaderMenuItem from "./HeaderMenuItem";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 export interface StaticMenuItem {
   label: string;
   path: string;
+  activeSegment: Array<string | null>;
   items?: StaticMenuItem[];
 }
 
 const START_MENU_ITEMS: StaticMenuItem[] = [
-  { label: "Home", path: ROUTES.HOME },
+  { label: "Home", path: ROUTES.HOME, activeSegment: [null] },
 ];
 
-const END_MENU_ITEMS: StaticMenuItem[] = [];
+const END_MENU_ITEMS: StaticMenuItem[] = [
+  {
+    label: "Blog",
+    path: ROUTES.BLOG(),
+    activeSegment: ["(blog)"],
+  },
+];
 
 export type MenuSegment =
   | { type: "static"; menuItems: StaticMenuItem[] }
@@ -41,6 +49,9 @@ interface Props {
 
 export default function Header({ categories }: Props) {
   const [mobileMenuIsOpen, setMobileIsOpen] = useState(false);
+  const selectedLayoutSegment = useSelectedLayoutSegment();
+
+  console.log(selectedLayoutSegment);
 
   const menuSegments: MenuSegment[] = [
     { type: "static", menuItems: START_MENU_ITEMS },
@@ -62,6 +73,7 @@ export default function Header({ categories }: Props) {
         subMenuItems={menuItem.items}
         renderChildLabel={(childItem) => childItem.label}
         renderChildPath={(childItem) => childItem.path}
+        isActive={menuItem.activeSegment.includes(selectedLayoutSegment)}
       />
     ));
   };

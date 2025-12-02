@@ -41,9 +41,9 @@
   right: -6.771vw;
   top: 1.667vw;
   padding: clamp(24px, 3.33vw, 96px);
-  background-color: #f9ddf1;
+  background-color: var(--alt-bg-color-accent);
   text-align: center;
   border-radius: 5000px;
-  box-shadow: 4px 0px 0px 0px #be70a7;
+  box-shadow: 4px 0px 0px 0px var(--primary-color);
   transform: rotate(45deg);
 }

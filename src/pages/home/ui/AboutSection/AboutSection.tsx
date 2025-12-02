@@ -67,8 +67,7 @@ export default function AboutSection() {
                   />
                   <div className={styles["about-tag"]}>
                     <h3>
-                      25 Years <br />
-                      Experience
+                      Warmth in <br /> every bouquet
                     </h3>
                   </div>
                 </div>
