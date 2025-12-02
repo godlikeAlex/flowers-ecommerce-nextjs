@@ -10,6 +10,7 @@ import { BlogSidebar } from "@/widgets/blog";
 import { isAxiosError } from "axios";
 import { notFound } from "next/navigation";
 import { EmptyStatePosts } from "../EmptyStatePosts";
+import { pageQeuryParamsSchema } from "../../model/page-query-params-schema";
 
 export default async function BlogPage({
   params,
@@ -18,7 +19,7 @@ export default async function BlogPage({
   params: Promise<{ slug?: string }>;
   searchParams: Promise<{ [key: string]: string }>;
 }) {
-  const page = (await searchParams).page ?? "1";
+  const page = pageQeuryParamsSchema.parse((await searchParams).page);
   const { slug } = await params;
 
   let bannerTitle = "Blog";
@@ -26,13 +27,13 @@ export default async function BlogPage({
 
   try {
     if (!slug) {
-      const response = await getAllPosts(+page);
+      const response = await getAllPosts(page);
 
       posts = response.data;
     } else {
       const response = await getCategoryPosts({
         categorySlug: slug,
-        page: +page,
+        page,
       });
 
       bannerTitle = response.data.category.name;
