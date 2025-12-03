@@ -44,7 +44,7 @@ export default function CheckoutForm({
         address: shippingAddress.formatted_address ?? "Address not selected",
         shipping_notes: shippingNotes,
         notes: notes,
-        delivery_date_time: toUTCDatetime(deliveryDate, deliveryTime),
+        delivery_at: toUTCDatetime(deliveryDate, deliveryTime),
       });
 
       return router.replace(ROUTES.PAY(response.data.orderUUID));

@@ -7,7 +7,7 @@ export interface CreateOrderDTO {
   address: string;
   notes?: string;
   shipping_notes?: string;
-  delivery_date_time: string;
+  delivery_at: string;
 }
 
 interface Response {

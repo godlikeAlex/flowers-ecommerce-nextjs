@@ -2,3 +2,22 @@
   background-image: var(--primary-dashed-border);
   padding: 2px;
 }
+
+.loader {
+  position: absolute;
+  width: 102%;
+  height: 102%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(242, 242, 242, 0.6);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 20px;
+}

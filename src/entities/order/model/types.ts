@@ -5,6 +5,7 @@ export interface OrderPay {
   total_amount: number;
   subtotal_amount: number;
   discount_amount: number;
+  email: string;
 }
 
 export interface OrderItem {
