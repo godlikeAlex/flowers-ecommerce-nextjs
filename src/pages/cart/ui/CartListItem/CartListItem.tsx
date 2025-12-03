@@ -57,7 +57,7 @@ export default function CartListItem({ cartItem }: Props) {
   return (
     <div className={styles.cartItem}>
       <div className="row">
-        <div className="col-md-8">
+        <div className="col-md-7">
           <div className="d-flex gap-3">
             <Image
               src={product.image ?? ""}
@@ -84,7 +84,7 @@ export default function CartListItem({ cartItem }: Props) {
             </div>
           </div>
         </div>
-        <div className="col-md-4 mt-4 mt-lg-0">
+        <div className="col-md-5 mt-4 mt-lg-0 gap-1">
           <div className="d-flex justify-content-between">
             <QuantityControl
               value={quantity}
