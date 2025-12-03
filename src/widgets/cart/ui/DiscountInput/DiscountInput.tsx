@@ -1,16 +1,16 @@
 "use client";
 
+import { FormEvent, useRef, useState } from "react";
+
 import { Input, Button, IconButton, InputErrorMessage } from "@/shared/ui";
 import { SealPercentIcon } from "@phosphor-icons/react/dist/ssr/SealPercent";
-import { CheckCircleIcon } from "@phosphor-icons/react/dist/ssr/CheckCircle";
 import { useApplyDiscount, useCancelDiscount } from "@/features/cart";
 
-import styles from "./DiscountInput.module.css";
-import { FormEvent, useRef, useState } from "react";
 import { isLaravelValidationError } from "@/shared/lib";
 import { useCart } from "@/entities/cart";
 import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
-import { ca } from "zod/v4/locales";
+
+import styles from "./DiscountInput.module.css";
 
 export default function DiscountInput() {
   const discountInputRef = useRef<HTMLInputElement>(null);
@@ -56,6 +56,7 @@ export default function DiscountInput() {
           ref={discountInputRef}
           placeholder="Discount Code"
           disabled={applyDiscount.isPending || Boolean(cart.data.discount_code)}
+          className={styles.input}
           defaultValue={cart.data.discount_code ?? ""}
           style={cart.data.discount_code ? { color: "green" } : undefined}
         />

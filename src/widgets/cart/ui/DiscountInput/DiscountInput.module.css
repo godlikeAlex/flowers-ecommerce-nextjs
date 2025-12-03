@@ -2,3 +2,7 @@
   padding: 0;
   padding-inline: 20px;
 }
+
+.input {
+  text-transform: uppercase;
+}
