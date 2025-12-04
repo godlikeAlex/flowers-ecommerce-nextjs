@@ -83,7 +83,7 @@ export default async function PayPage({
                     </span>
 
                     <span className="bold-text color-primary">
-                      {formatPrice(orderItem.price)}
+                      {formatPrice(orderItem.total)}
                     </span>
                   </li>
                 ))}

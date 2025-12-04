@@ -1,1 +1,1 @@
-export type { OrderPay, OrderItem } from "./model/types";
+export type { OrderPay, OrderItem, Order } from "./model/types";

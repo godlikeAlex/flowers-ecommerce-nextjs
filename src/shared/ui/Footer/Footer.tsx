@@ -14,8 +14,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { ROUTES } from "@/shared/config";
 import { Anchor } from "../Anchor";
+import { CategoryMenu } from "@/entities/category";
 
-export default function Footer() {
+interface Props {
+  categories: CategoryMenu[];
+}
+
+export default function Footer({ categories }: Props) {
   return (
     <footer>
       <div className={styles["footer-main"]}>
@@ -134,31 +139,16 @@ export default function Footer() {
                 <ul
                   className={clsx("unstyled links-list", styles["links-list"])}
                 >
-                  <li>
-                    <Anchor variant="hover" href="about.html">
-                      About Us
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="hover" href="shop-grid.html">
-                      Product Items
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="hover" href="contact.html">
-                      Contact us
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="hover" href="checkout.html">
-                      Checkout
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="hover" href="wishlist.html">
-                      Wishlist
-                    </Anchor>
-                  </li>
+                  {categories.map((category) => (
+                    <li key={category.id}>
+                      <Anchor
+                        variant="hover"
+                        href={ROUTES.SHOP([category.slug])}
+                      >
+                        {category.name}
+                      </Anchor>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -169,28 +159,28 @@ export default function Footer() {
                   className={clsx("unstyled links-list", styles["links-list"])}
                 >
                   <li>
-                    <Anchor variant="hover" href="about.html">
-                      About Us
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="hover" href="shop-grid.html">
-                      Product Items
-                    </Anchor>
-                  </li>
-                  <li>
                     <Anchor variant="hover" href="contact.html">
                       Contact us
                     </Anchor>
                   </li>
                   <li>
-                    <Anchor variant="hover" href="checkout.html">
-                      Checkout
+                    <Anchor variant="hover" href={ROUTES.BLOG("")}>
+                      Blog
                     </Anchor>
                   </li>
                   <li>
-                    <Anchor variant="hover" href="wishlist.html">
-                      Wishlist
+                    <Anchor variant="hover" href={ROUTES.ACCOUNT}>
+                      Account
+                    </Anchor>
+                  </li>
+                  <li>
+                    <Anchor variant="hover" href={ROUTES.CART}>
+                      Cart
+                    </Anchor>
+                  </li>
+                  <li>
+                    <Anchor variant="hover" href={ROUTES.CHECKOUT}>
+                      Checkout
                     </Anchor>
                   </li>
                 </ul>
@@ -198,7 +188,7 @@ export default function Footer() {
             </div>
             <div className="col-lg-2 col-sm-4 col-6 order-lg-4">
               <div className={styles["footer-widget"]}>
-                <h4 className="mb-32">Information</h4>
+                <h4 className="mb-32">Our Blog</h4>
                 <ul
                   className={clsx("unstyled links-list", styles["links-list"])}
                 >

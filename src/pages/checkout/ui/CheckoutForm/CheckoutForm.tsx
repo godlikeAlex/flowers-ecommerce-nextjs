@@ -5,8 +5,11 @@ import TimeField from "react-simple-timefield";
 import type { CheckoutForm as ICheckoutForm } from "../../model/checkout-schema";
 import { ROUTES, US_TELEPHONE_MASK } from "@/shared/config";
 import { useCreateOrder } from "@/features/order";
-import { toUTCDatetime } from "@/shared/lib";
+import { getNowInNY, combineDateTimeToUTC } from "@/shared/lib";
 import { useRouter } from "nextjs-toploader/app";
+import { useUser } from "@/entities/user";
+import { useEffect } from "react";
+import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
 
 interface Props {
   checkoutFormID: string;
@@ -19,14 +22,27 @@ export default function CheckoutForm({
   paymentIsProccessing,
   setPaymentIsProccessing,
 }: Props) {
+  const user = useUser();
+
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useFormContext<ICheckoutForm>();
   const createOrderMutation = useCreateOrder();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user.data) {
+      reset({
+        name: user.data.name,
+        email: user.data.email,
+        deliveryTime: "12:30",
+      });
+    }
+  }, [user.data, reset]);
 
   const onSubmit = async ({
     shippingAddress,
@@ -39,12 +55,14 @@ export default function CheckoutForm({
     setPaymentIsProccessing(true);
 
     try {
+      const deliveryAt = combineDateTimeToUTC(deliveryDate, deliveryTime);
+
       const response = await createOrderMutation.mutateAsync({
         ...values,
         address: shippingAddress.formatted_address ?? "Address not selected",
         shipping_notes: shippingNotes,
         notes: notes,
-        delivery_at: toUTCDatetime(deliveryDate, deliveryTime),
+        delivery_at: deliveryAt,
       });
 
       return router.replace(ROUTES.PAY(response.data.orderUUID));
@@ -53,6 +71,10 @@ export default function CheckoutForm({
       console.log("ERROR", e);
     }
   };
+
+  if (user.isPending) {
+    return <CheckoutFormSkeleton />;
+  }
 
   return (
     <form id={checkoutFormID} onSubmit={handleSubmit(onSubmit)}>
@@ -119,7 +141,7 @@ export default function CheckoutForm({
                   selected={field.value}
                   onSelect={field.onChange}
                   placeholder="Select Shipping Date"
-                  disabled={{ before: new Date() }}
+                  disabled={{ before: getNowInNY() }}
                   error={errors.deliveryDate?.message}
                 />
               )}
