@@ -23,4 +23,5 @@
 .imageContainer {
   position: relative;
   width: 340px;
+  color: var(--primary-color);
 }
