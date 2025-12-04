@@ -32,7 +32,7 @@ export default async function Shop({
 
   try {
     const { data } = await getCategory(
-      slug.join("/"),
+      slug ? slug.join("/") : "",
       buildFilterQueryString(catalogFilters),
     );
 
