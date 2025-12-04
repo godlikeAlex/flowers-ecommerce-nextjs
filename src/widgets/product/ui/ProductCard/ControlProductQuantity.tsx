@@ -4,10 +4,17 @@ import { useProductCart } from "../../model/use-product-сart";
 import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
 import Link from "next/link";
 import { ROUTES } from "@/shared/config";
+import { useCart } from "@/entities/cart";
+import Skeleton from "react-loading-skeleton";
+import { ThreeDots } from "react-loader-spinner";
+
+import styles from "./ProductCard.module.css";
 
 export default function ControlProductQuantity() {
+  const cart = useCart();
+
   const {
-    productState: { selectedOption, selectedAddons, quantity, productStatus },
+    productState: { quantity, productStatus },
     setQuantity,
     setLocalQuantity,
     addToCart,
@@ -48,6 +55,14 @@ export default function ControlProductQuantity() {
   const handleAddToCart = async () => {
     await addToCart();
   };
+
+  if (cart.isPending) {
+    return (
+      <div className="text-center relative">
+        <ThreeDots visible={true} radius="9" wrapperClass={styles.loader} />
+      </div>
+    );
+  }
 
   return (
     <>

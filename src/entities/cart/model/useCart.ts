@@ -5,6 +5,7 @@ export const QUERY_CART_KEY = "cart";
 
 export function useCart() {
   return useQuery({
+    refetchOnMount: true,
     queryKey: [QUERY_CART_KEY],
     queryFn: async () => {
       const { data } = await getCart();

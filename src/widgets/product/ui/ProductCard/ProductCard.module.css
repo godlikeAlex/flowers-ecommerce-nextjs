@@ -134,3 +134,14 @@
   gap: 8px;
   justify-content: space-between;
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader svg {
+  height: 20px;
+  fill: var(--primary-color);
+}

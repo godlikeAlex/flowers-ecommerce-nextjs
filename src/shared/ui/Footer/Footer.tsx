@@ -193,28 +193,18 @@ export default function Footer({ categories }: Props) {
                   className={clsx("unstyled links-list", styles["links-list"])}
                 >
                   <li>
-                    <Anchor variant="hover" href="about.html">
-                      About Us
+                    <Anchor variant="hover" href="/blog/news">
+                      News
                     </Anchor>
                   </li>
                   <li>
-                    <Anchor variant="hover" href="shop-grid.html">
-                      Product Items
+                    <Anchor variant="hover" href="/blog/holidays-events">
+                      Holidays
                     </Anchor>
                   </li>
                   <li>
-                    <Anchor variant="hover" href="contact.html">
-                      Contact us
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="hover" href="checkout.html">
-                      Checkout
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="hover" href="wishlist.html">
-                      Wishlist
+                    <Anchor variant="hover" href="/blog/holidays-events">
+                      Events
                     </Anchor>
                   </li>
                 </ul>
