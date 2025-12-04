@@ -50,7 +50,7 @@ export function useProductCart() {
     },
   );
 
-  const addToCart = async () => {
+  const addToCart: () => void = async () => {
     const addonsOptionIDS = localProduct.selectedAddons
       .map(selectAddonID)
       .filter((id) => id !== undefined);

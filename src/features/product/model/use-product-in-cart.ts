@@ -3,7 +3,8 @@
 import { CartItem, useCart } from "@/entities/cart";
 
 interface Params {
-  productOptionID: number;
+  productOptionID?: number;
+  productID?: number;
 }
 
 type ProductStatus =
@@ -16,7 +17,10 @@ type ProductStatus =
       cartItem?: CartItem;
     };
 
-export function useProductInCart({ productOptionID }: Params): ProductStatus {
+export function useProductInCart({
+  productOptionID,
+  productID,
+}: Params): ProductStatus {
   const cart = useCart();
 
   if (cart.isPending || cart.error) {
@@ -26,9 +30,17 @@ export function useProductInCart({ productOptionID }: Params): ProductStatus {
     };
   }
 
-  const targetProductOptionInCart = cart.data.items.find(
-    (cartItem) => cartItem.product_option.id === productOptionID,
-  );
+  let targetProductOptionInCart;
+
+  if (productID) {
+    targetProductOptionInCart = cart.data.items.find(
+      (cartItem) => cartItem.product.id === productID,
+    );
+  } else {
+    targetProductOptionInCart = cart.data.items.find(
+      (cartItem) => cartItem.product_option.id === productOptionID,
+    );
+  }
 
   return {
     status: "IDLE",

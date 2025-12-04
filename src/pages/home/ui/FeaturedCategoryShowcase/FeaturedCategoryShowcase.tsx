@@ -34,14 +34,7 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
             <Carousel.ContainerSlides>
               {products.map((product) => (
                 <Carousel.Item className={styles.slide} key={product.id}>
-                  <ProductCard
-                    slug={product.slug}
-                    title={product.name}
-                    description={product.card_description}
-                    price={product.price}
-                    image={product.cover}
-                    blur_preview={product.blur_preview}
-                  />
+                  <ProductCard product={product} />
                 </Carousel.Item>
               ))}
             </Carousel.ContainerSlides>
