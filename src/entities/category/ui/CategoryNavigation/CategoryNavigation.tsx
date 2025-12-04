@@ -17,7 +17,7 @@ interface Props {
 
 export default function CategoryNavigation({
   categories,
-  initialHistory,
+  initialHistory = [],
 }: Props) {
   const [history, setHistory] = useState<string[]>(() => {
     if (initialHistory.length > 1) {

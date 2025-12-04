@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { Button } from "@/shared/ui";
 
@@ -6,6 +8,8 @@ import { FlowerTulipIcon } from "@phosphor-icons/react/dist/ssr/FlowerTulip";
 
 import styles from "./HeroSection.module.css";
 import Image from "next/image";
+import Link from "next/link";
+import { ROUTES } from "@/shared/config";
 
 export default function HeroSection() {
   return (
@@ -39,8 +43,16 @@ export default function HeroSection() {
                 </h1>
 
                 <div className={clsx(styles["btn-block"])}>
-                  <Button accessoryRight={<FlowerTulipIcon />}>Shop Now</Button>
                   <Button
+                    as={Link}
+                    href={ROUTES.SHOP([])}
+                    accessoryRight={<FlowerTulipIcon />}
+                  >
+                    Shop Now
+                  </Button>
+                  <Button
+                    as={Link}
+                    href={ROUTES.CONTACT_US()}
                     variant="outline"
                     accessoryRight={<HandPointingIcon />}
                   >

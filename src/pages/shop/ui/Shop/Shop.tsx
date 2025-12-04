@@ -32,7 +32,7 @@ export default async function Shop({
 
   try {
     const { data } = await getCategory(
-      slug.join("/"),
+      slug ? slug.join("/") : "",
       buildFilterQueryString(catalogFilters),
     );
 
@@ -49,7 +49,7 @@ export default async function Shop({
 
   return (
     <>
-      <PageBanner title="Shop page" />
+      <PageBanner title="Shop" />
       <div className="py-80">
         <div className="container-fluid">
           <div className="row row-gap-5">
@@ -85,16 +85,9 @@ export default async function Shop({
                     </div>
                   </div>
                   <div className="row row-gap-4">
-                    {products.data.map((productCard) => (
-                      <div className="col-md-4" key={productCard.id}>
-                        <ProductCard
-                          title={productCard.name}
-                          slug={productCard.slug}
-                          description={productCard.card_description}
-                          image={productCard.cover}
-                          price={productCard.price}
-                          blur_preview={productCard.blur_preview}
-                        />
+                    {products.data.map((product) => (
+                      <div className="col-md-4" key={product.id}>
+                        <ProductCard product={product} />
                       </div>
                     ))}
                   </div>

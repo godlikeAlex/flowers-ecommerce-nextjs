@@ -12,6 +12,7 @@ import { CategoryMenu, getMenuCategories } from "@/entities/category";
 import NextTopLoader from "nextjs-toploader";
 
 import "react-loading-skeleton/dist/skeleton.css";
+import { ScrollToTop } from "./ScrollToTop";
 
 export const metadata: Metadata = {
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
@@ -37,6 +38,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={bluemelleFont.className}>
       <body style={bluemelleFont.style}>
+        <ScrollToTop />
         <main className="main">
           <Providers>
             <NextTopLoader color="#0b5bb2" />

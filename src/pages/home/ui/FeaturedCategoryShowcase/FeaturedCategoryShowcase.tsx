@@ -10,6 +10,7 @@ import { SliderNavigation } from "../SliderNavigation";
 
 import styles from "./FeaturedCategoryShowcase.module.css";
 import type { ProductCard as IProductCard } from "@/entities/product";
+import { ROUTES } from "@/shared/config";
 
 interface Props {
   title: string;
@@ -33,14 +34,7 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
             <Carousel.ContainerSlides>
               {products.map((product) => (
                 <Carousel.Item className={styles.slide} key={product.id}>
-                  <ProductCard
-                    slug={product.slug}
-                    title={product.name}
-                    description={product.card_description}
-                    price={product.price}
-                    image={product.cover}
-                    blur_preview={product.blur_preview}
-                  />
+                  <ProductCard product={product} />
                 </Carousel.Item>
               ))}
             </Carousel.ContainerSlides>
@@ -51,7 +45,7 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
       <div className="col-md-12 mt-48 text-center">
         <Button
           as={Link}
-          href=""
+          href={ROUTES.SHOP([])}
           className="mx-auto"
           variant="ghost"
           accessoryRight={<ArrowUpRightIcon />}

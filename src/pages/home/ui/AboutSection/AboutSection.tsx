@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/shared/ui";
 
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
@@ -7,6 +9,8 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import imageAbout from "./about.png";
+import Link from "next/link";
+import { ROUTES } from "@/shared/config";
 
 export default function AboutSection() {
   return (
@@ -27,30 +31,35 @@ export default function AboutSection() {
                       Every bloom tells a story, and we are here to bring those
                       stories to life. Our floral arrangements are crafted with
                       care, combining color, texture, and natural elegance to
-                      highlight the beauty in every moment. Whether celebrating
-                      a special occasion or adding charm to your everyday, our
+                      reveal the beauty in every moment. Whether celebrating a
+                      special occasion or adding charm to your everyday, our
                       flowers are chosen for their freshness, character, and
-                      ability to inspire. Each bouquet is thoughtfully designed
-                      to create a sense of warmth and harmony, turning simple
-                      stems into meaningful expressions.
+                      ability to inspire.
                     </p>
 
                     <p className="mb-16">
-                      We believe flowers hold the power to transform spaces and
-                      emotions alike. Guided by creativity and a passion for
+                      Each bouquet is thoughtfully designed to create a sense of
+                      warmth and harmony, turning simple stems into meaningful
+                      expressions. Guided by creativity and a passion for
                       detail, we blend artistic craftsmanship with the timeless
-                      grace of nature. From festive gifts to personal gestures,
-                      our arrangements are made to elevate your moments with
-                      color, fragrance, and joy. Let our blooms accompany your
-                      celebrations and add a touch of beauty to the stories you
-                      continue to write.
+                      grace of nature, ensuring every arrangement feels personal
+                      and memorable.
+                    </p>
+
+                    <p className="mb-16">
+                      From festive gifts to quiet gestures, our blooms are made
+                      to elevate your moments with color, fragrance, and joy.
+                      Let our flowers accompany your celebrations and bring a
+                      touch of beauty to the stories you continue to write.
                     </p>
 
                     <Button
+                      as={Link}
+                      href={ROUTES.SHOP([])}
                       variant="ghost"
                       accessoryRight={<ArrowUpRightIcon />}
                     >
-                      Read More
+                      Buy Now
                     </Button>
                   </div>
                 </div>

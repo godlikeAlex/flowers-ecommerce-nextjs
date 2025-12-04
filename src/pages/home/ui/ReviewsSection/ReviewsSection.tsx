@@ -32,7 +32,7 @@ export default function ReviewsSection() {
                         <Image
                           width={240}
                           height={240}
-                          src="/images/testimonials/t-2.png"
+                          src="/images/testimonials/testim-2.png"
                           alt=""
                         />
                         <div className={styles["quote-icon"]}>
@@ -57,14 +57,16 @@ export default function ReviewsSection() {
                           <StarIcon weight="fill" />
                         </div>
                         <div className={clsx(styles.info, "mb-16")}>
-                          <span className="h6 color-primary">Ethan Clarke</span>
+                          <span className="h6 color-primary">
+                            Liam Anderson
+                          </span>
                           <span className="h6">Customer</span>
                         </div>
                         <p>
-                          “Lorem ipsum dolor sit amet consectetur. Volutpat
-                          egestas non posuere faucibus. Diam consequat eros
-                          convallis enim consequat arcu vitae. Est porta netus
-                          sit tellus non eget purus.”
+                          Absolutely beautiful arrangements. The flowers were
+                          fresh, vibrant, and carefully put together. Delivery
+                          was smooth, and the bouquet looked even better than
+                          expected.
                         </p>
                       </div>
                     </div>
@@ -76,7 +78,7 @@ export default function ReviewsSection() {
                         <Image
                           width={240}
                           height={240}
-                          src="/images/testimonials/t-2.png"
+                          src="/images/testimonials/testim-1.png"
                           alt=""
                         />
                         <div className={styles["quote-icon"]}>
@@ -101,14 +103,15 @@ export default function ReviewsSection() {
                           <StarIcon weight="fill" />
                         </div>
                         <div className={clsx(styles.info, "mb-16")}>
-                          <span className="h6 color-primary">Ethan Clarke</span>
+                          <span className="h6 color-primary">
+                            Liam Anderson
+                          </span>
                           <span className="h6">Customer</span>
                         </div>
                         <p>
-                          “Lorem ipsum dolor sit amet consectetur. Volutpat
-                          egestas non posuere faucibus. Diam consequat eros
-                          convallis enim consequat arcu vitae. Est porta netus
-                          sit tellus non eget purus.”
+                          I ordered a custom arrangement and it turned out
+                          perfect. Elegant, thoughtfully crafted, and exactly
+                          what I had hoped for. Highly recommend this shop.
                         </p>
                       </div>
                     </div>

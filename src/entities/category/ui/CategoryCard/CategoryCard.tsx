@@ -33,7 +33,7 @@ export default function CategoryCard({
           {name}
         </Link>
 
-        <Anchor variant="hover" className={styles["link-btn"]}>
+        <Anchor href={href} variant="hover" className={styles["link-btn"]}>
           Shop Now
         </Anchor>
       </div>

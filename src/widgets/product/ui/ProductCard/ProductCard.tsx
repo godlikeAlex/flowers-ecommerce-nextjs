@@ -2,56 +2,37 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { useState } from "react";
 
-import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
-
-import { Anchor, IconButton, QuantityControl } from "@/shared/ui";
+import { Anchor } from "@/shared/ui";
 
 import styles from "./ProductCard.module.css";
 import Image from "next/image";
 import { ROUTES } from "@/shared/config";
 import { formatPrice } from "@/shared/lib";
+import { useProductInCart } from "@/features/product";
+import { ProductSelectionProvider } from "../../model/product-selection-context";
+import { ProductCard as ProductCardType } from "@/entities/product";
+import ControlProductQuantity from "./ControlProductQuantity";
 
 interface Props {
-  title: string;
-  description: string;
-  slug: string;
-  image: string;
-  price: number;
-  blur_preview: string;
+  product: ProductCardType;
 }
 
-export default function ProductCard({
-  title,
-  description,
-  price,
-  image,
-  slug,
-  blur_preview,
-}: Props) {
-  const [quantity, setQuantity] = useState(1);
+export default function ProductCard({ product }: Props) {
+  const {
+    id,
+    name,
+    card_description,
+    price,
+    cover,
+    slug,
+    blur_preview,
+    options,
+  } = product;
+
+  const { cartItem } = useProductInCart({ productID: id });
 
   const localPrice = formatPrice(price);
-
-  const onIncrement = () => setQuantity((quantity) => Math.max(quantity + 1));
-  const onDecrement = () => {
-    setQuantity((quantity) => Math.max(quantity - 1, 1));
-  };
-
-  const onChangeQuantity = (newQuantity: number) => {
-    setQuantity(newQuantity);
-
-    if (newQuantity >= 1) {
-      // CALL API
-    }
-  };
-
-  const onBlurQuantity = () => {
-    if (quantity < 1) {
-      setQuantity(1);
-    }
-  };
 
   return (
     <article className={styles["product-card"]}>
@@ -60,8 +41,8 @@ export default function ProductCard({
           <Image
             placeholder="blur"
             blurDataURL={blur_preview}
-            src={image}
-            alt={title}
+            src={cover}
+            alt={name}
             fill
             sizes="(max-width: 768px) 100vw, 700px"
             style={{ objectFit: "cover" }}
@@ -77,26 +58,22 @@ export default function ProductCard({
             href={ROUTES.PRODUCT(slug)}
             className="h4 mb-16"
           >
-            {title}
+            {name}
           </Anchor>
-          <p className="mb-24">{description}</p>
+          <p className="mb-24">{card_description}</p>
         </div>
 
         <div>
           <div className={clsx(styles.price, "mb-32")}>
             <h3>{localPrice}</h3>
           </div>
-          <div className={styles["action-block"]}>
-            <QuantityControl
-              value={quantity}
-              onIncrement={onIncrement}
-              onDecrement={onDecrement}
-              onChange={onChangeQuantity}
-              onBlur={onBlurQuantity}
-            />
-
-            <IconButton icon={<ShoppingCartSimpleIcon />} />
-          </div>
+          <ProductSelectionProvider
+            selectedOption={cartItem?.product_option ?? options[0]}
+          >
+            <div className={styles["action-block"]}>
+              <ControlProductQuantity />
+            </div>
+          </ProductSelectionProvider>
         </div>
       </div>
     </article>

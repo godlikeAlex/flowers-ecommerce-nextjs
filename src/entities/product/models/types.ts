@@ -27,6 +27,7 @@ export interface ProductCard {
   price: number;
   cover: string;
   blur_preview: string;
+  options: ProductOption[];
 }
 
 export interface ProductOption {
