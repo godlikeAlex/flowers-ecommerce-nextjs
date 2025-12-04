@@ -5,7 +5,6 @@ import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
 import Link from "next/link";
 import { ROUTES } from "@/shared/config";
 import { useCart } from "@/entities/cart";
-import Skeleton from "react-loading-skeleton";
 import { ThreeDots } from "react-loader-spinner";
 
 import styles from "./ProductCard.module.css";

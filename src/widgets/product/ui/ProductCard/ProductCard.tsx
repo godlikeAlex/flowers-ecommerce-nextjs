@@ -2,18 +2,14 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { useState } from "react";
 
-import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
-
-import { Anchor, IconButton, QuantityControl } from "@/shared/ui";
+import { Anchor } from "@/shared/ui";
 
 import styles from "./ProductCard.module.css";
 import Image from "next/image";
 import { ROUTES } from "@/shared/config";
 import { formatPrice } from "@/shared/lib";
 import { useProductInCart } from "@/features/product";
-import { useProductCart } from "../../model/use-product-сart";
 import { ProductSelectionProvider } from "../../model/product-selection-context";
 import { ProductCard as ProductCardType } from "@/entities/product";
 import ControlProductQuantity from "./ControlProductQuantity";
