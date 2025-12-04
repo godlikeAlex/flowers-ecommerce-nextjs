@@ -1,4 +1,5 @@
 import { CategoryCard } from "@/entities/category/ui";
+import { ROUTES } from "@/shared/config";
 
 const CATEGORIES: {
   name: string;
@@ -8,25 +9,25 @@ const CATEGORIES: {
 }[] = [
   {
     name: "Rose Varieties",
-    href: "#",
+    href: ROUTES.SHOP([]),
     image: "/images/categories/category-01.png",
     variant: "pink",
   },
   {
     name: "Rose Varieties",
-    href: "#",
+    href: ROUTES.SHOP([]),
     image: "/images/categories/category-02.png",
     variant: "beige",
   },
   {
     name: "Rose Varieties",
-    href: "#",
+    href: ROUTES.SHOP([]),
     image: "/images/categories/category-03.png",
     variant: "yellow",
   },
   {
     name: "Rose Varieties",
-    href: "#",
+    href: ROUTES.SHOP([]),
     image: "/images/categories/category-04.png",
     variant: "pink",
   },

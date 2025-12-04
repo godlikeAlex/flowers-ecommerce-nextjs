@@ -139,7 +139,7 @@ export default function Header({ categories }: Props) {
                   variant="ghost"
                   className={clsx("d-xl-flex d-none")}
                   as={Link}
-                  href={ROUTES.HOME}
+                  href={ROUTES.CONTACT_US()}
                   accessoryRight={<HandPointingIcon width={20} height={20} />}
                 >
                   Contact Us

@@ -1,9 +1,13 @@
+"use client";
+
 import clsx from "clsx";
 import styles from "./OfferBanner.module.css";
 import { Button } from "@/shared/ui";
 
 import { FlowerTulipIcon } from "@phosphor-icons/react/dist/ssr/FlowerTulip";
 import Image from "next/image";
+import Link from "next/link";
+import { ROUTES } from "@/shared/config";
 
 export default function OfferBanner() {
   return (
@@ -40,10 +44,12 @@ export default function OfferBanner() {
               <div className="col-lg-6 col-12 order-lg-1">
                 <div className={styles["text-block"]}>
                   <h3 className="mb-16">SPECIAL OFFER</h3>
-                  <span className={styles["title-1"]}>SUMMER</span>
+                  <span className={styles["title-1"]}>WINTER</span>
                   <span className={clsx(styles["title-2"], "mb-12")}>Sale</span>
                   <h1 className="mb-32">UP TO 50% OFF</h1>
                   <Button
+                    as={Link}
+                    href={ROUTES.SHOP([])}
                     className="mx-auto"
                     accessoryRight={<FlowerTulipIcon />}
                   >

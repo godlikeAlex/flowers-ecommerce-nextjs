@@ -49,7 +49,7 @@ export default async function Shop({
 
   return (
     <>
-      <PageBanner title="Shop page" />
+      <PageBanner title="Shop" />
       <div className="py-80">
         <div className="container-fluid">
           <div className="row row-gap-5">

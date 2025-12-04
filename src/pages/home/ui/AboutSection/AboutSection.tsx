@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/shared/ui";
 
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
@@ -7,6 +9,8 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import imageAbout from "./about.png";
+import Link from "next/link";
+import { ROUTES } from "@/shared/config";
 
 export default function AboutSection() {
   return (
@@ -50,10 +54,12 @@ export default function AboutSection() {
                     </p>
 
                     <Button
+                      as={Link}
+                      href={ROUTES.SHOP([])}
                       variant="ghost"
                       accessoryRight={<ArrowUpRightIcon />}
                     >
-                      Read More
+                      Buy Now
                     </Button>
                   </div>
                 </div>
