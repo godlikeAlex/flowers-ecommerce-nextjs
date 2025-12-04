@@ -6,6 +6,7 @@ import { Order } from "@/entities/order";
 import { getHistoryOrders } from "@/features/order";
 import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr/ArrowLeft";
 import { ReceiptIcon } from "@phosphor-icons/react/dist/ssr/Receipt";
+import { AccountDetailsSidebar } from "../AccountDetailsSidebar";
 
 export default async function Account() {
   // const logoutMutation = useLogout();
@@ -54,18 +55,7 @@ export default async function Account() {
                   )}
                 </div>
                 <div className="col-md-4">
-                  {/*<div style={{ position: "sticky", top: 120 }}>
-                    <Sidebar>
-                      <h5 className="mx-auto">{user.data?.name}</h5>
-
-                      <Button
-                        onClick={() => logoutMutation.mutate()}
-                        loading={logoutMutation.isPending}
-                      >
-                        Logout
-                      </Button>
-                    </Sidebar>
-                  </div>*/}
+                  <AccountDetailsSidebar />
                 </div>
               </div>
             </div>

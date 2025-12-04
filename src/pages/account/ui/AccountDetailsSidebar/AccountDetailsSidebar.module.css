@@ -1,0 +1,4 @@
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-height) + 25px);
+}
