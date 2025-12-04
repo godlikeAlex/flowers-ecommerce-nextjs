@@ -8,8 +8,11 @@ import { TiktokLogoIcon } from "@phosphor-icons/react/dist/ssr/TiktokLogo";
 import { SubscribeForm } from "../SubscribeForm";
 
 import styles from "./ComingSoon.module.css";
+import { redirect } from "next/navigation";
 
 export default function ComingSoon() {
+  return redirect("/");
+
   return (
     <main className="x-hidden">
       <section className={styles["coming-soon-section"]}>
