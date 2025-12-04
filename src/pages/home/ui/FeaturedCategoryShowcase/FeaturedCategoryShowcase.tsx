@@ -10,7 +10,6 @@ import { SliderNavigation } from "../SliderNavigation";
 
 import styles from "./FeaturedCategoryShowcase.module.css";
 import type { ProductCard as IProductCard } from "@/entities/product";
-import { ROUTES } from "@/shared/config";
 
 interface Props {
   title: string;

@@ -1,10 +1,7 @@
-import { useUser } from "@/entities/user";
-import { useLogout } from "@/features/auth/model";
-import { Button, EmptyState, PageBanner, Sidebar } from "@/shared/ui";
+import { EmptyState, PageBanner } from "@/shared/ui";
 import { OrderCard } from "../OrderCard";
 import { Order } from "@/entities/order";
 import { getHistoryOrders } from "@/features/order";
-import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr/ArrowLeft";
 import { ReceiptIcon } from "@phosphor-icons/react/dist/ssr/Receipt";
 import { AccountDetailsSidebar } from "../AccountDetailsSidebar";
 

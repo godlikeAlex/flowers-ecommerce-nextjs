@@ -5,14 +5,12 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
-import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr/ArrowLeft";
-import { ReceiptIcon } from "@phosphor-icons/react/dist/ssr/Receipt";
 import { CaretUpIcon } from "@phosphor-icons/react/dist/ssr/CaretUp";
 import OrderItem from "./OrderItem";
 import { Anchor } from "@/shared/ui";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { Order } from "@/entities/order";
-import { formatNYTime, formatPrice, utcToNY } from "@/shared/lib";
+import { formatNYTime, formatPrice } from "@/shared/lib";
 
 interface Props {
   order: Order;
@@ -46,7 +44,8 @@ export default function OrderCard({ order }: Props) {
           </div>
           <div className={clsx("col-md-9 col-6", styles["order-item-value"])}>
             {formatNYTime(order.delivery_at)}
-            <br /> <small>NYC time</small>
+            <br />
+            <small>NYC time</small>
           </div>
         </div>
 
