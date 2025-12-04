@@ -1,0 +1,57 @@
+.order-item {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%230b5bb2ff' stroke-width='2' stroke-dasharray='7%2c 10' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-position: center;
+  border-radius: 30px;
+  padding: 1px;
+}
+
+.order-item-panel-title {
+  background-color: var(--alt-bg-color-accent);
+  border-radius: 30px 30px 0px 0px;
+}
+
+.order-item-panel-title h2 {
+  font-size: 20px;
+  margin-bottom: 0px;
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 20px;
+}
+
+.order-item-content {
+  padding: 10px 10px 10px 20px;
+}
+
+.order-item-title {
+  color: var(--text-color);
+}
+
+.order-item-value {
+  color: var(--heading-color);
+}
+
+.accordion-button {
+  background-color: unset;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+  color: var(--primary-color);
+
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.accordion-button svg {
+  transition: transform 0.3s;
+}
+
+.accordion-button[data-open] svg {
+  transform: rotate(180deg);
+}
+
+.order-item-card {
+  padding-inline: 20px;
+}

@@ -4,4 +4,4 @@ export { formatPrice } from "./format-price";
 export { objectToSearchParams } from "./query-params";
 
 export * from "./distance";
-export * from "./data-time";
+export * from "./datetime";

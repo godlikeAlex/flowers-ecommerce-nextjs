@@ -3,7 +3,6 @@
 import clsx from "clsx";
 import Image from "next/image";
 import { Anchor, Button } from "@/shared/ui";
-import { format } from "date-fns";
 import Link from "next/link";
 
 import { EyesIcon } from "@phosphor-icons/react/dist/ssr/Eyes";

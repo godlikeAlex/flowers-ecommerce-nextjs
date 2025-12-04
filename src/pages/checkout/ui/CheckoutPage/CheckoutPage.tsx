@@ -11,6 +11,7 @@ import { PageBanner } from "@/shared/ui";
 export default function CheckoutPage() {
   const [paymentProcessing, setPaymentProcessing] = useState<boolean>(false);
   const checkoutFormID = useId();
+
   const form = useForm({
     defaultValues: { deliveryTime: "12:30", phone: "" },
     resolver: zodResolver(checkoutSchema),

@@ -37,11 +37,7 @@ export default function HeroSection() {
                   {/*<span className="color-primary"> Bouquets</span>*/}
                   <br /> and Gifts
                 </h1>
-                <p>
-                  Celebrate every moment with our stunning bouquets crafted for
-                  special occasions. Fresh, vibrant flowers that make every
-                  event unforgettable.
-                </p>
+
                 <div className={clsx(styles["btn-block"])}>
                   <Button accessoryRight={<FlowerTulipIcon />}>Shop Now</Button>
                   <Button
