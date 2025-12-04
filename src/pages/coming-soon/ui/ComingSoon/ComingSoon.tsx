@@ -75,7 +75,7 @@ export default function ComingSoon() {
 
             <Anchor
               variant="text"
-              href="https://maps.app.goo.gl/3ELdT5n8ZiYAYXTT7"
+              href="https://maps.app.goo.gl/QXWxdJwzar1QxVHm7"
               target="_blank"
             >
               📍1212 Rt 34, Suite 25, Aberdeen, NJ 07747
