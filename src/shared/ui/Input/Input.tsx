@@ -1,10 +1,36 @@
-import type { InputHTMLAttributes } from "react";
+import { RefCallback, RefObject, useId, type InputHTMLAttributes } from "react";
 import clsx from "clsx";
 
 import styles from "./Input.module.css";
+import InputMask from "./InputMask";
 
-type Props = InputHTMLAttributes<HTMLInputElement>;
-
-export default function Input(props: Props) {
-  return <input className={clsx(styles.input)} {...props} />;
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  error?: string | boolean;
+  ref?:
+    | RefObject<HTMLInputElement | null>
+    | RefCallback<HTMLInputElement | null>;
 }
+
+export default function Input({ error, className, ...props }: Props) {
+  const errorInputId = useId();
+
+  const errorMessage = typeof error === "string" ? error : null;
+
+  return (
+    <label className="w-100">
+      <input
+        {...props}
+        className={clsx(styles.input, error && styles.error, className)}
+        aria-invalid={Boolean(error)}
+        aria-errormessage={errorMessage ? errorInputId : undefined}
+      />
+      {errorMessage && (
+        <p id={errorInputId} className={clsx(styles.errorMessage)}>
+          {errorMessage}
+        </p>
+      )}
+    </label>
+  );
+}
+
+Input.Mask = InputMask;

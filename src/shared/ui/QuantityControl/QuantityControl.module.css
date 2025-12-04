@@ -1,0 +1,106 @@
+.quantity-wrap {
+  display: flex;
+  gap: clamp(4px, 0.62vw, 16px);
+  width: fit-content;
+}
+
+.quantity-wrap input {
+  border: none !important;
+  font-size: clamp(14.5px, 1.042vw, 40px);
+  font-weight: 600;
+  line-height: 140%; /* 24px */
+  letter-spacing: -0.4px;
+  color: #43273a !important;
+  padding: 0 !important;
+  background: transparent;
+  width: 24px;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .quantity-wrap input {
+    font-size: clamp(15px, 2.107vw, 21px);
+  }
+}
+
+@media (max-width: 767px) {
+  .quantity-wrap input {
+    font-size: clamp(15.5px, 2.656vw, 19px);
+  }
+}
+
+@media (max-width: 575px) {
+  .quantity-wrap input {
+    font-size: clamp(14.45px, 4.146vw, 18px);
+  }
+}
+
+.quantity-wrap input:focus {
+  border: none;
+  outline: none;
+  color: #43273a;
+}
+
+.quantity-wrap input:hover {
+  border: none;
+  color: #43273a;
+}
+
+.quantity-wrap .decrement,
+.quantity-wrap .increment {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  height: clamp(30px, 2.083vw, 48px);
+  width: clamp(30px, 2.083vw, 48px);
+  background-color: var(--ghost-color);
+  border-radius: 5px;
+  cursor: pointer;
+  border: unset !important;
+}
+
+.quantity-wrap .decrement:hover,
+.quantity-wrap .increment:hover {
+  opacity: 0.8;
+}
+
+.quantity-wrap .decrement,
+.quantity-wrap .increment {
+  font-size: clamp(14.5px, 1.042vw, 40px);
+  color: var(--primary-color);
+}
+
+@media (max-width: 991px) {
+  .quantity-wrap .decrement,
+  .quantity-wrap .increment {
+    font-size: clamp(15px, 2.107vw, 21px);
+  }
+}
+
+@media (max-width: 767px) {
+  .quantity-wrap .decrement,
+  .quantity-wrap .increment {
+    font-size: clamp(15.5px, 2.656vw, 19px);
+  }
+}
+
+@media (max-width: 575px) {
+  .quantity-wrap .decrement,
+  .quantity-wrap .increment {
+    font-size: clamp(14.45px, 4.146vw, 18px);
+  }
+}
+
+.quantity-wrap .decrement:disabled,
+.quantity-wrap .increment:disabled {
+  background-color: rgb(244, 244, 244);
+  opacity: 1 !important;
+  color: gray;
+  cursor: not-allowed;
+}
+
+.quantity-wrap input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}

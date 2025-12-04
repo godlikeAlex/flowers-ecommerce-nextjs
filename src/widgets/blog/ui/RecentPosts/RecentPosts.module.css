@@ -1,0 +1,21 @@
+.recent-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.25vw, 32px);
+}
+
+.recent-post-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 0.86vw, 24px);
+}
+
+.image-container {
+  width: clamp(70px, 4.792vw, 130px);
+  height: clamp(70px, 4.792vw, 105px);
+  position: relative;
+}
+
+.image-container img {
+  border-radius: 5px;
+}

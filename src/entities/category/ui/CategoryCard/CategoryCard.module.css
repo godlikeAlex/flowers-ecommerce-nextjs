@@ -1,0 +1,35 @@
+.category-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: clamp(12px, 0.83vw, 24px);
+  border-radius: 10px;
+}
+.category-card img {
+  width: clamp(120px, 9.375vw, 240px);
+}
+.category-card .link-btn {
+  display: block;
+}
+.category-card.bg-gradient-1 {
+  background: linear-gradient(110deg, #ffeaf1 -9.36%, #f8e9ff 103.16%);
+}
+.category-card.bg-gradient-2 {
+  background:
+    linear-gradient(
+      105deg,
+      #ffece2 -3.62%,
+      rgba(255, 248, 222, 0.91) 113.31%,
+      rgba(255, 232, 149, 0.75) 113.32%
+    ),
+    linear-gradient(110deg, #ffeaf1 -9.36%, #f8e9ff 103.16%);
+}
+.category-card.bg-gradient-3 {
+  background: linear-gradient(104deg, #feffe1 0%, #e9f0ff 100%);
+}
+
+.title {
+  display: block;
+  margin-bottom: 24px;
+}

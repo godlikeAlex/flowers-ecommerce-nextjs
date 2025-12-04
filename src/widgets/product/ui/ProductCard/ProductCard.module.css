@@ -1,0 +1,147 @@
+.product-card {
+  position: relative;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%230b5bb2ff' stroke-width='2' stroke-dasharray='7%2c 10' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-position: 0px;
+  border-radius: 30px;
+  padding: 2px;
+  margin-bottom: 4px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .product-card {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%230b5bb2ff' stroke-width='2' stroke-dasharray='5%2c 7' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+    border-radius: 20px;
+  }
+}
+
+.product-card .figure {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  height: 285px;
+  border-radius: 30px;
+}
+
+.product-card .figure img {
+  transition: 0.3s;
+}
+
+.product-card .figure:hover img {
+  transform: scale(1.1);
+}
+
+.product-card .figure .action-list {
+  position: absolute;
+  top: 16px;
+  right: -100px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: right 0.5s linear;
+}
+
+.product-card .figure .action-list .icon {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50%;
+  width: clamp(40px, 2.5vw, 60px);
+  height: clamp(40px, 2.5vw, 60px);
+  background-color: #f9ddf1;
+  transition: all 0.5s ease-in;
+}
+
+.product-card .figure .action-list .icon i {
+  font-size: clamp(17px, 1.042vw, 24px);
+  color: #be70a7;
+  transition: all 0.5s ease-in;
+}
+
+.product-card .figure .action-list .icon:hover {
+  background-color: #be70a7;
+  transition: all 0.5s ease-in;
+}
+
+.product-card .figure .action-list .icon:hover i {
+  color: var(--body-background);
+  transition: all 0.5s ease-in;
+}
+
+.product-card .figure .remove-product {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  border: none;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50%;
+  width: clamp(40px, 2.5vw, 60px);
+  height: clamp(40px, 2.5vw, 60px);
+  background-color: #f9ddf1;
+  transition: all 0.5s ease-in;
+}
+
+.product-card .figure .remove-product svg {
+  width: 20px;
+  height: 20px;
+  fill: #be70a7;
+  transition: all 0.5s ease-in;
+}
+
+.product-card .figure .remove-product:hover {
+  background-color: #be70a7;
+  transition: all 0.5s ease-in;
+}
+
+.product-card .figure .remove-product:hover svg {
+  fill: var(--body-background);
+  transition: all 0.5s ease-in;
+}
+
+.product-card:hover .figure .action-list {
+  right: 16px;
+  transition: right 0.5s linear;
+}
+
+.product-card .text-block {
+  position: relative;
+  height: 100%;
+  background-color: var(--alt-bg-color);
+  padding: clamp(20px, 1.66vw, 40px);
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card .text-block .price {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.product-card .text-block .action-block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader svg {
+  height: 20px;
+  fill: var(--primary-color);
+}

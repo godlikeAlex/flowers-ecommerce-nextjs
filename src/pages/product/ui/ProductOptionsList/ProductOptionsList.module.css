@@ -1,0 +1,14 @@
+.product-option-list {
+  display: flex;
+  gap: 15px;
+}
+
+.product-option-list__item {
+  width: 33%;
+}
+
+@media (max-width: 500px) {
+  .product-option-list__item {
+    width: 50%;
+  }
+}

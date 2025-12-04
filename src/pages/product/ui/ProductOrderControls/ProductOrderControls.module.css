@@ -1,0 +1,10 @@
+.quantityButton {
+  width: 45px !important;
+  height: 45px !important;
+}
+
+.button-add-to-cart {
+  height: 45px;
+  display: flex;
+  align-items: center;
+}

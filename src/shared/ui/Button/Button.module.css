@@ -1,28 +1,48 @@
 .button {
+  --background: var(--primary-color);
+  --background--image: var(--primary-dashed-border);
+  --text-color: var(--heading-color);
+  --span-color: var(--primary-color);
+
   position: relative;
   z-index: 1;
   overflow: hidden;
   font-size: clamp(14px, 0.83vw, 20px);
   font-weight: 500;
   line-height: 150%;
-  padding: clamp(10px, 0.83vw, 20px) clamp(20px, 1.66vw, 40px);
   border-radius: 5px;
   width: fit-content;
   display: flex;
   flex-shrink: 0;
   border: 0;
+  padding: 0;
   justify-content: center;
   align-items: center;
   gap: 8px;
   transition: 0.4s ease-in-out;
-  /* background-color: #f9ddf1 !important; */
-  background-color: rgba(var(--rgb-primary-color), 0.12) !important;
+  background-color: white;
 
-  color: #43273a !important;
-  background-image: var(--primary-dashed-border);
+  color: var(--text-color) !important;
+  background-image: var(--background--image);
+  background-position: 0px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: unset;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: var(--background) !important;
+}
+
+.ghost::before {
+  opacity: 0.12;
 }
 
 .buttonWrapper {
@@ -30,6 +50,39 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  width: 100%;
+  position: relative;
+  padding: clamp(10px, 0.83vw, 20px) clamp(20px, 1.66vw, 40px);
+  transition: 0.5ms;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.loader {
+  opacity: 0;
+  z-index: 2;
+  transition: 0.5ms;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button .loader svg {
+  width: 35px;
+  fill: var(--primary-color);
+}
+
+.button.primary .loader svg {
+  fill: white;
+}
+
+.button.loading .loader {
+  opacity: 1;
+}
+
+.button.loading .buttonWrapper {
+  opacity: 0;
 }
 
 .button svg {
@@ -38,48 +91,49 @@
 }
 .button svg path {
   transition: 0.4s ease-in-out;
-  fill: #43273a !important;
+  fill: var(--heading-color) !important;
 }
 .button span {
   position: absolute;
   display: block;
   width: 0;
   height: 0;
-  color: var(--primary-color);
+  color: var(--span-color);
   border-radius: 50%;
   transition:
     width 0.4s ease-in-out,
     height 0.4s ease-in-out;
   transform: translate(-50%, -50%);
-  background: var(--primary-color);
+  background: var(--span-color);
   z-index: -1;
 }
 .button:hover {
   transition: 0.4s ease-in-out;
-  color: #fefafd !important;
+  color: var(--body-background) !important;
 }
 .button:hover svg path {
   transition: 0.4s ease-in-out;
-  fill: #fefafd !important;
+  fill: var(--body-background) !important;
 }
 .button:hover span {
-  width: 225%;
+  width: 300%;
   height: 562.5px;
   z-index: -1;
 }
 
 .button.outline {
-  background-color: #fefafd !important;
+  --background: transparent !important;
 }
 .button.primary {
-  color: #fefafd !important;
-  background-color: var(--primary-color) !important;
+  --background: var(--primary-color) !important;
+  background-image: unset;
+  color: var(--body-background) !important;
 }
 .button.primary span {
   display: none;
 }
 .button.primary svg path {
-  fill: #fefafd !important;
+  fill: var(--body-background) !important;
 }
 .button.primary span {
   color: #f9ddf1;
@@ -88,4 +142,37 @@
 .button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+  pointer-events: none;
+}
+
+.button:disabled span {
+  display: none;
+}
+
+.danger {
+  --background: #fa5252;
+  --span-color: #fa5252;
+
+  --background--image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23fa5252' stroke-width='2' stroke-dasharray='4%2c 6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+
+  color: #fa5252 !important;
+}
+
+.danger svg path {
+  fill: #fa5252 !important;
+}
+
+.danger::before {
+  opacity: 0.12;
+}
+
+.button.success {
+  --background: #10c44d;
+  --span-color: #10c44d;
+
+  --background--image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%2310c44d' stroke-width='2' stroke-dasharray='4%2c 6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+}
+
+.button.success::before {
+  --background: #10c44d;
 }

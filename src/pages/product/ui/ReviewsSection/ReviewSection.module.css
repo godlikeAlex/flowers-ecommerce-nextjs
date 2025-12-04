@@ -1,0 +1,59 @@
+.reviewForm {
+  width: 420px;
+}
+
+.ratingInput {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  background-color: var(--body-background);
+  padding-block: 10px;
+  border-radius: 5px;
+  background-image: var(--primary-dashed-border);
+  background-position: center;
+}
+
+.ratingInputStar {
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background-color: unset;
+}
+
+.ratingInputStar:disabled {
+  background-color: unset !important;
+  border: unset !important;
+  opacity: 0.5;
+}
+
+.ratingInputStar:disabled:hover {
+  background-color: unset !important;
+  border: unset !important;
+}
+
+.ratingInputStar::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 12px;
+  top: 0;
+  right: -12px;
+}
+
+.ratingInputStar:last-child::after {
+  display: none;
+}
+
+.ratingInputStar * {
+  fill: #d5e6ff;
+}
+
+.ratingInputStarActive *,
+.ratingInputStar:not(:disabled):hover * {
+  fill: var(--primary-color);
+}
+
+.ratingInputStarIcon {
+  width: clamp(1.375rem, 0.5972rem + 3.5556vw, 2.375rem);
+  height: clamp(1.375rem, 0.5972rem + 3.5556vw, 2.375rem);
+}

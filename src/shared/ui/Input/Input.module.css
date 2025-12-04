@@ -1,6 +1,6 @@
 .input {
   width: 100%;
-  background-color: #fefafd;
+  background-color: var(--body-background);
   padding: 0 clamp(12px, 0.83vw, 24px);
   height: clamp(42px, 2.917vw, 72px);
   color: #808080;
@@ -34,4 +34,28 @@
 .input::placeholder {
   color: #808080;
   opacity: 1;
+}
+
+.input.error {
+  background-image: var(--error-dashed-border);
+  color: var(--error-color);
+}
+
+.input.error::placeholder {
+  color: var(--error-color);
+}
+
+.input.error:focus {
+  background-color: rgba(var(--rgb-error-color), 0.04) !important;
+}
+
+.input:read-only {
+  pointer-events: none;
+  background-color: var(--body-background) !important;
+}
+
+.errorMessage {
+  color: var(--error-color);
+  margin-top: 2px;
+  font-size: 12px;
 }

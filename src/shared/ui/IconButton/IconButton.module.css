@@ -1,0 +1,45 @@
+.icon-button {
+  display: flex;
+  font-size: clamp(16px, 1.042vw, 24px);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 0.83vw, 20px);
+  background-image: var(--primary-dashed-border-square);
+  background-position: 0px;
+  border-radius: 10px;
+  transition: all 0.5s ease-in;
+  border: unset;
+  cursor: pointer;
+}
+
+.icon-button svg,
+.icon-button path {
+  transition: all 0.5s ease-in;
+}
+
+.icon-button--primary {
+  background-color: var(--primary-color);
+}
+
+.icon-button--primary svg,
+.icon-button--primary path {
+  fill: white;
+}
+
+.icon-button--outline {
+  background-color: transparent;
+}
+
+.icon-button--outline svg,
+.icon-button--outline path {
+  fill: var(--heading-color) !important;
+}
+
+.icon-button--outline:hover {
+  background-color: var(--primary-color);
+}
+
+.icon-button--outline:hover svg,
+.icon-button--outline:hover path {
+  fill: white !important;
+}
