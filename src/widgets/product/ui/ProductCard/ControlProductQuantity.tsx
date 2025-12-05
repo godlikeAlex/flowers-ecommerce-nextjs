@@ -6,8 +6,10 @@ import Link from "next/link";
 import { ROUTES } from "@/shared/config";
 import { useCart } from "@/entities/cart";
 import { ThreeDots } from "react-loader-spinner";
+import { toast } from "sonner";
 
 import styles from "./ProductCard.module.css";
+import { PlusCircleIcon } from "@phosphor-icons/react/dist/ssr/PlusCircle";
 
 export default function ControlProductQuantity() {
   const cart = useCart();
@@ -52,7 +54,15 @@ export default function ControlProductQuantity() {
   };
 
   const handleAddToCart = async () => {
-    await addToCart();
+    try {
+      await addToCart();
+
+      toast.success("Product added to cart", { position: "bottom-center" });
+    } catch (e) {
+      console.log("Error while adding to cart: ", e);
+
+      toast.error("Cant add product to cart", { position: "bottom-center" });
+    }
   };
 
   if (cart.isPending) {
@@ -66,6 +76,10 @@ export default function ControlProductQuantity() {
   return (
     <>
       <QuantityControl
+        classNames={{
+          decrement: styles.buttonAction,
+          increment: styles.buttonAction,
+        }}
         value={quantity}
         onIncrement={onIncrement}
         onDecrement={onDecrement}
@@ -80,19 +94,30 @@ export default function ControlProductQuantity() {
       />
 
       {productStatus === "EDIT" ? (
-        <Button
-          variant="primary"
-          status="success"
-          className="w-100"
+        <IconButton
+          className={styles.buttonAction}
           as={Link}
           href={ROUTES.CART}
-          accessoryRight={<ShoppingCartSimpleIcon />}
-        >
-          Go To Cart
-        </Button>
+          variant="ghost"
+          icon={<ShoppingCartSimpleIcon />}
+        />
       ) : (
-        <IconButton onClick={addToCart} icon={<ShoppingCartSimpleIcon />} />
+        <IconButton
+          className={styles.buttonAction}
+          onClick={handleAddToCart}
+          icon={<IconAdd />}
+        />
       )}
     </>
   );
 }
+
+const IconAdd = () => (
+  <div className="position-relative d-flex justify-center align-items-center">
+    <ShoppingCartSimpleIcon />
+    <PlusCircleIcon
+      style={{ position: "absolute", right: -5, top: -3, fontSize: 13 }}
+      weight="fill"
+    />
+  </div>
+);

@@ -8,13 +8,20 @@ import image from "./empty-reviews.png";
 import { useState } from "react";
 import ReviewForm from "./ReviewForm";
 
-export default function ReviewsSection() {
+interface Props {
+  productID: number;
+}
+
+export default function ReviewsSection({ productID }: Props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <>
       <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-        <ReviewForm />
+        <ReviewForm
+          productID={productID}
+          onSuccess={() => setModalIsOpen(false)}
+        />
       </Modal>
 
       <EmptyState>

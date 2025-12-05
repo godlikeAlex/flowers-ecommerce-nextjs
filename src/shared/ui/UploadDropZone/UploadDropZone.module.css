@@ -1,0 +1,69 @@
+.fileUpload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  padding: 17px;
+  border-radius: 5px;
+  width: 100%;
+  height: 154px;
+
+  background-color: var(--body-background);
+
+  background-image: var(--primary-dashed-border);
+  border-radius: 5px;
+  background-position: center;
+
+  color: var(--text-color);
+}
+
+.fileUploadIcon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: auto;
+  margin-bottom: 10px;
+
+  fill: var(--primary-color);
+}
+
+.fileUploadPreviewContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.fileUploadPreview {
+  position: relative;
+  margin-top: 15px;
+}
+
+.fileUploadPreview img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.fileUploadPreviewClose {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--text-color);
+  color: white;
+  border-radius: 50%;
+
+  width: 24px;
+  height: 24px;
+  border: none;
+
+  cursor: pointer;
+}

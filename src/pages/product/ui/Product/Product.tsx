@@ -71,7 +71,10 @@ export default async function ProductPage({
           </div>
 
           <div>
-            <ProductTabs description={product.description} />
+            <ProductTabs
+              productID={product.id}
+              description={product.description}
+            />
           </div>
         </div>
       </div>
