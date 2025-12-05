@@ -43,3 +43,20 @@
 .icon-button--outline:hover path {
   fill: white !important;
 }
+
+.icon-button--ghost {
+  background-color: var(--ghost-color);
+}
+.icon-button--ghost svg,
+.icon-button--ghost path {
+  fill: var(--heading-color) !important;
+}
+
+.icon-button--ghost:hover {
+  background-color: var(--primary-color);
+}
+
+.icon-button--ghost:hover svg,
+.icon-button--ghost:hover path {
+  fill: white !important;
+}

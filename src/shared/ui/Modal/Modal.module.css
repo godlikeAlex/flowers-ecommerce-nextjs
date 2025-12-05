@@ -22,6 +22,7 @@
   min-height: 100vh;
   padding-top: 12px;
   padding-bottom: 12px;
+  padding-inline: 10px;
 }
 
 .content {

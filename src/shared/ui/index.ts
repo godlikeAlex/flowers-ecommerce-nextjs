@@ -18,5 +18,6 @@ export { GooglePlaces } from "./GooglePlaces";
 export { Textarea } from "./Textarea";
 export { InputErrorMessage } from "./InputErrorMessage";
 export { DayPicker } from "./DayPicker";
+export { UploadDropZone } from "./UploadDropZone";
 
 export * from "./icons";

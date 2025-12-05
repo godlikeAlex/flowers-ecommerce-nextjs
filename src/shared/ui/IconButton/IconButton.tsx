@@ -7,7 +7,7 @@ type Props<C extends ElementType> = {
   icon: ReactNode;
   as?: C;
   className?: string;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "ghost";
   disabled?: boolean;
 } & ComponentPropsWithoutRef<C>;
 
@@ -27,6 +27,7 @@ export default function IconButton<C extends ElementType = "button">({
         {
           [styles["icon-button--primary"]]: variant === "primary",
           [styles["icon-button--outline"]]: variant === "outline",
+          [styles["icon-button--ghost"]]: variant === "ghost",
         },
         className,
       )}
