@@ -37,6 +37,7 @@
     "react-day-picker": "^9.11.3",
     "react-dom": "19.2.0",
     "react-dropdown-select": "^4.12.2",
+    "react-dropzone": "^14.3.8",
     "react-google-autocomplete": "^2.7.5",
     "react-hook-form": "^7.66.0",
     "react-loader-spinner": "^8.0.0",
