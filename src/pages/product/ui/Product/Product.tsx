@@ -1,5 +1,3 @@
-import { StarIcon } from "@phosphor-icons/react/dist/ssr/Star";
-
 import { ProductCarousel } from "../ProductCarousel";
 import styles from "./Product.module.css";
 import { ShareButtons } from "../ShareButtons";
@@ -9,6 +7,7 @@ import { getProduct, Product } from "@/entities/product";
 import { notFound } from "next/navigation";
 import { ProductTabs } from "../ProductTabs";
 import { ProductSelectionProvider } from "@/widgets/product";
+import { ProductRating } from "../ProductRating";
 
 export default async function ProductPage({
   params,
@@ -40,13 +39,10 @@ export default async function ProductPage({
                 <div className={clsx(styles.productInfo, "mb-16")}>
                   <h4>{product.name}</h4>
 
-                  <div className={styles.rating}>
-                    <StarIcon weight="fill" />
-                    <StarIcon weight="fill" />
-                    <StarIcon weight="fill" />
-                    <StarIcon weight="fill" />
-                    <StarIcon weight="fill" />
-                  </div>
+                  <ProductRating
+                    rating={product.rating}
+                    totalReviews={product.total_reviews}
+                  />
 
                   <div>{product.card_description}</div>
                 </div>

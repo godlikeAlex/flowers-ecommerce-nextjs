@@ -1,7 +1,18 @@
+interface SummaryRating {
+  "1": number;
+  "2": number;
+  "3": number;
+  "4": number;
+  "5": number;
+}
+
 export interface Product {
   id: number;
   name: string;
   slug: string;
+  rating: number;
+  total_reviews: number;
+  summary_ratings: SummaryRating;
   description: string;
   card_description: string;
   options: ProductOption[];
