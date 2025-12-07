@@ -8,7 +8,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
 import { Controller, useForm } from "react-hook-form";
-import z from "zod";
 import RatingInput from "./RatingInput";
 import { toast } from "sonner";
 

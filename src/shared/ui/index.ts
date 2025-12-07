@@ -19,5 +19,7 @@ export { Textarea } from "./Textarea";
 export { InputErrorMessage } from "./InputErrorMessage";
 export { DayPicker } from "./DayPicker";
 export { UploadDropZone } from "./UploadDropZone";
+export { StarRating } from "./StarRating";
+export { AvatarPlaceholder } from "./AvatarPlaceholder";
 
 export * from "./icons";
