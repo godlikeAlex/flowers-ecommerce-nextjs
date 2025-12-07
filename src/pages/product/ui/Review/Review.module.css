@@ -1,0 +1,10 @@
+.review {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.date {
+  font-style: italic;
+  font-size: 13px;
+}

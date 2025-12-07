@@ -7,7 +7,7 @@ import { getProduct, Product } from "@/entities/product";
 import { notFound } from "next/navigation";
 import { ProductTabs } from "../ProductTabs";
 import { ProductSelectionProvider } from "@/widgets/product";
-import { ProductRating } from "../ProductRating";
+import { StarRating } from "@/shared/ui";
 
 export default async function ProductPage({
   params,
@@ -39,9 +39,13 @@ export default async function ProductPage({
                 <div className={clsx(styles.productInfo, "mb-16")}>
                   <h4>{product.name}</h4>
 
-                  <ProductRating
+                  <StarRating
                     rating={product.rating}
-                    totalReviews={product.total_reviews}
+                    label={
+                      product.total_reviews > 0
+                        ? `${product.rating} (${product.total_reviews})`
+                        : "No Reviews"
+                    }
                   />
 
                   <div>{product.card_description}</div>
@@ -70,6 +74,8 @@ export default async function ProductPage({
             <ProductTabs
               productID={product.id}
               description={product.description}
+              totalReviews={product.total_reviews}
+              productRating={product.rating}
             />
           </div>
         </div>

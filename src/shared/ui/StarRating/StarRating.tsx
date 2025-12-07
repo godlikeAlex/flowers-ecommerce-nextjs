@@ -2,16 +2,16 @@
 
 import { StarIcon } from "@phosphor-icons/react/dist/ssr/Star";
 
-import styles from "./ProductRating.module.css";
+import styles from "./StarRating.module.css";
 
 interface Props {
   rating: number;
-  totalReviews: number;
+  label?: string;
 }
 
 const COUNT_STARS_RATING = [1, 2, 3, 4, 5];
 
-export default function ProductRating({ rating, totalReviews }: Props) {
+export default function StarRating({ rating, label }: Props) {
   return (
     <div className={styles["rating-container"]}>
       <div className={styles["stars-container"]}>
@@ -23,13 +23,7 @@ export default function ProductRating({ rating, totalReviews }: Props) {
         ))}
       </div>
 
-      {totalReviews > 0 ? (
-        <span className={styles.label}>
-          {rating} ({totalReviews})
-        </span>
-      ) : (
-        <span className={styles.label}>No Reviews</span>
-      )}
+      {label && <span className={styles.label}>{label}</span>}
     </div>
   );
 }
