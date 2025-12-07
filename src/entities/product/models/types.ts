@@ -1,7 +1,20 @@
+import { MediaAsset } from "@/shared/types";
+
+interface SummaryRating {
+  "1": number;
+  "2": number;
+  "3": number;
+  "4": number;
+  "5": number;
+}
+
 export interface Product {
   id: number;
   name: string;
   slug: string;
+  rating: number;
+  total_reviews: number;
+  summary_ratings: SummaryRating;
   description: string;
   card_description: string;
   options: ProductOption[];
@@ -37,12 +50,4 @@ export interface ProductOption {
   price: number;
 }
 
-export interface SliderAsset {
-  id: number;
-  mime_type: string;
-  uuid: string;
-  original_url: string;
-  compressed_url: string;
-  blur_preview: string;
-  thumb_url: string;
-}
+export type SliderAsset = MediaAsset;

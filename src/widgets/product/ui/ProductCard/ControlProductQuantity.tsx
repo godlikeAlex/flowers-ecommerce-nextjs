@@ -1,4 +1,4 @@
-import { Button, IconButton, QuantityControl } from "@/shared/ui";
+import { IconButton, QuantityControl } from "@/shared/ui";
 import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
 import { useProductCart } from "../../model/use-product-сart";
 import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";

@@ -71,7 +71,7 @@ export default function Footer({ categories }: Props) {
                       <Anchor
                         as={Link}
                         variant="hover"
-                        href="+18483450492"
+                        href="tel+18483450492"
                         className="accent-dark"
                       >
                         +1 848-345-0492

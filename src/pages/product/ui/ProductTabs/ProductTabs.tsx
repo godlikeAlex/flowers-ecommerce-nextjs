@@ -6,9 +6,16 @@ import { ReviewSection } from "../ReviewsSection";
 interface Props {
   productID: number;
   description: string;
+  totalReviews: number;
+  productRating: number;
 }
 
-export default function ProductTabs({ description, productID }: Props) {
+export default function ProductTabs({
+  description,
+  productID,
+  totalReviews,
+  productRating,
+}: Props) {
   return (
     <TabGroup>
       <TabList>
@@ -24,7 +31,11 @@ export default function ProductTabs({ description, productID }: Props) {
           />
         </TabPanel>
         <TabPanel>
-          <ReviewSection productID={productID} />
+          <ReviewSection
+            productID={productID}
+            productRating={productRating}
+            totalReviews={totalReviews}
+          />
         </TabPanel>
       </TabPanels>
     </TabGroup>
