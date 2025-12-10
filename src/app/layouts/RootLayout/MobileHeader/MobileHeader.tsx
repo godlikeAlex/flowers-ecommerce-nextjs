@@ -11,6 +11,7 @@ import { CategoryMenu } from "@/entities/category";
 import { ROUTES } from "@/shared/config";
 
 import styles from "./MobileHeader.module.css";
+import { MapPinSimpleIcon } from "@phosphor-icons/react/dist/ssr/MapPinSimple";
 
 interface Props {
   isOpen: boolean;
@@ -88,13 +89,24 @@ export default function MobileHeader({ isOpen, onClose, menuSegments }: Props) {
             <span className={styles["footer-icon"]}>
               <EnvelopeSimpleIcon />
             </span>
-            <a href="mailto:info@bluemelle.com">info@bluemelle.com</a>
+            <Link href="mailto:info@bluemelle.com">info@bluemelle.com</Link>
           </li>
           <li>
             <span className={styles["footer-icon"]}>
               <PhoneIcon />
             </span>
-            <a href="tel:+18483450492">+1 848-345-0492</a>
+            <Link href="tel:+18483450492">+1 848-345-0492</Link>
+          </li>
+          <li>
+            <span className={styles["footer-icon"]}>
+              <MapPinSimpleIcon />
+            </span>
+            <Link
+              href="https://maps.app.goo.gl/QXWxdJwzar1QxVHm7"
+              target="_blank"
+            >
+              1212 Rt 34, Suite 25, Aberdeen, NJ 07747
+            </Link>
           </li>
         </ul>
       </div>
