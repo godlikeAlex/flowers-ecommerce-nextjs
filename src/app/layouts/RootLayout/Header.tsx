@@ -19,6 +19,7 @@ import { MobileHeader } from "./MobileHeader";
 import { CategoryMenu } from "@/entities/category";
 import HeaderMenuItem from "./HeaderMenuItem";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { PhoneCallIcon } from "@phosphor-icons/react/dist/ssr/PhoneCall";
 
 export interface StaticMenuItem {
   label: string;
@@ -29,6 +30,7 @@ export interface StaticMenuItem {
 
 const START_MENU_ITEMS: StaticMenuItem[] = [
   { label: "Home", path: ROUTES.HOME, activeSegment: [null] },
+  { label: "Shop", path: ROUTES.SHOP([]), activeSegment: [] },
 ];
 
 const END_MENU_ITEMS: StaticMenuItem[] = [
@@ -100,6 +102,13 @@ export default function Header({ categories }: Props) {
             <div className={clsx(styles["main-menu__block"])}>
               <div className={clsx(styles["main-menu__left"])}>
                 <div className={clsx(styles["main-menu__logo"])}>
+                  <button
+                    onClick={() => setMobileIsOpen(true)}
+                    className={clsx(styles["mobile-nav__toggler"])}
+                  >
+                    <ListIcon />
+                  </button>
+
                   <Link href={ROUTES.HOME} className={clsx(styles.logo)}>
                     <Image
                       loading="eager"
@@ -130,7 +139,13 @@ export default function Header({ categories }: Props) {
                 />
                 <IconButton
                   variant="outline"
-                  className={clsx("d-xl-flex d-none")}
+                  className={clsx("d-xl-none d-flex")}
+                  as={Link}
+                  href={`tel:+18483450492`}
+                  icon={<PhoneCallIcon width={20} height={20} />}
+                />
+                <IconButton
+                  variant="outline"
                   as={Link}
                   href={ROUTES.CART}
                   icon={<ShoppingCartSimpleIcon width={20} height={20} />}
@@ -144,12 +159,6 @@ export default function Header({ categories }: Props) {
                 >
                   Contact Us
                 </Button>
-                <button
-                  onClick={() => setMobileIsOpen(true)}
-                  className={clsx(styles["mobile-nav__toggler"])}
-                >
-                  <ListIcon />
-                </button>
               </div>
             </div>
           </div>
