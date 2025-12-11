@@ -9,17 +9,19 @@ import { BlogSection } from "../BlogSection";
 import { HomeSection } from "../HomeSection";
 import { getHomePageData } from "../../api/get-home-page-data";
 import { PostCard } from "@/entities/post";
-import { ProductCard } from "@/entities/product";
+import { getMenuCategories } from "@/entities/category";
+import { FeaturedSection } from "@/entities/featured-section";
 
 export default async function Home() {
+  const categories = await getMenuCategories();
   let posts: PostCard[] = [];
-  let featuredCategories: { name: string; products: ProductCard[] }[] = [];
+  let featuredSections: FeaturedSection[] = [];
 
   try {
     const { data } = await getHomePageData();
 
     posts = data.latest_posts;
-    featuredCategories = data.categories;
+    featuredSections = data.featured_section;
   } catch (e) {
     console.log("Error while loading data", e);
   }
@@ -31,7 +33,7 @@ export default async function Home() {
         <AdvantagesSection />
 
         <div className="mt-48">
-          <FeaturedCategoriesSection />
+          <FeaturedCategoriesSection categories={categories} />
         </div>
       </HomeSection>
 
@@ -39,11 +41,13 @@ export default async function Home() {
         <AboutSection />
       </section>
 
-      {featuredCategories.map((category, index) => (
+      {featuredSections.map((section, index) => (
         <section key={index} style={{ paddingBottom: 80 }}>
           <FeaturedCategoryShowcase
-            title={category.name}
-            products={category.products}
+            title={section.title}
+            products={section.products}
+            buttonText={section.button_text}
+            buttonLink={section.button_link}
           />
         </section>
       ))}

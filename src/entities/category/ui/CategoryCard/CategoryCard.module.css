@@ -13,23 +13,56 @@
   display: block;
 }
 .category-card.bg-gradient-1 {
-  background: linear-gradient(110deg, #ffeaf1 -9.36%, #f8e9ff 103.16%);
+  background: linear-gradient(
+    110deg,
+    var(--primary-color-green) -9.36%,
+    var(--primary-color-beige) 103.16%
+  );
 }
 .category-card.bg-gradient-2 {
-  background:
-    linear-gradient(
-      105deg,
-      #ffece2 -3.62%,
-      rgba(255, 248, 222, 0.91) 113.31%,
-      rgba(255, 232, 149, 0.75) 113.32%
-    ),
-    linear-gradient(110deg, #ffeaf1 -9.36%, #f8e9ff 103.16%);
+  background: linear-gradient(
+    104deg,
+    var(--additional-color-blue) 0%,
+    var(--primary-color-beige) 100%
+  );
 }
 .category-card.bg-gradient-3 {
-  background: linear-gradient(104deg, #feffe1 0%, #e9f0ff 100%);
+  background: linear-gradient(
+    104deg,
+    var(--additional-color-pink) 0%,
+    var(--primary-color-beige) 100%
+  );
+}
+.category-card.bg-gradient-4 {
+  background: linear-gradient(
+    104deg,
+    var(--primary-color-beige) 0%,
+    #f9dc68 100%
+  );
+}
+
+.category-card.bg-gradient-5 {
+  background: linear-gradient(
+    104deg,
+    var(--primary-light-blue) 0%,
+    var(--primary-color-beige) 100%
+  );
+}
+
+.category-card.bg-gradient-6 {
+  background: linear-gradient(
+    104deg,
+    var(--primary-color-blue) 0%,
+    var(--primary-color-beige) 100%
+  );
+  color: var(--primary-light-blue);
 }
 
 .title {
   display: block;
   margin-bottom: 24px;
+}
+
+.category-card.bg-gradient-6 .title {
+  color: var(--primary-color-beige);
 }

@@ -2,6 +2,8 @@ export interface Category {
   id: number;
   name: string;
   slug: string;
+  cover: string | null;
+  blur_image: string | null;
   children?: Category[];
 }
 
