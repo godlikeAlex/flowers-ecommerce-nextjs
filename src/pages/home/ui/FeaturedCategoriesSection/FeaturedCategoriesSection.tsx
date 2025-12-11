@@ -1,46 +1,24 @@
+import { CategoryMenu } from "@/entities/category";
 import { CategoryCard } from "@/entities/category/ui";
 import { ROUTES } from "@/shared/config";
 
-const CATEGORIES: {
-  name: string;
-  href: string;
-  image: string;
-  variant: "pink" | "yellow" | "beige";
-}[] = [
-  {
-    name: "Rose Varieties",
-    href: ROUTES.SHOP([]),
-    image: "/images/categories/category-01.png",
-    variant: "pink",
-  },
-  {
-    name: "Rose Varieties",
-    href: ROUTES.SHOP([]),
-    image: "/images/categories/category-02.png",
-    variant: "beige",
-  },
-  {
-    name: "Rose Varieties",
-    href: ROUTES.SHOP([]),
-    image: "/images/categories/category-03.png",
-    variant: "yellow",
-  },
-  {
-    name: "Rose Varieties",
-    href: ROUTES.SHOP([]),
-    image: "/images/categories/category-04.png",
-    variant: "pink",
-  },
-];
+interface Props {
+  categories: CategoryMenu[];
+}
 
-export default function FeaturedCategoriesSection() {
+export default function FeaturedCategoriesSection({ categories }: Props) {
   return (
     <div className="categories">
       <div className="container-fluid">
         <div className="row row-gap-4 justify-content-center">
-          {CATEGORIES.map((category, index) => (
-            <div key={index} className="col-lg-3 col-sm-6">
-              <CategoryCard {...category} />
+          {categories.map((category) => (
+            <div key={category.id} className="col-lg-4 col-sm-6">
+              <CategoryCard
+                image="/images/categories/category-01.png"
+                name={category.name}
+                href={ROUTES.SHOP([category.slug])}
+                variant="pink"
+              />
             </div>
           ))}
         </div>
