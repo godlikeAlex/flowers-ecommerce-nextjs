@@ -1,12 +1,16 @@
+import { cache } from "react";
 import { ApiClient } from "@/shared/api";
 import { CategoryMenu } from "../models/types";
 
 type Response = CategoryMenu[];
 
-export async function getMenuCategories() {
+export const getMenuCategories = cache(async () => {
   try {
-    return ApiClient.GET<Response>("/menu-categories");
+    const { data } = await ApiClient.GET<Response>("/menu-categories");
+
+    return data;
   } catch {
     console.error("Whoops error while get menu categories");
+    return [];
   }
-}
+});

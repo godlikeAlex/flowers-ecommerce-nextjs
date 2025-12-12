@@ -25,15 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let categories: CategoryMenu[] = [];
-
-  try {
-    const response = await getMenuCategories();
-
-    categories = response?.data || [];
-  } catch (e) {
-    console.error("Error while fetching menu:", e);
-  }
+  const categories = await getMenuCategories();
 
   return (
     <html lang="en" className={bluemelleFont.className}>

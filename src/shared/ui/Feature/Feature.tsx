@@ -1,21 +1,20 @@
 import { Icon } from "@phosphor-icons/react/dist/lib/types";
 import styles from "./Feature.module.css";
+import Image from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 interface Props {
   title: string;
   description: string;
-  icon: Icon;
+  icon: StaticImport;
 }
 
-export default function Feature({
-  title,
-  description,
-  icon: IconElement,
-}: Props) {
+export default function Feature({ title, description, icon }: Props) {
   return (
     <div className={styles["feature-block"]}>
       <div className={styles.icon}>
-        <IconElement width={52} height={52} />
+        <Image src={icon} alt={title} />
+        {/*<IconElement width={52} height={52} />*/}
       </div>
       <div>
         <h5 className="mb-8">{title}</h5>
