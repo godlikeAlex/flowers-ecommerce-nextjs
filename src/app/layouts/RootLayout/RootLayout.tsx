@@ -13,6 +13,7 @@ import NextTopLoader from "nextjs-toploader";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import { ScrollToTop } from "./ScrollToTop";
+import { SlideOverCart } from "@/widgets/cart/ui";
 
 export const metadata: Metadata = {
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
@@ -34,6 +35,7 @@ export default async function RootLayout({
         <main className="main">
           <Providers>
             <NextTopLoader color="#0b5bb2" />
+            <SlideOverCart />
 
             <Header categories={categories} />
             {children}
