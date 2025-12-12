@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import vector1 from "./vector1.png";
-import vector2 from "./vector2.png";
+import vector1 from "./vector-1.png";
+import vector2 from "./vector-2.png";
 
 import styles from "./PageBanner.module.css";
 
