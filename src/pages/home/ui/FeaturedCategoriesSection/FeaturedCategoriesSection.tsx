@@ -8,8 +8,6 @@ interface Props {
 }
 
 export default function FeaturedCategoriesSection({ categories }: Props) {
-  console.log(categories);
-
   return (
     <div className="categories">
       <div className="container-fluid">
