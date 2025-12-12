@@ -1,2 +1,4 @@
+export type { Cart, CartItem, CartAddonRecomendation } from "./model/types";
+
 export { useCart } from "./model/useCart";
-export type { Cart, CartItem } from "./model/types";
+export { useCartRecomendations } from "./model/useCartRecomendations";

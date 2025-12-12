@@ -1,10 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
+"use client";
+
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCart } from "../api/get-cart";
+import { useEffect } from "react";
+import { QUERY_CART_RECOMMENDATION_KEY } from "./useCartRecomendations";
 
 export const QUERY_CART_KEY = "cart";
 
 export function useCart() {
-  return useQuery({
+  const queryClient = useQueryClient();
+  const query = useQuery({
     refetchOnMount: true,
     queryKey: [QUERY_CART_KEY],
     queryFn: async () => {
@@ -13,4 +18,15 @@ export function useCart() {
       return data;
     },
   });
+
+  useEffect(() => {
+    if (query.data) {
+      console.log("hey");
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_CART_RECOMMENDATION_KEY],
+      });
+    }
+  }, [query.data, queryClient]);
+
+  return query;
 }

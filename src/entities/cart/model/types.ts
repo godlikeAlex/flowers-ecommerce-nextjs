@@ -1,5 +1,4 @@
-import { ProductAddon } from "@/entities/product";
-import { ProductOption } from "@/entities/product/@x/cart";
+import { ProductOption, ProductAddon } from "@/entities/product/@x/cart";
 
 export interface Cart {
   cart_token: string;
@@ -22,4 +21,9 @@ export interface CartItem {
   total: number;
   product_option: ProductOption;
   addons: ProductAddon[];
+}
+
+export interface CartAddonRecomendation {
+  parent_option_id: number;
+  addon: ProductAddon;
 }
