@@ -2,10 +2,9 @@
 
 import { formatPrice } from "@/shared/lib";
 import { Button, QuantityControl } from "@/shared/ui";
-import { ProductAddon, ProductOption } from "@/entities/product";
+import { ProductAddonsGroups, ProductOption } from "@/entities/product";
 import { ShoppingCartSimpleIcon } from "@phosphor-icons/react/dist/ssr/ShoppingCartSimple";
 
-import { ProductAddons } from "../ProductAddons";
 import { ProductOptionsList } from "../ProductOptionsList";
 import Link from "next/link";
 
@@ -13,15 +12,16 @@ import styles from "./ProductOrderControls.module.css";
 import clsx from "clsx";
 import { useProductCart } from "@/widgets/product";
 import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
+import { ProductAddonsSection } from "@/widgets/product/ui";
 
 interface Props {
   productOptions: ProductOption[];
-  productAddons: ProductAddon[];
+  addonGroups: ProductAddonsGroups;
 }
 
 export default function ProductOrderControls({
   productOptions,
-  productAddons,
+  addonGroups,
 }: Props) {
   const {
     productState: { selectedOption, selectedAddons, quantity, productStatus },
@@ -32,6 +32,7 @@ export default function ProductOrderControls({
     quantityIsDisabled,
   } = useProductCart();
 
+  const addonGroupEntries = Object.entries(addonGroups);
   const basicPrice = formatPrice(selectedOption?.price ?? 0);
 
   const totalPrice = (() => {
@@ -96,13 +97,17 @@ export default function ProductOrderControls({
         )}
       </div>
 
-      {productAddons.length > 0 && (
-        <div>
-          <ProductAddons addons={productAddons} />
+      {addonGroupEntries.length > 0 &&
+        addonGroupEntries.map(([groupName, addons]) => (
+          <div key={groupName}>
+            <ProductAddonsSection
+              addons={addons}
+              groupLabel={groupName !== "ungrouped" ? groupName : undefined}
+            />
 
-          <hr className="dash-line mb-16" />
-        </div>
-      )}
+            <hr className="dash-line mb-16" />
+          </div>
+        ))}
 
       <h3 className="accent-dark d-block d-md-none mb-16 text-center primary-color">
         <span className="bold-text">{totalPrice}</span>
