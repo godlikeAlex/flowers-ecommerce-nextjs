@@ -81,7 +81,7 @@ export default function SlideOverCart() {
             <div className="d-flex justify-content-between align-items-center mb-24">
               <h6>Total:</h6>
               <h6 className="color-primary">
-                {formatPrice(cart.data?.total ?? 0)}
+                {formatPrice(cart.data?.pickup.total ?? 0)}
               </h6>
             </div>
             <hr className="dash-line mb-24" />
