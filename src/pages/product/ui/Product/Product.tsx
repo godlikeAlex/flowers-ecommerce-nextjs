@@ -53,7 +53,7 @@ export default async function ProductPage({
 
                 <ProductSelectionProvider selectedOption={product.options[0]}>
                   <ProductOrderControls
-                    productAddons={product.addons}
+                    addonGroups={product.addons}
                     productOptions={product.options}
                   />
                 </ProductSelectionProvider>

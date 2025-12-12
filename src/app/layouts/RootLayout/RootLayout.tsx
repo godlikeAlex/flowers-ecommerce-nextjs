@@ -8,7 +8,7 @@ import "@/app/global.css";
 
 import Header from "./Header";
 import { Footer } from "@/shared/ui";
-import { CategoryMenu, getMenuCategories } from "@/entities/category";
+import { getMenuCategories } from "@/entities/category";
 import NextTopLoader from "nextjs-toploader";
 
 import "react-loading-skeleton/dist/skeleton.css";

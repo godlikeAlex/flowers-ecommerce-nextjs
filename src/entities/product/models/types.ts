@@ -18,7 +18,7 @@ export interface Product {
   description: string;
   card_description: string;
   options: ProductOption[];
-  addons: ProductAddon[];
+  addons: ProductAddonsGroups;
   slider_assets: SliderAsset[];
 }
 
@@ -31,6 +31,8 @@ export interface ProductAddon {
   options: ProductOption[];
   blur_preview: string;
 }
+
+export type ProductAddonsGroups = Record<string, ProductAddon[]>;
 
 export interface ProductCard {
   id: number;
