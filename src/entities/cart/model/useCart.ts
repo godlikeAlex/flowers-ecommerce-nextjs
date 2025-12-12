@@ -19,14 +19,5 @@ export function useCart() {
     },
   });
 
-  useEffect(() => {
-    if (query.data) {
-      console.log("hey");
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_CART_RECOMMENDATION_KEY],
-      });
-    }
-  }, [query.data, queryClient]);
-
   return query;
 }

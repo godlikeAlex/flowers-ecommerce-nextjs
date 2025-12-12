@@ -12,6 +12,8 @@ export const checkoutSchema = z
   .object({
     name: nameSchema,
     email: emailSchema,
+    recipientName: nameSchema,
+    recipientPhone: usTelephoneSchema,
     deliveryDate: z.date({ error: "Please select delivery date" }),
     deliveryTime: z.string({ error: "Please select delivery time" }),
     phone: usTelephoneSchema,
@@ -23,6 +25,9 @@ export const checkoutSchema = z
       },
       { error: "Please select shipping address" },
     ),
+    orderType: z
+      .union([z.literal("pickup"), z.literal("delivery")])
+      .default("pickup"),
     termsAccepted: z
       .boolean("You must accept the terms")
       .refine((accepted) => accepted === true, {

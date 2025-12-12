@@ -51,6 +51,7 @@ export default function DayPicker({
       {isShowingCalendar && (
         <ReactDayPicker
           {...props}
+          onDayClick={() => setIsShowingCalendar(false)}
           classNames={{
             caption_label: clsx(
               defaultClassNames["caption_label"],

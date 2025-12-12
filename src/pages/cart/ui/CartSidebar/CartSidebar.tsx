@@ -16,7 +16,7 @@ export default function CartSidebar() {
   return (
     <Sidebar heading="Cart Total" sticky>
       <Sidebar.PriceListItem title="Subtotal" price={cart.data.sub_total} />
-      <Sidebar.PriceListItem title="Shipping" price={0} />
+
       {cart.data.discount_amount > 0 && (
         <Sidebar.PriceListItem
           title="Discount"
@@ -24,8 +24,13 @@ export default function CartSidebar() {
         />
       )}
 
+      <Sidebar.PriceListItem
+        title="Tax (6.625%)"
+        price={cart.data.tax_amount}
+      />
+
       <div className="mt-4">
-        <Sidebar.Total price={cart.data.total} />
+        <Sidebar.Total price={cart.data.pickup.total} />
       </div>
 
       <div className="mt-4">

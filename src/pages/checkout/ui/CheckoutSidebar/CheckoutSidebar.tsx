@@ -20,7 +20,14 @@ export default function CheckoutSidebar({
   const {
     control,
     formState: { errors },
+    watch,
   } = useFormContext<CheckoutForm>();
+
+  const orderType = watch("orderType");
+
+  const checkoutPrices = cart.data
+    ? cart.data[orderType === "pickup" ? "pickup" : "delivery"]
+    : undefined;
 
   if (cart.isPending || cart.isError) {
     return <Skeleton height={450} borderRadius={10} />;
@@ -29,7 +36,7 @@ export default function CheckoutSidebar({
   return (
     <Sidebar heading="Checkout" sticky>
       <Sidebar.PriceListItem title="Subtotal" price={cart.data.sub_total} />
-      <Sidebar.PriceListItem title="Shipping" price={0} />
+
       {cart.data.discount_amount > 0 && (
         <Sidebar.PriceListItem
           title="Discount"
@@ -37,8 +44,20 @@ export default function CheckoutSidebar({
         />
       )}
 
+      <Sidebar.PriceListItem
+        title="Tax (6.625%)"
+        price={cart.data.tax_amount}
+      />
+
+      {checkoutPrices?.delivery_fee && checkoutPrices?.delivery_fee > 0 ? (
+        <Sidebar.PriceListItem
+          title="Shipping"
+          price={checkoutPrices.delivery_fee}
+        />
+      ) : null}
+
       <div className="mt-4">
-        <Sidebar.Total price={cart.data?.total} />
+        <Sidebar.Total price={checkoutPrices?.total ?? 0} />
       </div>
 
       <div className="mt-4">

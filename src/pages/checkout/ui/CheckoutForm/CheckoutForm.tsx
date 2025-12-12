@@ -1,5 +1,11 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { DayPicker, GooglePlaces, Input, Textarea } from "@/shared/ui";
+import {
+  Checkbox,
+  DayPicker,
+  GooglePlaces,
+  Input,
+  Textarea,
+} from "@/shared/ui";
 import TimeField from "react-simple-timefield";
 
 import type { CheckoutForm as ICheckoutForm } from "../../model/checkout-schema";
@@ -10,12 +16,24 @@ import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
 import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
+import { set } from "date-fns";
 
 interface Props {
   checkoutFormID: string;
   paymentIsProccessing: boolean;
   setPaymentIsProccessing: (isProcessing: boolean) => void;
 }
+
+const INTERVALS = [
+  {
+    label: "9:00 AM – 1:00 PM",
+    time: "09:00",
+  },
+  {
+    label: "1:00 PM – 4:00 PM",
+    time: "13:00",
+  },
+];
 
 export default function CheckoutForm({
   checkoutFormID,
@@ -30,16 +48,19 @@ export default function CheckoutForm({
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useFormContext<ICheckoutForm>();
   const createOrderMutation = useCreateOrder();
   const router = useRouter();
+
+  const orderType = watch("orderType");
 
   useEffect(() => {
     if (user.data) {
       reset({
         name: user.data.name,
         email: user.data.email,
-        deliveryTime: "12:30",
+        deliveryTime: "09:00",
       });
     }
   }, [user.data, reset]);
@@ -127,7 +148,56 @@ export default function CheckoutForm({
       <h5 className="mb-32">Shipping Details</h5>
 
       <div className="mb-32">
+        <div className="row mb-2 row-gap-2">
+          <Controller
+            control={control}
+            name="orderType"
+            render={({ field }) => (
+              <>
+                <div className="col-md-12">
+                  <Checkbox
+                    label="Pickup"
+                    checked={field.value === "pickup"}
+                    onChange={() => field.onChange("pickup")}
+                  />
+                </div>
+
+                <div className="col-md-12">
+                  <Checkbox
+                    label="Delivery + 20$"
+                    checked={field.value === "delivery"}
+                    onChange={() => field.onChange("delivery")}
+                  />
+                </div>
+              </>
+            )}
+          />
+        </div>
+
         <div className="row row-gap-3">
+          {orderType === "delivery" ? (
+            <>
+              <div className="col-md-6">
+                <Input
+                  placeholder="Recipient Name"
+                  disabled={paymentIsProccessing}
+                  error={errors.recipientName?.message}
+                  {...register("recipientName")}
+                />
+              </div>
+
+              <div className="col-md-6">
+                <Input.Mask
+                  placeholder="Recipient Phone"
+                  {...US_TELEPHONE_MASK}
+                  disabled={paymentIsProccessing}
+                  error={errors.recipientPhone?.message}
+                  {...register("recipientPhone")}
+                />
+              </div>
+            </>
+          ) : null}
+
           <div className="col-md-6">
             <Controller
               control={control}
@@ -148,23 +218,38 @@ export default function CheckoutForm({
             />
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
             <Controller
               control={control}
               name="deliveryTime"
               disabled={paymentIsProccessing}
               render={({ field }) => (
-                <TimeField
-                  value={field.value}
-                  onChange={(event, value) => field.onChange(value)}
-                  input={
-                    <Input
-                      error={errors.deliveryTime?.message}
-                      disabled={field.disabled}
-                    />
-                  }
-                  colon=":"
-                />
+                <>
+                  <div className="d-flex gap-2">
+                    {INTERVALS.map((interval) => (
+                      <div
+                        key={interval.label}
+                        style={{
+                          cursor: "pointer",
+                          background:
+                            interval.time === field.value
+                              ? "var(--primary-color)"
+                              : "var(--primary-light-blue)",
+                          borderRadius: 5,
+                          padding: 5,
+                          color:
+                            interval.time === field.value
+                              ? "white"
+                              : "var(--heading-color)",
+                        }}
+                        aria-hidden="true"
+                        onClick={() => field.onChange(interval.time)}
+                      >
+                        {interval.label}
+                      </div>
+                    ))}
+                  </div>
+                </>
               )}
             />
           </div>
