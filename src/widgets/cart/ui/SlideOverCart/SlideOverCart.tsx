@@ -23,19 +23,19 @@ export default function SlideOverCart() {
   const { isOpen, close } = useSlideOverCart();
   const cart = useCart();
 
-  useEffect(() => {
-    const body = document.body;
+  // useEffect(() => {
+  //   const body = document.body;
 
-    if (isOpen) {
-      disableBodyScroll(body);
-    } else {
-      enableBodyScroll(body);
-    }
+  //   if (isOpen) {
+  //     disableBodyScroll(body);
+  //   } else {
+  //     enableBodyScroll(body);
+  //   }
 
-    return () => {
-      enableBodyScroll(body);
-    };
-  }, [isOpen]);
+  //   return () => {
+  //     enableBodyScroll(body);
+  //   };
+  // }, [isOpen]);
 
   return (
     <>
