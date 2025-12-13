@@ -4,6 +4,7 @@ import {
   DayPicker,
   GooglePlaces,
   Input,
+  InputLabel,
   Textarea,
 } from "@/shared/ui";
 import TimeField from "react-simple-timefield";
@@ -17,6 +18,7 @@ import { useUser } from "@/entities/user";
 import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
 import { set } from "date-fns";
+import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
 
 interface Props {
   checkoutFormID: string;
@@ -61,6 +63,7 @@ export default function CheckoutForm({
         name: user.data.name,
         email: user.data.email,
         deliveryTime: "09:00",
+        orderType: "delivery",
       });
     }
   }, [user.data, reset]);
@@ -148,28 +151,13 @@ export default function CheckoutForm({
       <h5 className="mb-32">Shipping Details</h5>
 
       <div className="mb-32">
-        <div className="row mb-2 row-gap-2">
+        <div className="row mb-4">
+          <InputLabel>Shipping Method</InputLabel>
           <Controller
             control={control}
             name="orderType"
             render={({ field }) => (
-              <>
-                <div className="col-md-12">
-                  <Checkbox
-                    label="Pickup"
-                    checked={field.value === "pickup"}
-                    onChange={() => field.onChange("pickup")}
-                  />
-                </div>
-
-                <div className="col-md-12">
-                  <Checkbox
-                    label="Delivery + 20$"
-                    checked={field.value === "delivery"}
-                    onChange={() => field.onChange("delivery")}
-                  />
-                </div>
-              </>
+              <OrderTypeSelect value={field.value} onChange={field.onChange} />
             )}
           />
         </div>
@@ -199,6 +187,7 @@ export default function CheckoutForm({
           ) : null}
 
           <div className="col-md-6">
+            <InputLabel>Shipping interval</InputLabel>
             <Controller
               control={control}
               disabled={paymentIsProccessing}
@@ -254,20 +243,25 @@ export default function CheckoutForm({
             />
           </div>
 
-          <div className="col-md-12">
-            <Controller
-              control={control}
-              name="shippingAddress"
-              disabled={paymentIsProccessing}
-              render={({ field }) => (
-                <GooglePlaces
-                  onSelect={field.onChange}
-                  error={errors.shippingAddress?.message}
-                  disabled={field.disabled}
-                />
-              )}
-            />
-          </div>
+          {orderType === "delivery" ? (
+            <div className="col-md-12">
+              <InputLabel>Delivery address</InputLabel>
+
+              <Controller
+                control={control}
+                name="shippingAddress"
+                disabled={paymentIsProccessing}
+                render={({ field }) => (
+                  <GooglePlaces
+                    onSelect={field.onChange}
+                    error={errors.shippingAddress?.message}
+                    disabled={field.disabled}
+                  />
+                )}
+              />
+            </div>
+          ) : null}
+
           <div className="col-md-12">
             <Textarea
               rows={6}

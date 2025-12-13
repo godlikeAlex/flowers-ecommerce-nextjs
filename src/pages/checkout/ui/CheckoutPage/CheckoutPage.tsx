@@ -13,7 +13,7 @@ export default function CheckoutPage() {
   const checkoutFormID = useId();
 
   const form = useForm({
-    defaultValues: { deliveryTime: "09:00", phone: "", orderType: "pickup" },
+    defaultValues: { deliveryTime: "09:00", phone: "", orderType: "delivery" },
     resolver: zodResolver(checkoutSchema),
   });
 
