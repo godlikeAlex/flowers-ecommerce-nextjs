@@ -103,6 +103,13 @@ html {
   margin-bottom: 0;
 }
 
+.unstyled-btn {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+}
+
 img {
   max-width: 100%;
   vertical-align: middle;

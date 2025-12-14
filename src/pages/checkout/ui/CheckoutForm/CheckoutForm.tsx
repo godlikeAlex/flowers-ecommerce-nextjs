@@ -1,5 +1,6 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, FieldErrors, useFormContext } from "react-hook-form";
 import {
+  Anchor,
   Checkbox,
   DayPicker,
   GooglePlaces,
@@ -9,7 +10,10 @@ import {
 } from "@/shared/ui";
 import TimeField from "react-simple-timefield";
 
-import type { CheckoutForm as ICheckoutForm } from "../../model/checkout-schema";
+import type {
+  DeliveryForm,
+  CheckoutForm as ICheckoutForm,
+} from "../../model/checkout-schema";
 import { ROUTES, US_TELEPHONE_MASK } from "@/shared/config";
 import { useCreateOrder } from "@/features/order";
 import { getNowInNY, combineDateTimeToUTC } from "@/shared/lib";
@@ -51,6 +55,7 @@ export default function CheckoutForm({
     formState: { errors },
     reset,
     watch,
+    setValue,
   } = useFormContext<ICheckoutForm>();
   const createOrderMutation = useCreateOrder();
   const router = useRouter();
@@ -68,10 +73,10 @@ export default function CheckoutForm({
     }
   }, [user.data, reset]);
 
+  const deliveryErrors =
+    orderType === "delivery" ? (errors as FieldErrors<DeliveryForm>) : null;
+
   const onSubmit = async ({
-    shippingAddress,
-    shippingNotes,
-    notes,
     deliveryDate,
     deliveryTime,
     ...values
@@ -81,13 +86,31 @@ export default function CheckoutForm({
     try {
       const deliveryAt = combineDateTimeToUTC(deliveryDate, deliveryTime);
 
-      const response = await createOrderMutation.mutateAsync({
-        ...values,
-        address: shippingAddress.formatted_address ?? "Address not selected",
-        shipping_notes: shippingNotes,
-        notes: notes,
+      const baseCheckoutData = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
         delivery_at: deliveryAt,
-      });
+        notes: values.notes,
+        shipping_notes: values.shippingNotes,
+      };
+
+      const response = await createOrderMutation.mutateAsync(
+        values.orderType === "delivery"
+          ? {
+              ...baseCheckoutData,
+              delivery_type: "delivery",
+              recipient_name: values.recipientName,
+              recipient_phone: values.recipientPhone,
+              address:
+                values.shippingAddress.formatted_address ??
+                "Address not selected",
+            }
+          : {
+              ...baseCheckoutData,
+              delivery_type: "pickup",
+            },
+      );
 
       return router.replace(ROUTES.PAY(response.data.orderUUID));
     } catch (e) {
@@ -169,7 +192,7 @@ export default function CheckoutForm({
                 <Input
                   placeholder="Recipient Name"
                   disabled={paymentIsProccessing}
-                  error={errors.recipientName?.message}
+                  error={deliveryErrors?.recipientName?.message}
                   {...register("recipientName")}
                 />
               </div>
@@ -179,7 +202,7 @@ export default function CheckoutForm({
                   placeholder="Recipient Phone"
                   {...US_TELEPHONE_MASK}
                   disabled={paymentIsProccessing}
-                  error={errors.recipientPhone?.message}
+                  error={deliveryErrors?.recipientPhone?.message}
                   {...register("recipientPhone")}
                 />
               </div>
@@ -254,11 +277,22 @@ export default function CheckoutForm({
                 render={({ field }) => (
                   <GooglePlaces
                     onSelect={field.onChange}
-                    error={errors.shippingAddress?.message}
+                    error={deliveryErrors?.shippingAddress?.message}
                     disabled={field.disabled}
                   />
                 )}
               />
+
+              {deliveryErrors?.shippingAddress?.message ? (
+                <Anchor
+                  as="button"
+                  className="mt-2 unstyled-btn"
+                  style={{ fontSize: 14 }}
+                  onClick={() => setValue("orderType", "pickup")}
+                >
+                  Switch to Store Pickup
+                </Anchor>
+              ) : null}
             </div>
           ) : null}
 
