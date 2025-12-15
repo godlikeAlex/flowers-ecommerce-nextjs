@@ -3,6 +3,14 @@ import type { Metadata } from "next";
 import Providers from "@/app/Providers";
 import { bluemelleFont } from "@/app/bluemelleFont";
 
+import { Pacifico } from "next/font/google";
+
+const pacificoFont = Pacifico({
+  display: "swap",
+  weight: "400",
+  variable: "--promo-font",
+});
+
 import "@/app/bootstrap.scss";
 import "@/app/global.css";
 
@@ -30,7 +38,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={bluemelleFont.className}>
-      <body style={bluemelleFont.style}>
+      <body style={bluemelleFont.style} className={pacificoFont.variable}>
         <ScrollToTop />
         <main className="main">
           <Providers>

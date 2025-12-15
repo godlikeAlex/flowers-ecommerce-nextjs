@@ -13,7 +13,7 @@ const features = [
   },
   {
     title: "Wide Variety",
-    text: "Fresh blooms delivered right to your doorstep — no extra fees.",
+    text: "A wide selection of bouquets for every style and moment.",
     icon: wideVarietyIcon,
   },
   {

@@ -38,10 +38,12 @@
 }
 
 .title-1 {
-  font-family: "Playfair Display", serif;
-  font-size: 8.333vw;
+  /*font-family: var(--promo-font);*/
+
+  /*font-family: "Playfair Display", serif;*/
+  font-size: 6vw;
   font-weight: 700;
-  line-height: 73%;
+  line-height: 100%;
   letter-spacing: -3.2px;
   color: var(--heading-color);
 }
@@ -66,12 +68,13 @@
 
 .title-2 {
   color: var(--primary-color);
-  font-family: "Pacifico", cursive;
-  font-size: 4.688vw;
-  font-weight: 400;
+  font-size: 3vw;
+  font-weight: 700;
   line-height: 100%;
   letter-spacing: -1.8px;
-  margin-top: -2.083vw;
+  font-family: var(--promo-font);
+
+  /*margin-top: -2.083vw;*/
 }
 
 @media (max-width: 991px) {
