@@ -3,6 +3,14 @@ import type { Metadata } from "next";
 import Providers from "@/app/Providers";
 import { bluemelleFont } from "@/app/bluemelleFont";
 
+import { Pacifico } from "next/font/google";
+
+const pacificoFont = Pacifico({
+  display: "swap",
+  weight: "400",
+  variable: "--promo-font",
+});
+
 import "@/app/bootstrap.scss";
 import "@/app/global.css";
 
@@ -13,6 +21,7 @@ import NextTopLoader from "nextjs-toploader";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import { ScrollToTop } from "./ScrollToTop";
+import { SlideOverCart } from "@/widgets/cart/ui";
 
 export const metadata: Metadata = {
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
@@ -29,11 +38,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={bluemelleFont.className}>
-      <body style={bluemelleFont.style}>
+      <body style={bluemelleFont.style} className={pacificoFont.variable}>
         <ScrollToTop />
         <main className="main">
           <Providers>
             <NextTopLoader color="#0b5bb2" />
+            <SlideOverCart />
 
             <Header categories={categories} />
             {children}

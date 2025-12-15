@@ -10,9 +10,11 @@ import { toast } from "sonner";
 
 import styles from "./ProductCard.module.css";
 import { PlusCircleIcon } from "@phosphor-icons/react/dist/ssr/PlusCircle";
+import { useSlideOverCart } from "@/widgets/cart";
 
 export default function ControlProductQuantity() {
   const cart = useCart();
+  const slideOverCart = useSlideOverCart();
 
   const {
     productState: { quantity, productStatus },
@@ -57,6 +59,7 @@ export default function ControlProductQuantity() {
     try {
       await addToCart();
 
+      slideOverCart.open();
       toast.success("Product added to cart", { position: "bottom-center" });
     } catch (e) {
       console.log("Error while adding to cart: ", e);
@@ -99,12 +102,14 @@ export default function ControlProductQuantity() {
           as={Link}
           href={ROUTES.CART}
           variant="ghost"
+          disabled={quantityIsDisabled}
           icon={<ShoppingCartSimpleIcon />}
         />
       ) : (
         <IconButton
           className={styles.buttonAction}
           onClick={handleAddToCart}
+          disabled={quantityIsDisabled}
           icon={<IconAdd />}
         />
       )}

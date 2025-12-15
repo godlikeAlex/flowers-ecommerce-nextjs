@@ -11,6 +11,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "@/shared/config";
 
+import heroImage from "./hero-image.png";
+
 export default function HeroSection() {
   return (
     <section className={clsx(styles["hero-banner"])}>
@@ -82,10 +84,10 @@ export default function HeroSection() {
               <div className={styles["img-block"]}>
                 <Image
                   quality={95}
-                  width={970}
-                  height={659}
-                  preload
-                  src="/images/hero/hero-image.png"
+                  // width={970}
+                  // height={659}
+                  src={heroImage}
+                  loading="eager"
                   alt=""
                 />
               </div>

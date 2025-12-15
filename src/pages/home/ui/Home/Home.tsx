@@ -4,13 +4,14 @@ import { FeaturedCategoriesSection } from "../FeaturedCategoriesSection";
 import { AboutSection } from "../AboutSection";
 import { FeaturedCategoryShowcase } from "../FeaturedCategoryShowcase";
 import { OfferBanner } from "../OfferBanner";
-import { ReviewsSection } from "../ReviewsSection";
+
 import { BlogSection } from "../BlogSection";
 import { HomeSection } from "../HomeSection";
 import { getHomePageData } from "../../api/get-home-page-data";
 import { PostCard } from "@/entities/post";
 import { getMenuCategories } from "@/entities/category";
 import { FeaturedSection } from "@/entities/featured-section";
+import { GoogleReview } from "../GoogleReview";
 
 export default async function Home() {
   const categories = await getMenuCategories();
@@ -57,7 +58,7 @@ export default async function Home() {
         <OfferBanner />
       </section>
       <section style={{ paddingBottom: 80 }}>
-        <ReviewsSection />
+        <GoogleReview />
       </section>
       <section style={{ paddingBottom: 80 }}>
         <BlogSection posts={posts} />

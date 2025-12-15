@@ -21,5 +21,6 @@ export { DayPicker } from "./DayPicker";
 export { UploadDropZone } from "./UploadDropZone";
 export { StarRating } from "./StarRating";
 export { AvatarPlaceholder } from "./AvatarPlaceholder";
+export { InputLabel } from "./InputLabel";
 
 export * from "./icons";

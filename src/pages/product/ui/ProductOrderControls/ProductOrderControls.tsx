@@ -13,6 +13,8 @@ import clsx from "clsx";
 import { useProductCart } from "@/widgets/product";
 import { TrashSimpleIcon } from "@phosphor-icons/react/dist/ssr/TrashSimple";
 import { ProductAddonsSection } from "@/widgets/product/ui";
+import { useSlideOverCart } from "@/widgets/cart";
+import { toast } from "sonner";
 
 interface Props {
   productOptions: ProductOption[];
@@ -31,6 +33,7 @@ export default function ProductOrderControls({
     deleteCartItem,
     quantityIsDisabled,
   } = useProductCart();
+  const { open } = useSlideOverCart();
 
   const addonGroupEntries = Object.entries(addonGroups);
   const basicPrice = formatPrice(selectedOption?.price ?? 0);
@@ -84,7 +87,16 @@ export default function ProductOrderControls({
   };
 
   const handleAddToCart = async () => {
-    await addToCart();
+    try {
+      await addToCart();
+      open();
+    } catch (e) {
+      console.log("Error while adding product", e);
+
+      toast.error("Oops, failed to add the product 😢", {
+        position: "bottom-center",
+      });
+    }
   };
 
   return (

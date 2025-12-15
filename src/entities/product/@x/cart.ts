@@ -1,1 +1,1 @@
-export type { ProductOption } from "../models/types";
+export type { ProductOption, ProductAddon } from "../models/types";

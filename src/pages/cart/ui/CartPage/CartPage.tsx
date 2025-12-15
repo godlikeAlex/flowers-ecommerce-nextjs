@@ -7,6 +7,7 @@ import { useCart } from "@/entities/cart";
 
 import image from "./empty-cart-image.png";
 import Image from "next/image";
+import CartRecommendation from "../CartRecommendation/CartRecommendation";
 
 export default function CartPage() {
   const cart = useCart();
@@ -37,6 +38,10 @@ export default function CartPage() {
               <>
                 <div className="col-lg-8 col-md-12">
                   <CartList />
+
+                  <div className="mt-5">
+                    <CartRecommendation />
+                  </div>
                 </div>
 
                 <div className="col-md-12 col-lg-4 mt-3 mt-lg-0">
