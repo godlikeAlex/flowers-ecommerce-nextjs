@@ -1,30 +1,30 @@
 import { Feature } from "@/shared/ui";
 
-import { TruckIcon } from "@phosphor-icons/react/dist/ssr/Truck";
-import { FlowerTulipIcon } from "@phosphor-icons/react/dist/ssr/FlowerTulip";
-import { HandHeartIcon } from "@phosphor-icons/react/dist/ssr/HandHeart";
-import { ChatCircleDotsIcon } from "@phosphor-icons/react/dist/ssr/ChatCircleDots";
+import deliveryIcon from "./icons/delivery.svg";
+import wideVarietyIcon from "./icons/wide-variety.svg";
+import personalTouchIcon from "./icons/personal-touch.svg";
+import craftedWithCareIcon from "./icons/crafted-with-care.svg";
 
 const features = [
   {
-    title: "Free Delivery",
-    text: "Fresh blooms delivered right to your doorstep — no extra fees.",
-    icon: TruckIcon,
+    title: "Delivery",
+    text: "Fresh blooms brought straight to your doorstep — beautifully and on time.",
+    icon: deliveryIcon,
   },
   {
     title: "Wide Variety",
-    text: "Fresh blooms delivered right to your doorstep — no extra fees.",
-    icon: FlowerTulipIcon,
+    text: "A wide selection of bouquets for every style and moment.",
+    icon: wideVarietyIcon,
   },
   {
     title: "Crafted with Care",
     text: "Each arrangement is made by florists who truly love their craft.",
-    icon: HandHeartIcon,
+    icon: craftedWithCareIcon,
   },
   {
     title: "Personal Touch",
     text: "We’re here to help you create the perfect floral surprise.",
-    icon: ChatCircleDotsIcon,
+    icon: personalTouchIcon,
   },
 ];
 

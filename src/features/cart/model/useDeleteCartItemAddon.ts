@@ -6,6 +6,7 @@ import {
   deleteCartItemAddon,
   DeleteCartItemAddonDTO,
 } from "../api/delete-cart-item-addon";
+import { QUERY_CART_RECOMMENDATION_KEY } from "@/entities/cart/model/useCartRecomendations";
 
 export function useDeleteCartItemAddon() {
   const queryClient = useQueryClient();
@@ -18,6 +19,9 @@ export function useDeleteCartItemAddon() {
     },
     onSuccess: (cart) => {
       queryClient.setQueryData([QUERY_CART_KEY], cart);
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_CART_RECOMMENDATION_KEY],
+      });
     },
   });
 }

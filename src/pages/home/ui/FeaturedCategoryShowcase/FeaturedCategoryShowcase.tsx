@@ -10,19 +10,29 @@ import { SliderNavigation } from "../SliderNavigation";
 
 import styles from "./FeaturedCategoryShowcase.module.css";
 import type { ProductCard as IProductCard } from "@/entities/product";
-import { ROUTES } from "@/shared/config";
 
 interface Props {
   title: string;
   products: IProductCard[];
+  buttonText?: string;
+  buttonLink?: string;
 }
 
-export default function FeaturedCategoryShowcase({ title, products }: Props) {
+export default function FeaturedCategoryShowcase({
+  title,
+  products,
+  buttonText,
+  buttonLink,
+}: Props) {
   return (
     <div className="container-fluid">
       <div className="d-flex align-items-center justify-content-between mb-48">
         <div className="heading">
-          <h2>{title}</h2>
+          {/*Sanitized by backend */}
+          <h2
+            className={styles.title}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         </div>
       </div>
 
@@ -42,18 +52,20 @@ export default function FeaturedCategoryShowcase({ title, products }: Props) {
         </Carousel>
       </div>
 
-      <div className="col-md-12 mt-48 text-center">
-        <Button
-          as={Link}
-          href={ROUTES.SHOP([])}
-          className="mx-auto"
-          variant="ghost"
-          accessoryRight={<ArrowUpRightIcon />}
-          style={{ width: 220 }}
-        >
-          View All
-        </Button>
-      </div>
+      {buttonLink && buttonText ? (
+        <div className="col-md-12 mt-48 text-center">
+          <Button
+            as={Link}
+            href={buttonLink}
+            className="mx-auto"
+            variant="ghost"
+            accessoryRight={<ArrowUpRightIcon />}
+            style={{ width: 220 }}
+          >
+            {buttonText}
+          </Button>
+        </div>
+      ) : null}
     </div>
   );
 }

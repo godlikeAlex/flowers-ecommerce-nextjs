@@ -34,19 +34,30 @@ export default function MobileMenuItem<T>({
 
   return (
     <li>
-      <Link href={path} className={clsx(showSubmenu && styles.expanded)}>
-        {label}
+      <div className={styles["row-menu-item"]}>
+        <Link
+          href={path}
+          className={clsx(
+            styles["root-menu-link"],
+            showSubmenu && styles.expanded,
+          )}
+        >
+          {label}
+        </Link>
 
         {hasSubmenu && (
           <button
             aria-label="dropdown toggler"
-            className={clsx(showSubmenu && styles.expanded)}
+            className={clsx(
+              styles["open-submenu-button"],
+              showSubmenu && styles.expanded,
+            )}
             onClick={handleToggleSubmenu}
           >
             <CaretDownIcon />
           </button>
         )}
-      </Link>
+      </div>
 
       {hasSubmenu && (
         <ul

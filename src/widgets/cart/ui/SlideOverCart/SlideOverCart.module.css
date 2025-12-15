@@ -1,0 +1,138 @@
+.sidebar-cart-curtain {
+  background: #41608b33;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.sidebar-cart-curtain--open {
+  display: block;
+}
+
+.sidebar-cart {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  width: clamp(350px, 45.167vw, 650px);
+  max-width: 40%;
+  right: -800px;
+  transition: right 0.5s ease-in-out;
+}
+
+.sidebar-cart--open {
+  right: 0;
+}
+
+.cart-block {
+  height: 100vh;
+  background-color: var(--alt-bg-color);
+  position: relative;
+  padding: clamp(16px, 1.25vw, 28px);
+  display: block;
+}
+@media (max-width: 575px) {
+  .cart-block {
+    width: 95%;
+    margin-left: auto;
+  }
+}
+.upper-block {
+  height: calc(100vh - 200px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.upper-block::-webkit-scrollbar {
+  width: 3px;
+  margin-left: 5px;
+}
+.upper-block::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 6px;
+}
+.upper-block::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--primary-color);
+  box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
+}
+
+.bottom-block {
+  position: absolute;
+  bottom: clamp(16px, 1.25vw, 28px);
+  left: clamp(16px, 1.25vw, 28px);
+  right: clamp(16px, 1.25vw, 28px);
+}
+.close-button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50% !important;
+  background-color: var(--primary-light-blue);
+  border: none;
+}
+
+.close-icon {
+  color: var(--primary-color);
+  font-size: 16px;
+  transition: all 0.5s linear;
+}
+.close-button:hover .close-icon {
+  transform: rotate(135deg);
+  transition: all 0.5s linear;
+}
+.delete-icon {
+  border-radius: 50% !important;
+  background-color: var(--primary-light-blue);
+  width: 32px;
+  height: 32px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  transition: all 0.5s linear;
+  color: var(--primary-color);
+  font-size: 18px;
+  border: none;
+}
+
+.product-list {
+  margin: 0;
+  padding: 0 0 15px 0;
+  list-style: none;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.product-block {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+}
+.img-block {
+  border-radius: 5px;
+  background-color: #f9ddf1;
+  text-align: center;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+}
+
+@media (max-width: 780px) {
+  .sidebar-cart {
+    width: 70%;
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 550px) {
+  .sidebar-cart {
+    width: 95%;
+    max-width: 95%;
+  }
+}

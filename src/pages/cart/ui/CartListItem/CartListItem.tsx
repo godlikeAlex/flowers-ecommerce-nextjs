@@ -19,6 +19,8 @@ export default function CartListItem({ cartItem }: Props) {
   const { product, product_option, total, quantity } = cartItem;
 
   const localePrice = formatPrice(total);
+  const isPending =
+    deleteCartItemMutation.isPending || setQuantityMutation.isPending;
 
   const handleIncrementQuantity = () => {
     setQuantityMutation.mutate({
@@ -27,7 +29,10 @@ export default function CartListItem({ cartItem }: Props) {
     });
   };
   const handleDecrementQuantity = () => {
-    if (quantity <= 1) return;
+    if (quantity <= 1) {
+      handleDeleteCartItem();
+      return;
+    }
 
     setQuantityMutation.mutate({
       cart_item_id: cartItem.id,
@@ -77,7 +82,7 @@ export default function CartListItem({ cartItem }: Props) {
               <button
                 className={styles.deleteButton}
                 onClick={handleDeleteCartItem}
-                disabled={deleteCartItemMutation.isPending}
+                disabled={isPending}
               >
                 <TrashSimpleIcon />
               </button>
@@ -90,7 +95,10 @@ export default function CartListItem({ cartItem }: Props) {
               value={quantity}
               onIncrement={handleIncrementQuantity}
               onDecrement={handleDecrementQuantity}
-              disabled={setQuantityMutation.isPending}
+              disabled={isPending}
+              iconDecrement={
+                quantity === 1 ? <TrashSimpleIcon fill="#FA5252" /> : undefined
+              }
             />
 
             <h5>{localePrice}</h5>

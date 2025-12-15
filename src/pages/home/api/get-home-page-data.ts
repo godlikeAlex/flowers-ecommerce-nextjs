@@ -1,13 +1,10 @@
+import { FeaturedSection } from "@/entities/featured-section";
 import { PostCard } from "@/entities/post";
-import { ProductCard } from "@/entities/product";
 import { ApiClient } from "@/shared/api";
 
 interface Response {
   latest_posts: PostCard[];
-  categories: {
-    name: string;
-    products: ProductCard[];
-  }[];
+  featured_section: FeaturedSection[];
 }
 
 export function getHomePageData() {

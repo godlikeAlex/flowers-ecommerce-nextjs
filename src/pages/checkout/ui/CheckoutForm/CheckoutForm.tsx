@@ -1,8 +1,19 @@
-import { Controller, useFormContext } from "react-hook-form";
-import { DayPicker, GooglePlaces, Input, Textarea } from "@/shared/ui";
+import { Controller, FieldErrors, useFormContext } from "react-hook-form";
+import {
+  Anchor,
+  Checkbox,
+  DayPicker,
+  GooglePlaces,
+  Input,
+  InputLabel,
+  Textarea,
+} from "@/shared/ui";
 import TimeField from "react-simple-timefield";
 
-import type { CheckoutForm as ICheckoutForm } from "../../model/checkout-schema";
+import type {
+  DeliveryForm,
+  CheckoutForm as ICheckoutForm,
+} from "../../model/checkout-schema";
 import { ROUTES, US_TELEPHONE_MASK } from "@/shared/config";
 import { useCreateOrder } from "@/features/order";
 import { getNowInNY, combineDateTimeToUTC } from "@/shared/lib";
@@ -10,12 +21,25 @@ import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
 import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
+import { set } from "date-fns";
+import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
 
 interface Props {
   checkoutFormID: string;
   paymentIsProccessing: boolean;
   setPaymentIsProccessing: (isProcessing: boolean) => void;
 }
+
+const INTERVALS = [
+  {
+    label: "9:00 AM – 1:00 PM",
+    time: "09:00",
+  },
+  {
+    label: "1:00 PM – 4:00 PM",
+    time: "13:00",
+  },
+];
 
 export default function CheckoutForm({
   checkoutFormID,
@@ -30,24 +54,29 @@ export default function CheckoutForm({
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
+    setValue,
   } = useFormContext<ICheckoutForm>();
   const createOrderMutation = useCreateOrder();
   const router = useRouter();
+
+  const orderType = watch("orderType");
 
   useEffect(() => {
     if (user.data) {
       reset({
         name: user.data.name,
         email: user.data.email,
-        deliveryTime: "12:30",
+        deliveryTime: "09:00",
+        orderType: "delivery",
       });
     }
   }, [user.data, reset]);
 
+  const deliveryErrors =
+    orderType === "delivery" ? (errors as FieldErrors<DeliveryForm>) : null;
+
   const onSubmit = async ({
-    shippingAddress,
-    shippingNotes,
-    notes,
     deliveryDate,
     deliveryTime,
     ...values
@@ -57,13 +86,31 @@ export default function CheckoutForm({
     try {
       const deliveryAt = combineDateTimeToUTC(deliveryDate, deliveryTime);
 
-      const response = await createOrderMutation.mutateAsync({
-        ...values,
-        address: shippingAddress.formatted_address ?? "Address not selected",
-        shipping_notes: shippingNotes,
-        notes: notes,
+      const baseCheckoutData = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
         delivery_at: deliveryAt,
-      });
+        notes: values.notes,
+        shipping_notes: values.shippingNotes,
+      };
+
+      const response = await createOrderMutation.mutateAsync(
+        values.orderType === "delivery"
+          ? {
+              ...baseCheckoutData,
+              delivery_type: "delivery",
+              recipient_name: values.recipientName,
+              recipient_phone: values.recipientPhone,
+              address:
+                values.shippingAddress.formatted_address ??
+                "Address not selected",
+            }
+          : {
+              ...baseCheckoutData,
+              delivery_type: "pickup",
+            },
+      );
 
       return router.replace(ROUTES.PAY(response.data.orderUUID));
     } catch (e) {
@@ -127,8 +174,43 @@ export default function CheckoutForm({
       <h5 className="mb-32">Shipping Details</h5>
 
       <div className="mb-32">
+        <div className="row mb-4">
+          <InputLabel>Shipping Method</InputLabel>
+          <Controller
+            control={control}
+            name="orderType"
+            render={({ field }) => (
+              <OrderTypeSelect value={field.value} onChange={field.onChange} />
+            )}
+          />
+        </div>
+
         <div className="row row-gap-3">
+          {orderType === "delivery" ? (
+            <>
+              <div className="col-md-6">
+                <Input
+                  placeholder="Recipient Name"
+                  disabled={paymentIsProccessing}
+                  error={deliveryErrors?.recipientName?.message}
+                  {...register("recipientName")}
+                />
+              </div>
+
+              <div className="col-md-6">
+                <Input.Mask
+                  placeholder="Recipient Phone"
+                  {...US_TELEPHONE_MASK}
+                  disabled={paymentIsProccessing}
+                  error={deliveryErrors?.recipientPhone?.message}
+                  {...register("recipientPhone")}
+                />
+              </div>
+            </>
+          ) : null}
+
           <div className="col-md-6">
+            <InputLabel>Shipping interval</InputLabel>
             <Controller
               control={control}
               disabled={paymentIsProccessing}
@@ -148,41 +230,72 @@ export default function CheckoutForm({
             />
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
             <Controller
               control={control}
               name="deliveryTime"
               disabled={paymentIsProccessing}
               render={({ field }) => (
-                <TimeField
-                  value={field.value}
-                  onChange={(event, value) => field.onChange(value)}
-                  input={
-                    <Input
-                      error={errors.deliveryTime?.message}
-                      disabled={field.disabled}
-                    />
-                  }
-                  colon=":"
-                />
+                <>
+                  <div className="d-flex gap-2">
+                    {INTERVALS.map((interval) => (
+                      <div
+                        key={interval.label}
+                        style={{
+                          cursor: "pointer",
+                          background:
+                            interval.time === field.value
+                              ? "var(--primary-color)"
+                              : "var(--primary-light-blue)",
+                          borderRadius: 5,
+                          padding: 5,
+                          color:
+                            interval.time === field.value
+                              ? "white"
+                              : "var(--heading-color)",
+                        }}
+                        aria-hidden="true"
+                        onClick={() => field.onChange(interval.time)}
+                      >
+                        {interval.label}
+                      </div>
+                    ))}
+                  </div>
+                </>
               )}
             />
           </div>
 
-          <div className="col-md-12">
-            <Controller
-              control={control}
-              name="shippingAddress"
-              disabled={paymentIsProccessing}
-              render={({ field }) => (
-                <GooglePlaces
-                  onSelect={field.onChange}
-                  error={errors.shippingAddress?.message}
-                  disabled={field.disabled}
-                />
-              )}
-            />
-          </div>
+          {orderType === "delivery" ? (
+            <div className="col-md-12">
+              <InputLabel>Delivery address</InputLabel>
+
+              <Controller
+                control={control}
+                name="shippingAddress"
+                disabled={paymentIsProccessing}
+                render={({ field }) => (
+                  <GooglePlaces
+                    onSelect={field.onChange}
+                    error={deliveryErrors?.shippingAddress?.message}
+                    disabled={field.disabled}
+                  />
+                )}
+              />
+
+              {deliveryErrors?.shippingAddress?.message ? (
+                <Anchor
+                  as="button"
+                  className="mt-2 unstyled-btn"
+                  style={{ fontSize: 14 }}
+                  onClick={() => setValue("orderType", "pickup")}
+                >
+                  Switch to Store Pickup
+                </Anchor>
+              ) : null}
+            </div>
+          ) : null}
+
           <div className="col-md-12">
             <Textarea
               rows={6}

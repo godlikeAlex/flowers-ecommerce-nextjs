@@ -26,3 +26,8 @@
     flex: 0 0 var(--slide-size-lg);
   }
 }
+
+.title strong,
+.title b {
+  color: var(--primary-color);
+}

@@ -7,9 +7,15 @@
   background-image: var(--primary-dashed-border-square);
   background-position: 0px;
   border-radius: 10px;
-  transition: all 0.5s ease-in;
+  transition: background-color 0.3s ease-in;
   border: unset;
   cursor: pointer;
+}
+
+.icon-button:disabled {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .icon-button svg,

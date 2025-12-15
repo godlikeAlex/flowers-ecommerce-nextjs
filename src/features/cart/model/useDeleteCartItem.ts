@@ -3,6 +3,7 @@
 import { QUERY_CART_KEY } from "@/entities/cart/model/useCart";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCartItem } from "../api/delete-cart-item";
+import { QUERY_CART_RECOMMENDATION_KEY } from "@/entities/cart/model/useCartRecomendations";
 
 export function useDeleteCartItem() {
   const queryClient = useQueryClient();
@@ -11,6 +12,9 @@ export function useDeleteCartItem() {
     mutationFn: deleteCartItem,
     onSuccess: (cart) => {
       queryClient.setQueryData([QUERY_CART_KEY], cart.data);
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_CART_RECOMMENDATION_KEY],
+      });
     },
   });
 }

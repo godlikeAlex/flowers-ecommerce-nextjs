@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { CaretLeftIcon } from "@phosphor-icons/react/dist/ssr/CaretLeft";
 import { CaretRightIcon } from "@phosphor-icons/react/dist/ssr/CaretRight";
@@ -9,13 +11,17 @@ import { Carousel } from "@/shared/ui";
 import { ProductAddonCard } from "../ProductAddonCard";
 import { AddonModal } from "../AddonModal";
 
-import styles from "./ProductAddons.module.css";
+import styles from "./ProductAddonsSection.module.css";
 
 interface Props {
   addons: ProductAddon[];
+  groupLabel?: string;
 }
 
-export default function ProductAddons({ addons }: Props) {
+export default function ProductAddonsSection({
+  addons,
+  groupLabel = "Make It Extra Special",
+}: Props) {
   const [modalAddon, setModalAddon] = useState<ProductAddon | undefined>();
 
   const {
@@ -34,9 +40,7 @@ export default function ProductAddons({ addons }: Props) {
     <div>
       <AddonModal addon={modalAddon} onClose={() => setModalAddon(undefined)} />
 
-      <span className="bold-text accent-dark mb-16 d-block">
-        Make It Extra Special
-      </span>
+      <span className="bold-text accent-dark mb-16 d-block">{groupLabel}</span>
 
       <Carousel options={{ align: "start" }}>
         <Carousel.Content>

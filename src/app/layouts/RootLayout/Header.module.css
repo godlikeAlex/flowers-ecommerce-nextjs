@@ -14,7 +14,18 @@
   :root {
     --header-height: 80px;
   }
+
+  .logo img {
+    max-width: 75px;
+  }
+
+  .main-menu__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
+
 .main-menu .main-menu__block {
   position: relative;
   display: flex;

@@ -111,6 +111,14 @@ export default async function PayPage({
                 )}
 
                 <li className="d-flex gap-2 justify-content-between py-1 accent-dark">
+                  <span className="bold-text">Tax (6.625%)</span>
+
+                  <span className="bold-text color-primary">
+                    {formatPrice(order.tax_amount)}
+                  </span>
+                </li>
+
+                <li className="d-flex gap-2 justify-content-between py-1 accent-dark">
                   <span className="bold-text">Shipping</span>
 
                   <span className="bold-text color-primary">0$</span>
