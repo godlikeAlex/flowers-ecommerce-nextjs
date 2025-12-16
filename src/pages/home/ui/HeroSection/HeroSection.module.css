@@ -2,7 +2,8 @@
   position: relative;
 }
 .title {
-  font-size: clamp(30px, 2.5vw, 112px);
+  /*font-size: 40px;*/
+  font-size: clamp(25px, 4.5vw, 45px);
 }
 .hero-banner .content {
   position: relative;
@@ -120,11 +121,11 @@
     padding: 100px 0 16px;
   }
 }
-@media (max-width: 575px) {
+/*@media (max-width: 575px) {
   .hero-banner .content .text-block .title br {
     display: none;
   }
-}
+}*/
 .hero-banner .content .text-block p {
   margin-left: auto;
   margin-top: -3.438vw;

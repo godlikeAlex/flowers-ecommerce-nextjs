@@ -5,6 +5,8 @@ import styles from "./OfferBanner.module.css";
 
 import Image from "next/image";
 
+import offerBannerBackgroundImage from "./offer-banner.png";
+
 export default function OfferBanner() {
   return (
     <section className="py-40">
@@ -25,12 +27,12 @@ export default function OfferBanner() {
                   <Image
                     fill
                     className="d-lg-block d-none ms-auto"
-                    src="/images/bg/banner-img-xl.png"
+                    src={offerBannerBackgroundImage}
                     alt=""
                   />
                   <Image
                     fill
-                    src="/images/bg/banner-img.png"
+                    src={offerBannerBackgroundImage}
                     alt=""
                     className="d-lg-none"
                     style={{ objectFit: "cover" }}

@@ -19,7 +19,7 @@ export default function HeroSection() {
       <div className={clsx(styles.content)}>
         <div className="container-fluid">
           <div className="row align-items-end justify-content-center">
-            <div className="col-xl-5">
+            <div className="col-xl-6">
               <div className={clsx(styles["text-block"])}>
                 <Image
                   src="/images/hero/image-vector-1.png"
@@ -37,11 +37,13 @@ export default function HeroSection() {
                   width={39}
                   height={51}
                 />
+                {/*Family-Owned Floral Boutique Delivering Emotion Through Flowers*/}
                 <h1 className={clsx(styles.title)}>
-                  Bring Celebration Home <br /> with our{" "}
-                  <span className="color-primary"> Bouquets </span>{" "}
-                  {/*<span className="color-primary"> Bouquets</span>*/}
-                  <br /> and Gifts
+                  Family Floral <span className="color-primary">Boutique</span>{" "}
+                  <br />
+                  Delivering <span className="color-primary">Emotion</span>{" "}
+                  <br />
+                  Through <span className="color-primary">Flowers</span>
                 </h1>
 
                 <div className={clsx(styles["btn-block"])}>
@@ -80,7 +82,7 @@ export default function HeroSection() {
                 />
               </div>
             </div>
-            <div className="col-xl-7 col-lg-8 col-sm-10 col-11">
+            <div className="col-xl-6 col-lg-8 col-sm-10 col-11">
               <div className={styles["img-block"]}>
                 <Image
                   quality={95}
