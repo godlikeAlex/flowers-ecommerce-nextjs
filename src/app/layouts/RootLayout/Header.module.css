@@ -83,7 +83,7 @@
   .main-menu .main-menu__nav .main-menu__list,
   .main-menu .main-menu__nav .main-menu__list ul {
     display: flex;
-    gap: clamp(16px, 1.66vw, 42px);
+    gap: clamp(0.6875rem, -5.8125rem + 8vw, 2.1875rem);
   }
 }
 .main-menu .main-menu__nav .main-menu__list > li {
@@ -93,7 +93,7 @@
   z-index: 99;
 }
 .main-menu .main-menu__nav .main-menu__list > li > a {
-  font-size: clamp(17px, 1.042vw, 24px);
+  font-size: clamp(0.8125rem, 0.0625rem + 1vw, 1.125rem);
   display: flex;
   align-items: center;
   color: var(--heading-color);
