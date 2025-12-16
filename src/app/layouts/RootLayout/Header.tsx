@@ -30,7 +30,7 @@ export interface StaticMenuItem {
 
 const START_MENU_ITEMS: StaticMenuItem[] = [
   { label: "Home", path: ROUTES.HOME, activeSegment: [null] },
-  { label: "Shop", path: ROUTES.SHOP([]), activeSegment: [] },
+  { label: "Shop All", path: ROUTES.SHOP([]), activeSegment: [] },
 ];
 
 const END_MENU_ITEMS: StaticMenuItem[] = [

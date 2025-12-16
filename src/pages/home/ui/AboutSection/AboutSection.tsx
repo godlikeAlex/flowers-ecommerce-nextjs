@@ -23,34 +23,26 @@ export default function AboutSection() {
                 <div className="row">
                   <div className="col-xxl-10 col-xl-11">
                     <h2 className="mb-16 title">
-                      Floral Journeys,
-                      <br /> Making Magic,{" "}
-                      <span className="color-primary">One Bloom</span> at a Time
+                      The Beginning of
+                      <br />
+                      <span className="color-primary">Bluemelle</span> <br />
+                      <span className="color-primary"> Flower Shop</span>
                     </h2>
                     <p className="mb-16">
-                      Every bloom tells a story, and we are here to bring those
-                      stories to life. Our floral arrangements are crafted with
-                      care, combining color, texture, and natural elegance to
-                      reveal the beauty in every moment. Whether celebrating a
-                      special occasion or adding charm to your everyday, our
-                      flowers are chosen for their freshness, character, and
-                      ability to inspire.
+                      Bluemelle began with Sofiia’s love for flowers and the joy
+                      of creating meaningful gifts for others. Over time, what
+                      started as a passion became her purpose—expressing
+                      emotions through floristry. As a family—Sofiia, Viktor,
+                      and our daughter Emma—we created Bluemelle with heart.
+                      Every detail of our small shop was thoughtfully designed
+                      to feel warm, welcoming, and full of life.
                     </p>
 
-                    <p className="mb-16">
-                      Each bouquet is thoughtfully designed to create a sense of
-                      warmth and harmony, turning simple stems into meaningful
-                      expressions. Guided by creativity and a passion for
-                      detail, we blend artistic craftsmanship with the timeless
-                      grace of nature, ensuring every arrangement feels personal
-                      and memorable.
-                    </p>
+                    <p className="mb-16">We don’t just sell flowers.</p>
 
                     <p className="mb-16">
-                      From festive gifts to quiet gestures, our blooms are made
-                      to elevate your moments with color, fragrance, and joy.
-                      Let our flowers accompany your celebrations and bring a
-                      touch of beauty to the stories you continue to write.
+                      We help people express love, care, and the moments that
+                      matter most.
                     </p>
 
                     <Button
