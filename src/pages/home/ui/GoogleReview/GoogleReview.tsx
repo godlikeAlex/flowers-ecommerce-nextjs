@@ -10,7 +10,7 @@ export default function GoogleReview() {
       </div>
 
       <div className="row justify-content-center">
-        <div className="col-md-12">
+        <div className="col-md-9">
           <Script src="https://elfsightcdn.com/platform.js" async />
           <div
             className="elfsight-app-2028a0b5-0429-49c2-90af-be815371c4e2"
