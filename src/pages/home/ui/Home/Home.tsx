@@ -12,6 +12,8 @@ import { PostCard } from "@/entities/post";
 import { getMenuCategories } from "@/entities/category";
 import { FeaturedSection } from "@/entities/featured-section";
 import { GoogleReview } from "../GoogleReview";
+import { VideoSection } from "../VideoSection";
+import { InstagramReview } from "../InstagramReview";
 
 export default async function Home() {
   const categories = await getMenuCategories();
@@ -57,11 +59,21 @@ export default async function Home() {
         <AdvantagesSection />
         <OfferBanner />
       </section>
+
+      <section style={{ paddingBottom: 80 }}>
+        <VideoSection />
+      </section>
+
       <section style={{ paddingBottom: 80 }}>
         <GoogleReview />
       </section>
+
       <section style={{ paddingBottom: 80 }}>
         <BlogSection posts={posts} />
+      </section>
+
+      <section style={{ paddingBottom: 80 }}>
+        <InstagramReview />
       </section>
     </>
   );
