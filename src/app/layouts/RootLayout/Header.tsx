@@ -20,6 +20,7 @@ import { CategoryMenu } from "@/entities/category";
 import HeaderMenuItem from "./HeaderMenuItem";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { PhoneCallIcon } from "@phosphor-icons/react/dist/ssr/PhoneCall";
+import { MapPinAreaIcon } from "@phosphor-icons/react/dist/ssr/MapPinArea";
 
 export interface StaticMenuItem {
   label: string;
@@ -141,9 +142,18 @@ export default function Header({ categories }: Props) {
                   variant="outline"
                   className={clsx("d-xl-none d-flex")}
                   as={Link}
+                  href={`https://maps.app.goo.gl/QXWxdJwzar1QxVHm7`}
+                  target="_blank"
+                  icon={<MapPinAreaIcon width={20} height={20} />}
+                />
+                <IconButton
+                  variant="outline"
+                  className={clsx("d-xl-none d-flex")}
+                  as={Link}
                   href={`tel:+18483450492`}
                   icon={<PhoneCallIcon width={20} height={20} />}
                 />
+
                 <IconButton
                   variant="outline"
                   as={Link}
