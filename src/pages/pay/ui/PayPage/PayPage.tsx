@@ -118,11 +118,15 @@ export default async function PayPage({
                   </span>
                 </li>
 
-                <li className="d-flex gap-2 justify-content-between py-1 accent-dark">
-                  <span className="bold-text">Shipping</span>
+                {order.delivery_fee && order.delivery_fee > 0 ? (
+                  <li className="d-flex gap-2 justify-content-between py-1 accent-dark">
+                    <span className="bold-text">Delivery Fee</span>
 
-                  <span className="bold-text color-primary">0$</span>
-                </li>
+                    <span className="bold-text color-primary">
+                      {formatPrice(order.delivery_fee)}
+                    </span>
+                  </li>
+                ) : null}
 
                 <hr className="my-2 dash-line" />
 

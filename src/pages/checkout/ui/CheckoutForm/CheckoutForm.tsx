@@ -21,7 +21,7 @@ import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
 import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
-import { set } from "date-fns";
+import { add, set } from "date-fns";
 import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
 
 interface Props {
@@ -223,8 +223,12 @@ export default function CheckoutForm({
                   selected={field.value}
                   onSelect={field.onChange}
                   placeholder="Select Shipping Date"
-                  disabled={{ before: getNowInNY() }}
+                  disabled={[
+                    { before: add(getNowInNY(), { days: 1 }) },
+                    { dayOfWeek: [0, 6] },
+                  ]}
                   error={errors.deliveryDate?.message}
+                  timeZone="America/New_York"
                 />
               )}
             />
