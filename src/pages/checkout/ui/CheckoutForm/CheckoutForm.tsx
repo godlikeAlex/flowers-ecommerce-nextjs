@@ -223,7 +223,7 @@ export default function CheckoutForm({
                   selected={field.value}
                   onSelect={field.onChange}
                   placeholder="Select Shipping Date"
-                  disabled={{ before: getNowInNY() }}
+                  disabled={[{ before: getNowInNY() }, { dayOfWeek: [0, 6] }]}
                   error={errors.deliveryDate?.message}
                 />
               )}
