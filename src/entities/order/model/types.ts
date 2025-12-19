@@ -30,4 +30,6 @@ export interface Order {
   total_amount: number;
   receipt_url?: string;
   order_items: OrderItem[];
+  tax_amount: number;
+  delivery_fee: number;
 }
