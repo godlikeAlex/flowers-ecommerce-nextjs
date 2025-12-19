@@ -7,13 +7,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { checkoutSchema } from "../../model/checkout-schema";
 import { CheckoutForm } from "../CheckoutForm";
 import { PageBanner } from "@/shared/ui";
+import { getNowInNY } from "@/shared/lib";
 
 export default function CheckoutPage() {
   const [paymentProcessing, setPaymentProcessing] = useState<boolean>(false);
   const checkoutFormID = useId();
 
   const form = useForm({
-    defaultValues: { deliveryTime: "09:00", phone: "", orderType: "delivery" },
+    defaultValues: {
+      deliveryTime: "09:00",
+      phone: "",
+      orderType: "delivery",
+    },
     resolver: zodResolver(checkoutSchema),
   });
 

@@ -6,6 +6,7 @@ export interface OrderPay {
   subtotal_amount: number;
   discount_amount: number;
   tax_amount: number;
+  delivery_fee: number;
   email: string;
 }
 
@@ -29,4 +30,6 @@ export interface Order {
   total_amount: number;
   receipt_url?: string;
   order_items: OrderItem[];
+  tax_amount: number;
+  delivery_fee: number;
 }

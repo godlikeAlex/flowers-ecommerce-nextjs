@@ -58,6 +58,26 @@ export default function OrderCard({ order }: Props) {
           </div>
         </div>
 
+        {order.delivery_fee ? (
+          <div className="row mb-2">
+            <div className={clsx("col-md-3 col-6", styles["order-item-title"])}>
+              Delivery Fee:
+            </div>
+            <div className={clsx("col-md-9 col-6", styles["order-item-value"])}>
+              {formatPrice(order.delivery_fee)}
+            </div>
+          </div>
+        ) : null}
+
+        <div className="row mb-2">
+          <div className={clsx("col-md-3 col-6", styles["order-item-title"])}>
+            Tax:
+          </div>
+          <div className={clsx("col-md-9 col-6", styles["order-item-value"])}>
+            {formatPrice(order.tax_amount)}
+          </div>
+        </div>
+
         <div className="row mb-2">
           <div className={clsx("col-md-3 col-6", styles["order-item-title"])}>
             Total:
