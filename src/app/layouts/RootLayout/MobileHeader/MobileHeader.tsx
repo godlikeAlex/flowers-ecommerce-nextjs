@@ -29,7 +29,7 @@ export default function MobileHeader({ isOpen, onClose, menuSegments }: Props) {
   const pathname = usePathname();
 
   useEffect(() => {
-    onClose();  
+    onClose();
   }, [pathname, searchParams, onClose]);
 
   const renderStaticMenu = (menuItems: StaticMenuItem[]) => {
