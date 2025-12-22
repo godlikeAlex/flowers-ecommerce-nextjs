@@ -15,6 +15,8 @@ import { Filters } from "../Filters";
 import { SortSelect } from "../SortSelect";
 
 import styles from "./Shop.module.css";
+import { FilterDrawerProvider } from "../Filters/FilterDrawerContext";
+import { ShowFilterButton } from "../ShowFilterButton";
 
 export default async function Shop({
   params,
@@ -48,11 +50,11 @@ export default async function Shop({
   }
 
   return (
-    <>
+    <FilterDrawerProvider>
       <PageBanner title="Shop" />
       <div className="py-80">
         <div className="container-fluid">
-          <div className="row row-gap-5">
+          <div className="row">
             <div className="col-xxl-3 col-lg-4">
               <Filters
                 categories={categories}
@@ -69,16 +71,10 @@ export default async function Shop({
                         Showing {products.meta.from} - {products.meta.to} of{" "}
                         {products.meta.total} Results
                       </p>
-                      <div className="d-flex gap-3">
-                        <a href="shop-list.html" className="list-icon">
-                          <i className="fa-light fa-list-ul"></i>
-                        </a>
-                        <a href="shop-grid.html" className="list-icon">
-                          <i className="fa-light fa-grid-2"></i>
-                        </a>
-                      </div>
                     </div>
                     <div className={styles.filters}>
+                      <ShowFilterButton />
+
                       <div className={styles["form-group"]}>
                         <SortSelect />
                       </div>
@@ -104,6 +100,6 @@ export default async function Shop({
           </div>
         </div>
       </div>
-    </>
+    </FilterDrawerProvider>
   );
 }

@@ -1,9 +1,17 @@
 import { PropsWithChildren } from "react";
 import SidebarSection from "./SidebarSection";
 import styles from "./Sidebar.module.css";
+import clsx from "clsx";
 
-export default function Sidebar({ children }: PropsWithChildren) {
-  return <aside className={styles.sidebar}>{children}</aside>;
+interface Props {
+  className?: string;
+}
+
+export default function Sidebar({
+  children,
+  className,
+}: PropsWithChildren<Props>) {
+  return <aside className={clsx(styles.sidebar, className)}>{children}</aside>;
 }
 
 Sidebar.Section = SidebarSection;

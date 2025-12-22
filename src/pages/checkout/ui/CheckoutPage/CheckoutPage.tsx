@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { checkoutSchema } from "../../model/checkout-schema";
 import { CheckoutForm } from "../CheckoutForm";
 import { PageBanner } from "@/shared/ui";
-import { getNowInNY } from "@/shared/lib";
 
 export default function CheckoutPage() {
   const [paymentProcessing, setPaymentProcessing] = useState<boolean>(false);

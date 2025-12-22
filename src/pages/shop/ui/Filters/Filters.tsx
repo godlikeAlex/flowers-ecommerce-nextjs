@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useSearchParams } from "next/dist/client/components/navigation";
 
 import { FunnelIcon } from "@phosphor-icons/react/dist/ssr/Funnel";
+import { XIcon } from "@phosphor-icons/react/dist/ssr/X";
 import { CategoryFacet } from "@/entities/category/models/types";
 
 import { Button, Sidebar } from "@/shared/ui";
@@ -12,6 +13,10 @@ import type { PriceRange as PriceRangeType } from "@/entities/category";
 
 import { PriceRange } from "../PriceRange";
 import useFilters from "../../model/useFilters";
+
+import styles from "./Filters.module.css";
+import { useFilterDrawer } from "./FilterDrawerContext";
+import clsx from "clsx";
 
 interface Props {
   categories: CategoryFacet[];
@@ -43,6 +48,8 @@ export default function Filters({
     };
   });
 
+  const { isOpen, close } = useFilterDrawer();
+
   useEffect(() => {
     setIsFetching(false); // eslint-disable-line react-hooks/set-state-in-effect
   }, [pathname, searchParams]);
@@ -64,39 +71,52 @@ export default function Filters({
 
   const handleApplyFilters = () => {
     applyFilters({ priceRange: priceRangeState });
+    close();
     setIsFetching(true);
   };
 
   return (
-    <Sidebar>
-      <Sidebar.Section title="Categories">
-        <CategoryNavigation
-          categories={categories}
-          initialHistory={currentPath}
-        />
-      </Sidebar.Section>
+    <div className={clsx(styles["sidebar-root"], isOpen && styles.open)}>
+      <Sidebar className={styles.sidebar}>
+        <header className="d-xl-none d-flex align-items-center">
+          <h3 className="color-primary">Filters</h3>
 
-      <Sidebar.Section title="Price Range">
-        <PriceRange
-          min={priceRange.min_price}
-          max={priceRange.max_price}
-          from={priceRangeState.from}
-          to={priceRangeState.to}
-          onChange={(updatedState) => setPriceRangeState(updatedState)}
-          onBlur={revalidatePriceRange}
-          disabled={isFetching}
-        />
-      </Sidebar.Section>
+          <button className={styles["close-sidebar"]} onClick={close}>
+            <XIcon />
+          </button>
+        </header>
 
-      <Button
-        className="w-100"
-        accessoryRight={<FunnelIcon />}
-        onClick={handleApplyFilters}
-        loading={isFetching}
-        variant="primary"
-      >
-        Apply Filters
-      </Button>
-    </Sidebar>
+        <Sidebar.Section title="Categories">
+          <CategoryNavigation
+            categories={categories}
+            initialHistory={currentPath}
+          />
+        </Sidebar.Section>
+
+        <Sidebar.Section title="Price Range">
+          <PriceRange
+            min={priceRange.min_price}
+            max={priceRange.max_price}
+            from={priceRangeState.from}
+            to={priceRangeState.to}
+            onChange={(updatedState) => setPriceRangeState(updatedState)}
+            onBlur={revalidatePriceRange}
+            disabled={isFetching}
+          />
+        </Sidebar.Section>
+
+        <Button
+          className="w-100"
+          accessoryRight={<FunnelIcon />}
+          onClick={handleApplyFilters}
+          loading={isFetching}
+          variant="primary"
+        >
+          Apply Filters
+        </Button>
+      </Sidebar>
+
+      <div className={styles.overlay} onClick={close} aria-hidden="true" />
+    </div>
   );
 }
