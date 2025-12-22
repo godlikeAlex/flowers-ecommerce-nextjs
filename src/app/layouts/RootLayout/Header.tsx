@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -53,6 +53,8 @@ interface Props {
 export default function Header({ categories }: Props) {
   const [mobileMenuIsOpen, setMobileIsOpen] = useState(false);
   const selectedLayoutSegment = useSelectedLayoutSegment();
+
+  const handleClose = useCallback(() => setMobileIsOpen(false), []);
 
   const menuSegments: MenuSegment[] = [
     { type: "static", menuItems: START_MENU_ITEMS },
@@ -178,7 +180,7 @@ export default function Header({ categories }: Props) {
       <MobileHeader
         menuSegments={menuSegments}
         isOpen={mobileMenuIsOpen}
-        onClose={() => setMobileIsOpen(false)}
+        onClose={handleClose}
       />
     </>
   );
