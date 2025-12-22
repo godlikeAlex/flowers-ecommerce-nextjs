@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { Suspense, useCallback, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -177,11 +177,13 @@ export default function Header({ categories }: Props) {
         </nav>
       </header>
 
-      <MobileHeader
-        menuSegments={menuSegments}
-        isOpen={mobileMenuIsOpen}
-        onClose={handleClose}
-      />
+      <Suspense>
+        <MobileHeader
+          menuSegments={menuSegments}
+          isOpen={mobileMenuIsOpen}
+          onClose={handleClose}
+        />
+      </Suspense>
     </>
   );
 }
