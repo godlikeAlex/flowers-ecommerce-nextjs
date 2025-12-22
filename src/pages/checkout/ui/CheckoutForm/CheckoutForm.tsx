@@ -1,14 +1,12 @@
 import { Controller, FieldErrors, useFormContext } from "react-hook-form";
 import {
   Anchor,
-  Checkbox,
   DayPicker,
   GooglePlaces,
   Input,
   InputLabel,
   Textarea,
 } from "@/shared/ui";
-import TimeField from "react-simple-timefield";
 
 import type {
   DeliveryForm,
@@ -21,7 +19,7 @@ import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
 import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
-import { add, set } from "date-fns";
+import { add } from "date-fns";
 import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
 
 interface Props {

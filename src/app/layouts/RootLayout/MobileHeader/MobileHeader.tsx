@@ -12,6 +12,11 @@ import { ROUTES } from "@/shared/config";
 
 import styles from "./MobileHeader.module.css";
 import { MapPinSimpleIcon } from "@phosphor-icons/react/dist/ssr/MapPinSimple";
+import {
+  usePathname,
+  useSearchParams,
+} from "next/dist/client/components/navigation";
+import { useEffect } from "react";
 
 interface Props {
   isOpen: boolean;
@@ -20,6 +25,13 @@ interface Props {
 }
 
 export default function MobileHeader({ isOpen, onClose, menuSegments }: Props) {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    onClose();  
+  }, [pathname, searchParams, onClose]);
+
   const renderStaticMenu = (menuItems: StaticMenuItem[]) => {
     return menuItems.map((menuItem) => (
       <MobileMenuItem
