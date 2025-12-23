@@ -11,33 +11,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "@/shared/config";
 
-import heroImage from "./hero-image.png";
+import heroImage from "./hero-image.jpeg";
 
 export default function HeroSection() {
   return (
     <section className={clsx(styles["hero-banner"])}>
       <div className={clsx(styles.content)}>
         <div className="container-fluid">
-          <div className="row align-items-end justify-content-center">
-            <div className="col-xl-6">
+          <div className="row">
+            <div className="col-md-6">
               <div className={clsx(styles["text-block"])}>
-                <Image
-                  src="/images/hero/image-vector-1.png"
-                  alt=""
-                  loading="eager"
-                  width={216}
-                  height={195}
-                  className={clsx(styles["banner-vector"], styles["vector-1"])}
-                />
-                <Image
-                  src="/images/hero/flower-vector.png"
-                  className={clsx(styles["banner-vector"], styles["vector-2"])}
-                  alt=""
-                  loading="eager"
-                  width={39}
-                  height={51}
-                />
-                {/*Family-Owned Floral Boutique Delivering Emotion Through Flowers*/}
                 <h1 className={clsx(styles.title)}>
                   Family Floral <span className="color-primary">Boutique</span>{" "}
                   <br />
@@ -49,6 +32,7 @@ export default function HeroSection() {
                 <div className={clsx(styles["btn-block"])}>
                   <Button
                     as={Link}
+                    variant="primary"
                     href={ROUTES.SHOP([])}
                     accessoryRight={<FlowerTulipIcon />}
                   >
@@ -63,48 +47,18 @@ export default function HeroSection() {
                     Contact us
                   </Button>
                 </div>
-                <Image
-                  width={39}
-                  height={51}
-                  loading="eager"
-                  src="/images/hero/flower-vector.png"
-                  alt=""
-                  className={clsx(styles["banner-vector"], styles["vector-3"])}
-                />
-                <Image
-                  width={179}
-                  height={162}
-                  preload
-                  src="/images/hero/image-vector-3.png"
-                  alt=""
-                  loading="eager"
-                  className={clsx(styles["banner-vector"], styles["vector-4"])}
-                />
-              </div>
-            </div>
-            <div className="col-xl-6 col-lg-8 col-sm-10 col-11">
-              <div className={styles["img-block"]}>
-                <Image
-                  quality={95}
-                  // width={970}
-                  // height={659}
-                  src={heroImage}
-                  loading="eager"
-                  alt=""
-                />
               </div>
             </div>
           </div>
         </div>
-        <Image
-          src="/images/hero/image-vector-2.png"
-          width={196}
-          height={189}
-          preload
-          alt=""
-          className={clsx(styles["banner-vector"], styles["vector-5"])}
-        />
       </div>
+
+      <Image
+        src={heroImage}
+        alt="Bluemelle"
+        fill
+        className={styles["hero-image"]}
+      />
     </section>
   );
 }
