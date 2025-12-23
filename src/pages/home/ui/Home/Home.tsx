@@ -64,17 +64,13 @@ export default async function Home() {
         <VideoSection />
       </section>
 
-      <section style={{ paddingBottom: 80 }}>
-        <GoogleReview />
-      </section>
+      <section style={{ paddingBottom: 80 }}>{/*<GoogleReview />*/}</section>
 
       <section style={{ paddingBottom: 80 }}>
         <BlogSection posts={posts} />
       </section>
 
-      <section style={{ paddingBottom: 80 }}>
-        <InstagramReview />
-      </section>
+      <section style={{ paddingBottom: 80 }}>{/*<InstagramReview />*/}</section>
     </>
   );
 }
