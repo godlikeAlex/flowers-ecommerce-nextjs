@@ -72,11 +72,11 @@
   object-fit: cover;
   background-repeat: no-repeat;
   z-index: 0;
-  object-position: right 12%;
+  object-position: right 35%;
 }
 
 @media (max-width: 767px) {
   .hero-image {
-    object-position: 0% center;
+    object-position: center right;
   }
 }
