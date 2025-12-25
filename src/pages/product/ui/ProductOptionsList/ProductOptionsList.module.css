@@ -1,14 +1,19 @@
 .product-option-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
 
-.product-option-list__item {
-  width: 33%;
+.product-option-list__item:nth-child(4):last-child {
+  grid-column: 1 / -1;
 }
 
-@media (max-width: 500px) {
-  .product-option-list__item {
-    width: 50%;
+@media (max-width: 420px) {
+  .product-option-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-option-list__item:nth-child(4):last-child {
+    grid-column: unset;
   }
 }
