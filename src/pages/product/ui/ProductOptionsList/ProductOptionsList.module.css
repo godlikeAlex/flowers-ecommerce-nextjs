@@ -8,9 +8,12 @@
   grid-column: 1 / -1;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 420px) {
   .product-option-list {
     grid-template-columns: repeat(2, 1fr);
-    width: 50%;
+  }
+
+  .product-option-list__item:nth-child(4):last-child {
+    grid-column: unset;
   }
 }
