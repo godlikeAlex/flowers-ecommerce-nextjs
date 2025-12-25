@@ -11,7 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "@/shared/config";
 
-import heroImage from "./hero-image.jpeg";
+import heroImage from "./hero-image.jpg";
 
 export default function HeroSection() {
   return (
@@ -54,6 +54,7 @@ export default function HeroSection() {
       </div>
 
       <Image
+        loading="eager"
         src={heroImage}
         alt="Bluemelle"
         fill
