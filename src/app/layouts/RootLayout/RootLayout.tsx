@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "BLUEMELLE Flower Boutique",
     images: [
       {
-        url: "/images/og-image.jpgs",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "BLUEMELLE Flower Boutique",
