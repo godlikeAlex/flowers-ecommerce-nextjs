@@ -1,5 +1,8 @@
 import { ApiClient } from "@/shared/api";
-import { PaginationResponse } from "@/shared/lib/utility-types";
+import {
+  PaginationResponse,
+  WithSeoResponse,
+} from "@/shared/lib/utility-types";
 import { PostCard, PostCategory } from "../model/types";
 
 interface GetCategoryPostsDTO {
@@ -7,10 +10,9 @@ interface GetCategoryPostsDTO {
   page: number;
 }
 
-interface Response {
-  category: PostCategory;
+type Response = {
   posts: PaginationResponse<PostCard>;
-}
+} & WithSeoResponse<"category", PostCategory>;
 
 export function getCategoryPosts({
   page = 1,
