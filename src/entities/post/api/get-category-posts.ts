@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { ApiClient } from "@/shared/api";
 import {
   PaginationResponse,
@@ -14,15 +15,14 @@ type Response = {
   posts: PaginationResponse<PostCard>;
 } & WithSeoResponse<"category", PostCategory>;
 
-export function getCategoryPosts({
-  page = 1,
-  categorySlug,
-}: GetCategoryPostsDTO) {
-  const queryParams = new URLSearchParams();
+export const getCategoryPosts = cache(
+  ({ page = 1, categorySlug }: GetCategoryPostsDTO) => {
+    const queryParams = new URLSearchParams();
 
-  queryParams.set("page", page.toString());
+    queryParams.set("page", page.toString());
 
-  return ApiClient.GET<Response>(
-    `/blog/categories/${categorySlug}?${queryParams.toString()}`,
-  );
-}
+    return ApiClient.GET<Response>(
+      `/blog/categories/${categorySlug}?${queryParams.toString()}`,
+    );
+  },
+);
