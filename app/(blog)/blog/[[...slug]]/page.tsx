@@ -1,1 +1,1 @@
-export { BlogPage as default, metadata } from "@/pages/blog";
+export { BlogPage as default, generateMetadata } from "@/pages/blog";

@@ -1,5 +1,8 @@
 import { ApiClient } from "@/shared/api";
-import { PaginationResponse } from "@/shared/lib/utility-types";
+import {
+  PaginationResponse,
+  WithSeoResponse,
+} from "@/shared/lib/utility-types";
 import { Category, CategoryFacet } from "../models/types";
 import type { ProductCard } from "@/entities/product/@x/category";
 
@@ -15,6 +18,7 @@ interface GetCategoryResponse {
   };
   categories_breadcrumbs: Category[];
   products: PaginationResponse<ProductCard>;
+  target_category: WithSeoResponse<"category", Category | null>;
 }
 
 export async function getCategory(

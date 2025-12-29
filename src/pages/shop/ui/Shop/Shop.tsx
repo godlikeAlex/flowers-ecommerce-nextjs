@@ -31,16 +31,23 @@ export default async function Shop({
   let products: PaginationResponse<IProductCard>;
   let categories: CategoryFacet[] = [];
   let priceRange: PriceRange = { min_price: 0, max_price: 0 };
+  let pageBannerTitle = "Shop All";
 
   try {
-    const { data } = await getCategory(
+    const {
+      data: { facets, products: productCategories, target_category },
+    } = await getCategory(
       slug ? slug.join("/") : "",
       buildFilterQueryString(catalogFilters),
     );
 
-    products = data.products;
-    categories = data.facets.categories;
-    priceRange = data.facets.price_range;
+    if (target_category.category) {
+      pageBannerTitle = target_category.category.name;
+    }
+
+    products = productCategories;
+    categories = facets.categories;
+    priceRange = facets.price_range;
   } catch (e: unknown) {
     if (isAxiosError(e)) {
       if (e.response?.status === 404) notFound();
@@ -51,7 +58,7 @@ export default async function Shop({
 
   return (
     <FilterDrawerProvider>
-      <PageBanner title="Shop" />
+      <PageBanner title={pageBannerTitle} />
       <div className="py-80">
         <div className="container-fluid">
           <div className="row">
