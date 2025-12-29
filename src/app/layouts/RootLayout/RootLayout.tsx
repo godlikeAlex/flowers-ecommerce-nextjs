@@ -24,9 +24,25 @@ import { ScrollToTop } from "./ScrollToTop";
 import { SlideOverCart } from "@/widgets/cart/ui";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bluemelle.com"),
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
   description:
     "At BLUEMELLE, we create stylish, contemporary bouquets that speak your emotions. Fresh flowers, custom arrangements, and thoughtful floral gifts for every moment.",
+  openGraph: {
+    title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
+    description:
+      "At BLUEMELLE, we create stylish, contemporary bouquets that speak your emotions. Fresh flowers, custom arrangements, and thoughtful floral gifts for every moment.",
+    type: "website",
+    siteName: "BLUEMELLE Flower Boutique",
+    images: [
+      {
+        url: "/images/og-image.jpgs",
+        width: 1200,
+        height: 630,
+        alt: "BLUEMELLE Flower Boutique",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({

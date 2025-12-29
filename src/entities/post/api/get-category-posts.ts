@@ -1,5 +1,9 @@
+import { cache } from "react";
 import { ApiClient } from "@/shared/api";
-import { PaginationResponse } from "@/shared/lib/utility-types";
+import {
+  PaginationResponse,
+  WithSeoResponse,
+} from "@/shared/lib/utility-types";
 import { PostCard, PostCategory } from "../model/types";
 
 interface GetCategoryPostsDTO {
@@ -7,20 +11,18 @@ interface GetCategoryPostsDTO {
   page: number;
 }
 
-interface Response {
-  category: PostCategory;
+type Response = {
   posts: PaginationResponse<PostCard>;
-}
+} & WithSeoResponse<"category", PostCategory>;
 
-export function getCategoryPosts({
-  page = 1,
-  categorySlug,
-}: GetCategoryPostsDTO) {
-  const queryParams = new URLSearchParams();
+export const getCategoryPosts = cache(
+  ({ page = 1, categorySlug }: GetCategoryPostsDTO) => {
+    const queryParams = new URLSearchParams();
 
-  queryParams.set("page", page.toString());
+    queryParams.set("page", page.toString());
 
-  return ApiClient.GET<Response>(
-    `/blog/categories/${categorySlug}?${queryParams.toString()}`,
-  );
-}
+    return ApiClient.GET<Response>(
+      `/blog/categories/${categorySlug}?${queryParams.toString()}`,
+    );
+  },
+);

@@ -1,1 +1,1 @@
-export { ProductPage as default, metadata } from "@/pages/product";
+export { ProductPage as default, generateMetadata } from "@/pages/product";

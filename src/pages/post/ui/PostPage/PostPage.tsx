@@ -20,7 +20,7 @@ export default async function PostPage({
   try {
     const { data } = await getPost(productSlug);
 
-    post = data;
+    post = data.post;
   } catch (e) {
     console.log("error", e);
     return notFound();

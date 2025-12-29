@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { InstagramLogoIcon } from "@phosphor-icons/react/dist/ssr/InstagramLogo";
 import { PinterestLogoIcon } from "@phosphor-icons/react/dist/ssr/PinterestLogo";
 import { FacebookLogoIcon } from "@phosphor-icons/react/dist/ssr/FacebookLogo";
+import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
 import { TiktokLogoIcon } from "@phosphor-icons/react/dist/ssr/TiktokLogo";
 import { ClockIcon } from "@phosphor-icons/react/dist/ssr/Clock";
 import { PhoneIcon } from "@phosphor-icons/react/dist/ssr/Phone";
@@ -111,7 +112,19 @@ export default function Footer({ categories }: Props) {
                 </ul>
                 <ul className={clsx("unstyled", styles["social-icons"])}>
                   <li>
-                    <Link href="">
+                    <Link
+                      href="https://api.whatsapp.com/send?phone=18483450492"
+                      target="_blank"
+                    >
+                      <WhatsappLogoIcon />
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      href="https://www.instagram.com/bluemelle_flowers_nj/"
+                      target="_blank"
+                    >
                       <InstagramLogoIcon />
                     </Link>
                   </li>
