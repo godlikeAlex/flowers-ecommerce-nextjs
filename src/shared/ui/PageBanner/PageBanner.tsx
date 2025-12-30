@@ -12,8 +12,14 @@ interface Props {
 export default function PageBanner({ title }: Props) {
   return (
     <section className={styles["page-header"]}>
-      <div className={styles.content}>
-        <h2>{title}</h2>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12 text-center">
+            <div className={styles.content}>
+              <h2>{title}</h2>
+            </div>
+          </div>
+        </div>
       </div>
       <Image
         src={vector1}

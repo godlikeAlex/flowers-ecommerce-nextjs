@@ -12,6 +12,12 @@
   gap: 20px;
 }
 
+@media (max-width: 400px) {
+  .actions button,
+  .actions a {
+    width: 100%;
+  }
+}
 .content {
   display: flex;
   flex-direction: column;
@@ -22,6 +28,12 @@
 
 .imageContainer {
   position: relative;
-  width: 340px;
+  width: 320px;
   color: var(--primary-color);
+}
+
+@media (max-width: 380px) {
+  .imageContainer {
+    width: 100%;
+  }
 }
