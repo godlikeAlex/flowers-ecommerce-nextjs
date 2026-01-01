@@ -1,10 +1,18 @@
-import { set } from "date-fns";
+import { add, set, startOfDay } from "date-fns";
 import { formatInTimeZone, toZonedTime, fromZonedTime } from "date-fns-tz";
 
 export const NY_TIMEZONE = "America/New_York";
 
 export const getNowInNY = () => {
   return toZonedTime(new Date(), NY_TIMEZONE);
+};
+
+export const getMinSelectableDateNY = () => {
+  const nowNY = getNowInNY();
+  const tomorrowNY = add(nowNY, { days: 1 });
+  const tomorrowNYStartOfDay = startOfDay(tomorrowNY);
+
+  return fromZonedTime(tomorrowNYStartOfDay, "America/New_York");
 };
 
 export const toNYTime = (date: Date | string | number) => {

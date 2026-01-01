@@ -14,12 +14,11 @@ import type {
 } from "../../model/checkout-schema";
 import { ROUTES, US_TELEPHONE_MASK } from "@/shared/config";
 import { useCreateOrder } from "@/features/order";
-import { getNowInNY, combineDateTimeToUTC } from "@/shared/lib";
+import { combineDateTimeToUTC, getMinSelectableDateNY } from "@/shared/lib";
 import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
 import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
-import { add } from "date-fns";
 import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
 
 interface Props {
@@ -222,7 +221,7 @@ export default function CheckoutForm({
                   onSelect={field.onChange}
                   placeholder="Select Shipping Date"
                   disabled={[
-                    { before: add(getNowInNY(), { days: 1 }) },
+                    { before: getMinSelectableDateNY() },
                     { dayOfWeek: [0, 6] },
                   ]}
                   error={errors.deliveryDate?.message}
