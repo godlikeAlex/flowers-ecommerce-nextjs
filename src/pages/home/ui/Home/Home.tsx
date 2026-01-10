@@ -1,3 +1,5 @@
+import { Florist, WithContext } from "schema-dts";
+
 import { HeroSection } from "../HeroSection";
 import { AdvantagesSection } from "../AdvantagesSection";
 import { FeaturedCategoriesSection } from "../FeaturedCategoriesSection";
@@ -14,11 +16,59 @@ import { FeaturedSection } from "@/entities/featured-section";
 import { GoogleReview } from "../GoogleReview";
 import { VideoSection } from "../VideoSection";
 import { InstagramReview } from "../InstagramReview";
+import { WhyWeSection } from "../WhyWeSection";
 
 export default async function Home() {
   const categories = await getMenuCategories();
   let posts: PostCard[] = [];
   let featuredSections: FeaturedSection[] = [];
+
+  const jsonLd: WithContext<Florist> = {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    name: "Bluemelle",
+    url: "https://www.bluemelle.com",
+    telephone: "+1-848-345-0492",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress:
+        "1212 NJ-34 suite 25, Aberdeen Township, NJ 07747, United States",
+      addressLocality: "Aberdeen",
+      addressRegion: "NJ",
+      postalCode: "07747",
+      addressCountry: "US",
+    },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Aberdeen Township, NJ",
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "10:00",
+        closes: "17:00",
+      },
+    ],
+    sameAs: ["https://maps.app.goo.gl/dZpye1JMjVtpY6fj8"],
+    makesOffer: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Same-Day Flower Delivery",
+        },
+      },
+    ],
+  };
 
   try {
     const { data } = await getHomePageData();
@@ -31,6 +81,13 @@ export default async function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <HeroSection />
       <HomeSection>
         <AdvantagesSection />
@@ -58,6 +115,10 @@ export default async function Home() {
       <section style={{ paddingBottom: 80 }}>
         <AdvantagesSection />
         <OfferBanner />
+      </section>
+
+      <section style={{ paddingBottom: 80 }}>
+        <WhyWeSection />
       </section>
 
       <section style={{ paddingBottom: 80 }}>
