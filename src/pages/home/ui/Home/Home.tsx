@@ -16,6 +16,7 @@ import { FeaturedSection } from "@/entities/featured-section";
 import { GoogleReview } from "../GoogleReview";
 import { VideoSection } from "../VideoSection";
 import { InstagramReview } from "../InstagramReview";
+import { WhyWeSection } from "../WhyWeSection";
 
 export default async function Home() {
   const categories = await getMenuCategories();
@@ -114,6 +115,10 @@ export default async function Home() {
       <section style={{ paddingBottom: 80 }}>
         <AdvantagesSection />
         <OfferBanner />
+      </section>
+
+      <section style={{ paddingBottom: 80 }}>
+        <WhyWeSection />
       </section>
 
       <section style={{ paddingBottom: 80 }}>
