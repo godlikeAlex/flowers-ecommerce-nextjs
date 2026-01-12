@@ -196,6 +196,11 @@ export default function Footer({ categories }: Props) {
                       Checkout
                     </Anchor>
                   </li>
+                  <li>
+                    <Anchor variant="hover" href={ROUTES.PRIVACY_POLICY}>
+                      Privacy Policy
+                    </Anchor>
+                  </li>
                 </ul>
               </div>
             </div>
