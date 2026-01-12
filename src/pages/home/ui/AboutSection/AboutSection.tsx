@@ -23,26 +23,23 @@ export default function AboutSection() {
                 <div className="row">
                   <div className="col-xxl-10 col-xl-11">
                     <h2 className="mb-16 title">
-                      The Beginning of
+                      At <span className="color-primary">Bluemelle</span>
                       <br />
-                      <span className="color-primary">Bluemelle</span> <br />
-                      <span className="color-primary"> Flower Shop</span>
+                      Flower Boutique
                     </h2>
                     <p className="mb-16">
-                      Bluemelle began with Sofiia’s love for flowers and the joy
-                      of creating meaningful gifts for others. Over time, what
-                      started as a passion became her purpose—expressing
-                      emotions through floristry. As a family—Sofiia, Viktor,
-                      and our daughter Emma—we created Bluemelle with heart.
-                      Every detail of our small shop was thoughtfully designed
-                      to feel warm, welcoming, and full of life.
+                      We help people celebrate life events and meaningful
+                      moments with thoughtfully designed floral arrangements.
+                      Whether you’re surprising someone you love, honoring a
+                      milestone, or simply brightening someone’s day, you
+                      deserve flowers that feel personal, beautiful, and
+                      unforgettable.
                     </p>
 
-                    <p className="mb-16">We don’t just sell flowers.</p>
-
                     <p className="mb-16">
-                      We help people express love, care, and the moments that
-                      matter most.
+                      You shouldn’t have to struggle or feel overwhelmed when
+                      choosing the right gift — we make it easy, joyful, and
+                      stress‑free.
                     </p>
 
                     <Button
