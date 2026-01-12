@@ -11,6 +11,7 @@ export const ROUTES = {
   SIGNUP: "/signup",
   CART: "/cart",
   CHECKOUT: "/cart/checkout",
+  PRIVACY_POLICY: "/privacy-policy",
   PAY: (orderUUID: string) => `/cart/checkout/pay/${orderUUID}`,
   POST_SHOW: (postSlug: string) => `/post/${postSlug}`,
   BLOG: (categorySlug: string = "") => `/blog/${categorySlug}`,
