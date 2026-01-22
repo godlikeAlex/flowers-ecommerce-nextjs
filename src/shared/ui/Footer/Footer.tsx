@@ -53,7 +53,7 @@ export default function Footer({ categories }: Props) {
                   <p>
                     <span className="accent-dark">MON - FRI</span>
                     <br />
-                    <span className="accent-dark">08:00 AM - 05:00 PM</span>
+                    <span className="accent-dark">10:00 AM - 05:00 PM</span>
                   </p>
                 </div>
               </div>

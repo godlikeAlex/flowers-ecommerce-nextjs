@@ -6,6 +6,7 @@ import {
   Input,
   InputLabel,
   Textarea,
+  TimeSlots,
 } from "@/shared/ui";
 
 import type {
@@ -20,23 +21,13 @@ import { useUser } from "@/entities/user";
 import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
 import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
+import { DELIVERY_INTERVALS, PICKUP_INTERVALS } from "./timeslots";
 
 interface Props {
   checkoutFormID: string;
   paymentIsProccessing: boolean;
   setPaymentIsProccessing: (isProcessing: boolean) => void;
 }
-
-const INTERVALS = [
-  {
-    label: "9:00 AM – 1:00 PM",
-    time: "09:00",
-  },
-  {
-    label: "1:00 PM – 4:00 PM",
-    time: "13:00",
-  },
-];
 
 export default function CheckoutForm({
   checkoutFormID,
@@ -58,6 +49,18 @@ export default function CheckoutForm({
   const router = useRouter();
 
   const orderType = watch("orderType");
+
+  useEffect(() => {
+    if (!orderType) return;
+
+    const [firstSlot] =
+      orderType === "pickup" ? PICKUP_INTERVALS : DELIVERY_INTERVALS;
+
+    setValue("deliveryTime", firstSlot.time ?? "09:00", {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  }, [orderType, setValue]);
 
   useEffect(() => {
     if (user.data) {
@@ -237,32 +240,15 @@ export default function CheckoutForm({
               name="deliveryTime"
               disabled={paymentIsProccessing}
               render={({ field }) => (
-                <>
-                  <div className="d-flex gap-2">
-                    {INTERVALS.map((interval) => (
-                      <div
-                        key={interval.label}
-                        style={{
-                          cursor: "pointer",
-                          background:
-                            interval.time === field.value
-                              ? "var(--primary-color)"
-                              : "var(--primary-light-blue)",
-                          borderRadius: 5,
-                          padding: 5,
-                          color:
-                            interval.time === field.value
-                              ? "white"
-                              : "var(--heading-color)",
-                        }}
-                        aria-hidden="true"
-                        onClick={() => field.onChange(interval.time)}
-                      >
-                        {interval.label}
-                      </div>
-                    ))}
-                  </div>
-                </>
+                <TimeSlots
+                  timeSlots={
+                    orderType === "delivery"
+                      ? DELIVERY_INTERVALS
+                      : PICKUP_INTERVALS
+                  }
+                  value={field.value}
+                  onChange={(time) => field.onChange(time)}
+                />
               )}
             />
           </div>
