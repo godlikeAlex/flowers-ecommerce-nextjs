@@ -2,7 +2,7 @@ import z from "zod";
 
 export const sortShopSchema = z
   .enum(["featured", "price_asc", "price_desc", "latest"])
-  .catch("featured");
+  .catch("latest");
 
 export const catalogFiltersSchema = z.object({
   page: z
