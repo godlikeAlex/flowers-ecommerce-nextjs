@@ -1,12 +1,33 @@
 .pagination {
   display: flex;
   align-items: center;
-  margin-top: clamp(24px, 3.33vw, 84px);
-  margin-bottom: 0;
   gap: clamp(16px, 1.25vw, 32px);
   justify-content: center;
   list-style: none !important;
   padding-left: 0px;
+  width: 100%;
+  overflow-y: auto;
+  margin: auto;
+  margin-top: clamp(24px, 3.33vw, 84px);
+  margin-bottom: 0;
+  padding: 10px;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #f1f1f1;
+}
+
+.pagination::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pagination::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  background: var(--primary-color);
+}
+
+.pagination::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
 }
 
 @media (max-width: 575px) {
