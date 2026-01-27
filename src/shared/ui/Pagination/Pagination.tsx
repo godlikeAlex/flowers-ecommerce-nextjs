@@ -45,7 +45,7 @@ export default function Pagination({ pageCount, currentPage }: Props) {
       }
       onPageChange={({ selected }) => onChangePage(selected)}
       forcePage={currentPage - 1}
-      pageRangeDisplayed={1}
+      pageRangeDisplayed={2}
       marginPagesDisplayed={1}
       pageCount={pageCount}
       breakLabel={<DotsThreeIcon />}
