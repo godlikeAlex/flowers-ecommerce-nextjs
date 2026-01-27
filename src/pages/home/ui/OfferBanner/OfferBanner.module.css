@@ -62,7 +62,8 @@
 
 @media (max-width: 575px) {
   .title-1 {
-    font-size: 64px;
+    font-size: 42px;
+    margin-block: 12px;
   }
 }
 
