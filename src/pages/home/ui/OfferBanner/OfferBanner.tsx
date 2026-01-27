@@ -6,6 +6,10 @@ import styles from "./OfferBanner.module.css";
 import Image from "next/image";
 
 import offerBannerBackgroundImage from "./offer-banner.png";
+import { Button } from "@/shared/ui";
+import { FlowerTulipIcon } from "@phosphor-icons/react/dist/ssr/FlowerTulip";
+import { ROUTES } from "@/shared/config";
+import Link from "next/link";
 
 export default function OfferBanner() {
   return (
@@ -41,12 +45,22 @@ export default function OfferBanner() {
               </div>
               <div className="col-lg-6 col-12 order-lg-1">
                 <div className={styles["text-block"]}>
-                  <h4>SPECIAL OFFER</h4>
-                  <span className={styles["title-1"]}>Veterans & Seniors</span>
+                  <h4>BIRTHDAY SPECIAL</h4>
+                  <span className={styles["title-1"]}>Flower Workshop</span>
                   <span className={clsx(styles["title-2"], "mb-12")}>
-                    5% Discount
+                    Experience
                   </span>
-                  <h2> In-Store Only</h2>
+                  <Button
+                    as={Link}
+                    variant="primary"
+                    href={
+                      "https://bluemelle.com/product/birthday-flower-workshop-experience"
+                    }
+                    accessoryRight={<FlowerTulipIcon />}
+                    className="mt-5 mx-auto"
+                  >
+                    Shop Now
+                  </Button>
                 </div>
               </div>
             </div>
