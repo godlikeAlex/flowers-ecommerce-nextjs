@@ -15,7 +15,7 @@ import "@/app/bootstrap.scss";
 import "@/app/global.css";
 
 import Header from "./Header";
-import { Footer, WhatsAppWidget } from "@/shared/ui";
+import { Footer, WhatsAppWidget, AnnouncementWidget } from "@/shared/ui";
 import { getMenuCategories } from "@/entities/category";
 import NextTopLoader from "nextjs-toploader";
 
@@ -63,6 +63,7 @@ export default async function RootLayout({
 
             <Header categories={categories} />
             <WhatsAppWidget />
+            <AnnouncementWidget />
             {children}
             <Footer categories={categories} />
           </Providers>
