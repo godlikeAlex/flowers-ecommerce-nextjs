@@ -99,7 +99,7 @@ export default function Header({ categories }: Props) {
 
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <nav className={clsx(styles["main-menu"])}>
           <div className="container-fluid">
             <div className={clsx(styles["main-menu__block"])}>

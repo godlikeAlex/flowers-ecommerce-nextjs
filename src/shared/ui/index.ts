@@ -23,6 +23,7 @@ export { StarRating } from "./StarRating";
 export { AvatarPlaceholder } from "./AvatarPlaceholder";
 export { InputLabel } from "./InputLabel";
 export { WhatsAppWidget } from "./WhatsAppWidget";
+export { AnnouncementWidget } from "./AnnouncementWidget";
 export { TimeSlots } from "./TimeSlots";
 
 export * from "./icons";
