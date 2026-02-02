@@ -68,9 +68,6 @@ html {
   scroll-behavior: auto !important;
 }
 
-.main {
-  padding-top: var(--header-height);
-}
 .accent-dark {
   color: var(--heading-color);
 }

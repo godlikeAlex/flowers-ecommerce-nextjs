@@ -15,7 +15,7 @@ import "@/app/bootstrap.scss";
 import "@/app/global.css";
 
 import Header from "./Header";
-import { Footer, WhatsAppWidget } from "@/shared/ui";
+import { AnnouncementWidget, Footer, WhatsAppWidget } from "@/shared/ui";
 import { getMenuCategories } from "@/entities/category";
 import NextTopLoader from "nextjs-toploader";
 
@@ -54,15 +54,18 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={bluemelleFont.className}>
-      <body style={bluemelleFont.style} className={pacificoFont.variable}>
+      <body
+        style={{ ...bluemelleFont.style }}
+        className={pacificoFont.variable}
+      >
         <ScrollToTop />
         <main className="main">
           <Providers>
             <NextTopLoader color="#0b5bb2" />
             <SlideOverCart />
-
-            <Header categories={categories} />
             <WhatsAppWidget />
+            <AnnouncementWidget />
+            <Header categories={categories} />
             {children}
             <Footer categories={categories} />
           </Providers>

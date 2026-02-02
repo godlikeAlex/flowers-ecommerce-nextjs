@@ -1,13 +1,9 @@
-import Script from "next/script";
+"use client";
+
+import { ElfsightWidget } from "react-elfsight-widget";
 
 export default function WhatsAppWidget() {
   return (
-    <>
-      <Script src="https://elfsightcdn.com/platform.js" async />
-      <div
-        className="elfsight-app-3a1bc87e-aaf9-41c7-880b-396e47b14570"
-        data-elfsight-app-lazy
-      />
-    </>
+    <ElfsightWidget widgetId="3a1bc87e-aaf9-41c7-880b-396e47b14570" lazy />
   );
 }
