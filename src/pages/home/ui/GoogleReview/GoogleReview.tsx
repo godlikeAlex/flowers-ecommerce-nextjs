@@ -1,4 +1,6 @@
-import Script from "next/script";
+"use client";
+
+import { ElfsightWidget } from "react-elfsight-widget";
 
 export default function GoogleReview() {
   return (
@@ -11,11 +13,10 @@ export default function GoogleReview() {
 
       <div className="row justify-content-center">
         <div className="col-md-9">
-          <Script src="https://elfsightcdn.com/platform.js" async />
-          <div
-            className="elfsight-app-2028a0b5-0429-49c2-90af-be815371c4e2"
-            data-elfsight-app-lazy
-          ></div>
+          <ElfsightWidget
+            widgetId="2028a0b5-0429-49c2-90af-be815371c4e2"
+            lazy
+          />
         </div>
       </div>
     </div>

@@ -1,4 +1,6 @@
-import Script from "next/script";
+"use client";
+
+import { ElfsightWidget } from "react-elfsight-widget";
 
 export default function InstagramReview() {
   return (
@@ -11,10 +13,9 @@ export default function InstagramReview() {
 
       <div className="row justify-content-center">
         <div className="col-md-9">
-          <Script src="https://elfsightcdn.com/platform.js" async />
-          <div
-            className="elfsight-app-1bae447e-59e6-42cb-8a34-1162461e86ce"
-            data-elfsight-app-lazy
+          <ElfsightWidget
+            widgetId="1bae447e-59e6-42cb-8a34-1162461e86ce"
+            lazy
           />
         </div>
       </div>
