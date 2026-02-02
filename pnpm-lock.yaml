@@ -86,6 +86,9 @@ importers:
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.2.0)
+      react-elfsight-widget:
+        specifier: ^1.1.2
+        version: 1.1.2(react@19.2.0)
       react-google-autocomplete:
         specifier: ^2.7.5
         version: 2.7.5(react@19.2.0)
@@ -3149,6 +3152,11 @@ packages:
     engines: {node: '>= 10.13'}
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
+
+  react-elfsight-widget@1.1.2:
+    resolution: {integrity: sha512-FT/H1f3jtrTD1jqpubl+wyqE/FfJM6TpbfpUFpDoYoofoVzPAbjGiqKs1t8IQh2D3zeoP72IgfP5/idyKyabzw==}
+    peerDependencies:
+      react: ^17.0.2 || ^18.0.0 || ^19.0.0
 
   react-google-autocomplete@2.7.5:
     resolution: {integrity: sha512-CPHMFBCgaJER19iA/y9Isjxh5au8mRxkt6przu9miOHLqrno+ifwJGXQOzMvtwdqNPXhb5Z6jpTtiJrbFeUvHg==}
@@ -6917,6 +6925,10 @@ snapshots:
       attr-accept: 2.2.5
       file-selector: 2.1.2
       prop-types: 15.8.1
+      react: 19.2.0
+
+  react-elfsight-widget@1.1.2(react@19.2.0):
+    dependencies:
       react: 19.2.0
 
   react-google-autocomplete@2.7.5(react@19.2.0):
