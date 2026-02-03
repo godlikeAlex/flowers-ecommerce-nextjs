@@ -101,7 +101,9 @@ export default function MobileHeader({ isOpen, onClose, menuSegments }: Props) {
             <span className={styles["footer-icon"]}>
               <EnvelopeSimpleIcon />
             </span>
-            <Link href="mailto:info@bluemelle.com">info@bluemelle.com</Link>
+            <Link href="mailto:bluemellenj@gmail.com">
+              bluemellenj@gmail.com
+            </Link>
           </li>
           <li>
             <span className={styles["footer-icon"]}>
