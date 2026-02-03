@@ -87,10 +87,10 @@ export default function Footer({ categories }: Props) {
                       <Anchor
                         as={Link}
                         variant="hover"
-                        href="mailto:info@bluemelle.com"
+                        href="mailto:bluemellenj@gmail.com"
                         className="accent-dark"
                       >
-                        info@bluemelle.com
+                        bluemellenj@gmail.com
                       </Anchor>
                     </p>
                   </li>
