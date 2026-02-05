@@ -15,7 +15,11 @@ import type {
 } from "../../model/checkout-schema";
 import { ROUTES, US_TELEPHONE_MASK } from "@/shared/config";
 import { useCreateOrder } from "@/features/order";
-import { combineDateTimeToUTC, getMinSelectableDateNY } from "@/shared/lib";
+import {
+  combineDateTimeToUTC,
+  getDateInNY,
+  getMinSelectableDateNY,
+} from "@/shared/lib";
 import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
 import { useEffect } from "react";
@@ -44,11 +48,21 @@ export default function CheckoutForm({
     reset,
     watch,
     setValue,
+    resetField,
   } = useFormContext<ICheckoutForm>();
   const createOrderMutation = useCreateOrder();
   const router = useRouter();
 
   const orderType = watch("orderType");
+
+  const disabledDates =
+    orderType === "delivery"
+      ? [
+          getDateInNY(2026, 1, 12),
+          getDateInNY(2026, 1, 13),
+          getDateInNY(2026, 1, 14),
+        ]
+      : [];
 
   useEffect(() => {
     if (!orderType) return;
@@ -60,7 +74,9 @@ export default function CheckoutForm({
       shouldValidate: true,
       shouldDirty: true,
     });
-  }, [orderType, setValue]);
+
+    resetField("deliveryDate");
+  }, [orderType, setValue, resetField]);
 
   useEffect(() => {
     if (user.data) {
@@ -226,6 +242,7 @@ export default function CheckoutForm({
                   disabled={[
                     { before: getMinSelectableDateNY() },
                     { dayOfWeek: [0, 6] },
+                    ...disabledDates,
                   ]}
                   error={errors.deliveryDate?.message}
                   timeZone="America/New_York"

@@ -15,6 +15,11 @@ export const getMinSelectableDateNY = () => {
   return fromZonedTime(tomorrowNYStartOfDay, "America/New_York");
 };
 
+export const getDateInNY = (year: number, month: number, day: number) => {
+  const date = new Date(year, month, day);
+  return fromZonedTime(startOfDay(date), "America/New_York");
+};
+
 export const toNYTime = (date: Date | string | number) => {
   return toZonedTime(date, NY_TIMEZONE);
 };
