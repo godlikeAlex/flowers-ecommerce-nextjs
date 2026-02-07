@@ -12,14 +12,6 @@ export default function FeaturedCategoriesSection({ categories }: Props) {
     <div className="categories">
       <div className="container-fluid">
         <div className="row row-gap-4 justify-content-center">
-          <div className="col-lg-4 col-sm-6">
-            <CategoryCard
-              name={"All Products"}
-              href={ROUTES.SHOP([])}
-              variant="primaryBlue"
-            />
-          </div>
-
           {categories.map((category, index) => (
             <div key={category.id} className="col-lg-4 col-sm-6">
               <CategoryCard
