@@ -1,3 +1,1 @@
-export default function NotFound() {
-  return <h1>Page not found</h1>;
-}
+export { NotFoundPage as default } from "@/pages/not-found";
