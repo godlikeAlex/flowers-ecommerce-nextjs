@@ -111,7 +111,7 @@ export default function VideoSection() {
               preload="none"
               poster={poster.src}
             >
-              <source src="/intro.mp4" type="video/mp4" />
+              <source src="/video.mp4" type="video/mp4" />
               <track kind="captions" />
             </video>
           </div>
