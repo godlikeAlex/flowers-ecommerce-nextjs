@@ -73,3 +73,4 @@ export const checkoutSchema = z.discriminatedUnion("orderType", [
 
 export type DeliveryForm = z.infer<typeof deliverySchema>;
 export type CheckoutForm = z.infer<typeof checkoutSchema>;
+export type OrderType = z.infer<typeof checkoutSchema>["orderType"];

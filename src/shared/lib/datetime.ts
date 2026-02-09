@@ -55,3 +55,36 @@ export function combineDateTimeToUTC(date: Date, time: string) {
 
   return fromZonedTime(combined, NY_TIMEZONE).toISOString();
 }
+
+const getNYDateParts = (date: Date) => {
+  const ny = toNYTime(date);
+
+  return {
+    year: ny.getFullYear(),
+    month: ny.getMonth() + 1,
+    day: ny.getDate(),
+    weekDay: ny.getDay(),
+  };
+};
+
+export const isNYDate = (
+  date: Date,
+  match: Partial<{
+    day: number;
+    month: number;
+    year: number;
+  }>,
+) => {
+  const ny = getNYDateParts(date);
+
+  return (
+    (match.day === undefined || ny.day === match.day) &&
+    (match.month === undefined || ny.month === match.month) &&
+    (match.year === undefined || ny.year === match.year)
+  );
+};
+
+export const isNYWeekDay = (date: Date, days: number | number[]) => {
+  const { weekDay } = getNYDateParts(date);
+  return Array.isArray(days) ? days.includes(weekDay) : weekDay === days;
+};
