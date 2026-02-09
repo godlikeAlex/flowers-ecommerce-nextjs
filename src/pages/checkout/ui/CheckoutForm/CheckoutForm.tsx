@@ -61,6 +61,7 @@ export default function CheckoutForm({
     if (!timeSlots.length) return;
 
     const timeSlot = timeSlots[0]?.time ?? "09:00";
+
     setValue("deliveryTime", timeSlot, {
       shouldValidate: true,
       shouldDirty: true,
@@ -69,14 +70,6 @@ export default function CheckoutForm({
 
   useEffect(() => {
     if (!orderType) return;
-
-    // const [firstSlot] =
-    //   orderType === "pickup" ? PICKUP_INTERVALS : DELIVERY_INTERVALS;
-
-    // setValue("deliveryTime", firstSlot.time ?? "09:00", {
-    //   shouldValidate: true,
-    //   shouldDirty: true,
-    // });
 
     resetField("deliveryDate");
   }, [orderType, setValue, resetField]);
