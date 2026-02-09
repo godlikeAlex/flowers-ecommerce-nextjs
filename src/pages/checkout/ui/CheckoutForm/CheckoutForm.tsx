@@ -15,17 +15,14 @@ import type {
 } from "../../model/checkout-schema";
 import { ROUTES, US_TELEPHONE_MASK } from "@/shared/config";
 import { useCreateOrder } from "@/features/order";
-import {
-  combineDateTimeToUTC,
-  getDateInNY,
-  getMinSelectableDateNY,
-} from "@/shared/lib";
+import { combineDateTimeToUTC } from "@/shared/lib";
 import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
 import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
-import { DELIVERY_INTERVALS, PICKUP_INTERVALS } from "./timeslots";
+import { getDisabledDates } from "./get-disabled-dates";
+import { getTimeSlots } from "./get-timeslots";
 
 interface Props {
   checkoutFormID: string;
@@ -38,7 +35,9 @@ export default function CheckoutForm({
   paymentIsProccessing,
   setPaymentIsProccessing,
 }: Props) {
+  const router = useRouter();
   const user = useUser();
+  const createOrderMutation = useCreateOrder();
 
   const {
     register,
@@ -50,30 +49,34 @@ export default function CheckoutForm({
     setValue,
     resetField,
   } = useFormContext<ICheckoutForm>();
-  const createOrderMutation = useCreateOrder();
-  const router = useRouter();
 
   const orderType = watch("orderType");
+  const orderDate = watch("deliveryDate");
+  const timeSlots = useMemo(
+    () => getTimeSlots({ orderType, date: orderDate }),
+    [orderType, orderDate],
+  );
 
-  const disabledDates =
-    orderType === "delivery"
-      ? [
-          getDateInNY(2026, 1, 12),
-          getDateInNY(2026, 1, 13),
-          getDateInNY(2026, 1, 14),
-        ]
-      : [];
+  useEffect(() => {
+    if (!timeSlots.length) return;
+
+    const timeSlot = timeSlots[0]?.time ?? "09:00";
+    setValue("deliveryTime", timeSlot, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  }, [timeSlots, setValue]);
 
   useEffect(() => {
     if (!orderType) return;
 
-    const [firstSlot] =
-      orderType === "pickup" ? PICKUP_INTERVALS : DELIVERY_INTERVALS;
+    // const [firstSlot] =
+    //   orderType === "pickup" ? PICKUP_INTERVALS : DELIVERY_INTERVALS;
 
-    setValue("deliveryTime", firstSlot.time ?? "09:00", {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
+    // setValue("deliveryTime", firstSlot.time ?? "09:00", {
+    //   shouldValidate: true,
+    //   shouldDirty: true,
+    // });
 
     resetField("deliveryDate");
   }, [orderType, setValue, resetField]);
@@ -239,11 +242,7 @@ export default function CheckoutForm({
                   selected={field.value}
                   onSelect={field.onChange}
                   placeholder="Select Shipping Date"
-                  disabled={[
-                    { before: getMinSelectableDateNY() },
-                    { dayOfWeek: [0, 6] },
-                    ...disabledDates,
-                  ]}
+                  disabled={getDisabledDates(orderType)}
                   error={errors.deliveryDate?.message}
                   timeZone="America/New_York"
                 />
@@ -258,11 +257,7 @@ export default function CheckoutForm({
               disabled={paymentIsProccessing}
               render={({ field }) => (
                 <TimeSlots
-                  timeSlots={
-                    orderType === "delivery"
-                      ? DELIVERY_INTERVALS
-                      : PICKUP_INTERVALS
-                  }
+                  timeSlots={timeSlots}
                   value={field.value}
                   onChange={(time) => field.onChange(time)}
                 />
