@@ -9,7 +9,7 @@ export const getNowInNY = () => {
 
 export const getMinSelectableDateNY = () => {
   const nowNY = getNowInNY();
-  const tomorrowNY = add(nowNY, { days: 1 });
+  const tomorrowNY = add(nowNY, { days: 0 });
   const tomorrowNYStartOfDay = startOfDay(tomorrowNY);
 
   return fromZonedTime(tomorrowNYStartOfDay, "America/New_York");
