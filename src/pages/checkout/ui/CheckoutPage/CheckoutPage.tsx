@@ -16,7 +16,7 @@ export default function CheckoutPage() {
     defaultValues: {
       deliveryTime: "09:00",
       phone: "",
-      orderType: "delivery",
+      orderType: "pickup",
     },
     resolver: zodResolver(checkoutSchema),
   });
