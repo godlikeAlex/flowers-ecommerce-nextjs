@@ -1,4 +1,4 @@
-import { add, set, startOfDay } from "date-fns";
+import { add, set, startOfDay, format } from "date-fns";
 import { formatInTimeZone, toZonedTime, fromZonedTime } from "date-fns-tz";
 
 export const NY_TIMEZONE = "America/New_York";
@@ -7,9 +7,9 @@ export const getNowInNY = () => {
   return toZonedTime(new Date(), NY_TIMEZONE);
 };
 
-export const getMinSelectableDateNY = () => {
+export const getMinSelectableDateNY = (days: number) => {
   const nowNY = getNowInNY();
-  const tomorrowNY = add(nowNY, { days: 0 });
+  const tomorrowNY = add(nowNY, { days });
   const tomorrowNYStartOfDay = startOfDay(tomorrowNY);
 
   return fromZonedTime(tomorrowNYStartOfDay, "America/New_York");
@@ -43,6 +43,13 @@ export const formatNYTime = (
   return formatInTimeZone(date, NY_TIMEZONE, formatStr);
 };
 
+export const formatDateTime = (
+  date: Date | string | number,
+  formatStr = "MMM dd, yyyy h:mm a",
+) => {
+  return format(date, formatStr);
+};
+
 export function combineDateTimeToUTC(date: Date, time: string) {
   const [hours, minutes] = time.split(":").map(Number);
 
@@ -56,7 +63,7 @@ export function combineDateTimeToUTC(date: Date, time: string) {
   return fromZonedTime(combined, NY_TIMEZONE).toISOString();
 }
 
-const getNYDateParts = (date: Date) => {
+export const getNYDateParts = (date: Date) => {
   const ny = toNYTime(date);
 
   return {
