@@ -1,13 +1,5 @@
 import { Controller, FieldErrors, useFormContext } from "react-hook-form";
-import {
-  Anchor,
-  DayPicker,
-  GooglePlaces,
-  Input,
-  InputLabel,
-  Textarea,
-  TimeSlots,
-} from "@/shared/ui";
+import { Anchor, GooglePlaces, Input, InputLabel, Textarea } from "@/shared/ui";
 
 import type {
   DeliveryForm,
@@ -18,11 +10,10 @@ import { useCreateOrder } from "@/features/order";
 import { combineDateTimeToUTC } from "@/shared/lib";
 import { useRouter } from "nextjs-toploader/app";
 import { useUser } from "@/entities/user";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import CheckoutFormSkeleton from "./CheckoutFormSkeleton";
 import OrderTypeSelect from "../OrderTypeSelect/OrderTypeSelect";
-import { getDisabledDates } from "./get-disabled-dates";
-import { getTimeSlots } from "./get-timeslots";
+import { OrderSchedulePicker } from "../OrderSchedulePicker";
 
 interface Props {
   checkoutFormID: string;
@@ -51,27 +42,12 @@ export default function CheckoutForm({
   } = useFormContext<ICheckoutForm>();
 
   const orderType = watch("orderType");
-  const orderDate = watch("deliveryDate");
-  const timeSlots = useMemo(
-    () => getTimeSlots({ orderType, date: orderDate }),
-    [orderType, orderDate],
-  );
-
-  useEffect(() => {
-    if (!timeSlots.length) return;
-
-    const timeSlot = timeSlots[0]?.time ?? "09:00";
-
-    setValue("deliveryTime", timeSlot, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-  }, [timeSlots, setValue]);
 
   useEffect(() => {
     if (!orderType) return;
 
     resetField("deliveryDate");
+    resetField("deliveryTime");
   }, [orderType, setValue, resetField]);
 
   useEffect(() => {
@@ -79,8 +55,6 @@ export default function CheckoutForm({
       reset({
         name: user.data.name,
         email: user.data.email,
-        deliveryTime: "09:00",
-        orderType: "delivery",
       });
     }
   }, [user.data, reset]);
@@ -221,42 +195,10 @@ export default function CheckoutForm({
             </>
           ) : null}
 
-          <div className="col-md-6">
-            <InputLabel>Shipping interval</InputLabel>
-            <Controller
-              control={control}
-              disabled={paymentIsProccessing}
-              name="deliveryDate"
-              render={({ field }) => (
-                <DayPicker
-                  animate
-                  inputDisabled={field.disabled}
-                  mode="single"
-                  selected={field.value}
-                  onSelect={field.onChange}
-                  placeholder="Select Shipping Date"
-                  disabled={getDisabledDates(orderType)}
-                  error={errors.deliveryDate?.message}
-                  timeZone="America/New_York"
-                />
-              )}
-            />
-          </div>
-
-          <div className="col-md-12">
-            <Controller
-              control={control}
-              name="deliveryTime"
-              disabled={paymentIsProccessing}
-              render={({ field }) => (
-                <TimeSlots
-                  timeSlots={timeSlots}
-                  value={field.value}
-                  onChange={(time) => field.onChange(time)}
-                />
-              )}
-            />
-          </div>
+          <OrderSchedulePicker
+            paymentIsProccessing={paymentIsProccessing}
+            orderType={orderType}
+          />
 
           {orderType === "delivery" ? (
             <div className="col-md-12">

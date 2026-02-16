@@ -33,3 +33,26 @@ export interface Order {
   tax_amount: number;
   delivery_fee: number;
 }
+
+export type TimeSlot = {
+  label: string;
+  time: string;
+};
+
+type WeeklyDaySlots = {
+  day: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  slots: TimeSlot[];
+};
+
+export type FulfillmentChannelSchedule = {
+  min_order_days: number;
+  weekly_slots: WeeklyDaySlots[];
+  weekly_disabled_days: number[];
+  specific_date_slots: Record<string, TimeSlot[]>;
+  specific_disabled_dates: string[];
+};
+
+export interface FulfillmentSchedule {
+  pickup: FulfillmentChannelSchedule;
+  delivery: FulfillmentChannelSchedule;
+}
