@@ -35,7 +35,6 @@ export default function CheckoutForm({
     control,
     handleSubmit,
     formState: { errors },
-    reset,
     watch,
     setValue,
     resetField,
@@ -48,16 +47,14 @@ export default function CheckoutForm({
 
     resetField("deliveryDate");
     resetField("deliveryTime");
-  }, [orderType, setValue, resetField]);
+  }, [orderType, resetField]);
 
   useEffect(() => {
-    if (user.data) {
-      reset({
-        name: user.data.name,
-        email: user.data.email,
-      });
-    }
-  }, [user.data, reset]);
+    if (!user.data) return;
+
+    setValue("name", user.data.name);
+    setValue("email", user.data.email);
+  }, [user.data, setValue]);
 
   const deliveryErrors =
     orderType === "delivery" ? (errors as FieldErrors<DeliveryForm>) : null;
