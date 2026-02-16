@@ -2,7 +2,7 @@
 
 import { FormEvent, useRef, useState } from "react";
 
-import { Input, Button, IconButton, InputErrorMessage } from "@/shared/ui";
+import { Input, Button, InputErrorMessage } from "@/shared/ui";
 import { SealPercentIcon } from "@phosphor-icons/react/dist/ssr/SealPercent";
 import { useApplyDiscount, useCancelDiscount } from "@/features/cart";
 

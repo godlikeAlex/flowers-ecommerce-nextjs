@@ -1,6 +1,6 @@
 "use client";
 
-import { Anchor, Button, EmptyState } from "@/shared/ui";
+import { Button, EmptyState } from "@/shared/ui";
 
 import image from "./not-found.webp";
 import Image from "next/image";
