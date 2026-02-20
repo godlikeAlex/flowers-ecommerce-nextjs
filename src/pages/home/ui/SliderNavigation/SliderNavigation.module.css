@@ -23,8 +23,8 @@
 }
 
 .buttonArrow {
-  width: clamp(40px, 3vw, 84px);
-  height: clamp(40px, 3vw, 84px);
+  width: clamp(3.4375rem, 2.6563rem + 2.5vw, 4.6875rem);
+  height: clamp(3.4375rem, 2.6563rem + 2.5vw, 4.6875rem);
 
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@
   border-radius: 5px;
   color: var(--primary-color);
 
-  font-size: 25px;
+  font-size: 32px;
 
   border: none;
 }
