@@ -38,7 +38,9 @@ export default function FeaturedCategoryShowcase({
 
       <div style={{ position: "relative" }}>
         <Carousel options={{ align: "start" }}>
-          <SliderNavigation />
+          <SliderNavigation
+            navigationContainer={styles["navigation-container"]}
+          />
 
           <Carousel.Content>
             <Carousel.ContainerSlides>
