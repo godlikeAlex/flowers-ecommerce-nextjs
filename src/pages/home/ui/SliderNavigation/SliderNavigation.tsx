@@ -7,14 +7,19 @@ import clsx from "clsx";
 
 interface Props {
   center?: boolean;
+  navigationContainer?: string;
 }
 
-export default function SliderNavigation({ center }: Props) {
+export default function SliderNavigation({
+  center,
+  navigationContainer,
+}: Props) {
   return (
     <Carousel.Navigation
       containerClassName={clsx(
         styles.navigation,
         center && styles["navigation--center"],
+        navigationContainer,
       )}
       nextButtonClassName={styles.buttonArrow}
       prevButtonClassName={styles.buttonArrow}

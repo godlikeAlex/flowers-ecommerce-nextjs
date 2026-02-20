@@ -31,3 +31,7 @@
 .title b {
   color: var(--primary-color);
 }
+
+.navigation-container {
+  top: 40%;
+}
