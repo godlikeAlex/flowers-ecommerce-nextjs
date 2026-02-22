@@ -23,8 +23,8 @@
 }
 
 .buttonArrow {
-  width: clamp(3.4375rem, 2.6563rem + 2.5vw, 4.6875rem);
-  height: clamp(3.4375rem, 2.6563rem + 2.5vw, 4.6875rem);
+  width: clamp(3.6375rem, 2.6563rem + 2.5vw, 4.875rem);
+  height: clamp(3.6375rem, 2.6563rem + 2.5vw, 4.875rem);
 
   display: flex;
   justify-content: center;
