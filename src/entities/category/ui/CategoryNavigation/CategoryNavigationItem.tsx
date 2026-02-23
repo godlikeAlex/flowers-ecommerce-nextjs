@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import styles from "./CategoryNavigation.module.css";
 import { CategoryFacet } from "../../models/types";
@@ -21,18 +21,17 @@ export default function CategoryNavigationItem({
   onSelect,
   history,
 }: Props) {
-  const pathName = usePathname();
-  const hasItems = category.children.length > 0;
   const currentPath = [...history, category.slug].join("/");
   const link = `/shop/${currentPath}`;
 
   const defaultComponentProps = { className: styles["category-button"] };
 
-  if (hasItems) {
+  if (category.children.length > 0) {
     return (
       <button
         {...defaultComponentProps}
         onClick={() => onSelect(category.slug)}
+        type="button"
       >
         {category.name} <ArrowRightIcon />
       </button>

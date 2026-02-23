@@ -1,14 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import clsx from "clsx";
 
 import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr/ArrowLeft";
 
 import styles from "./CategoryNavigation.module.css";
 import type { CategoryFacet } from "../../models/types";
-import { resolveCategoryLevel } from "./resolve-category-level";
 import CategoryNavigationItem from "./CategoryNavigationItem";
+import useCategoryNavigationState from "./useCategoryNavigationState";
 
 interface Props {
   categories: CategoryFacet[];
@@ -19,38 +18,22 @@ export default function CategoryNavigation({
   categories,
   initialHistory = [],
 }: Props) {
-  const [history, setHistory] = useState<string[]>(() => {
-    if (initialHistory.length > 1) {
-      return initialHistory.toSpliced(-1);
-    }
-
-    return initialHistory;
-  });
-
-  const { targetCategories, parent } = resolveCategoryLevel({
-    currentSlug: history.at(-1),
-    categories,
-  });
-
-  const selectCategory = (categoryName: string) => {
-    setHistory((history) => [...history, categoryName]);
-  };
-
-  const handleBack = () => {
-    setHistory((history) => {
-      return history.toSpliced(-1);
+  const { parent, targetCategories, selectCategory, goBack, baseHistory } =
+    useCategoryNavigationState({
+      categories,
+      initialHistory,
     });
-  };
 
   return (
     <div>
       {parent && (
         <button
-          onClick={handleBack}
+          onClick={goBack}
           className={clsx(
             styles["category-button"],
             styles["category-button-back"],
           )}
+          type="button"
         >
           <ArrowLeftIcon />
           Back
@@ -60,10 +43,10 @@ export default function CategoryNavigation({
       <ul className={clsx("unstyled", styles["category-list"])}>
         {targetCategories.map((category) => {
           return (
-            <li key={category.name}>
+            <li key={category.slug}>
               <CategoryNavigationItem
                 category={category}
-                history={history}
+                history={baseHistory}
                 onSelect={(selectedCategorySlug) =>
                   selectCategory(selectedCategorySlug)
                 }
@@ -73,7 +56,9 @@ export default function CategoryNavigation({
         })}
         {parent && (
           <li>
-            <CategoryNavigationItem.Link href={`/shop/` + history.join("/")}>
+            <CategoryNavigationItem.Link
+              href={`/shop/` + baseHistory.join("/")}
+            >
               All from {parent.name}
             </CategoryNavigationItem.Link>
           </li>
