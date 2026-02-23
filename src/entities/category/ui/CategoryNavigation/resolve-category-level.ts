@@ -5,15 +5,43 @@ interface Params {
   categories: CategoryFacet[];
 }
 
+function findBySlug(categories: CategoryFacet[], slug?: string) {
+  return categories.find((category) => category.slug === slug);
+}
+
+function findChildren(categories: CategoryFacet[], parentSlug?: string) {
+  if (!parentSlug) {
+    return categories.filter((category) => category.parent === null);
+  }
+
+  return categories.filter((category) => category.parent?.slug === parentSlug);
+}
+
 export function resolveCategoryLevel({ currentSlug, categories }: Params) {
-  const children = categories.filter((category) => {
-    if (!currentSlug) {
-      return category.parent === null;
+  let currentCategory = findBySlug(categories, currentSlug);
+
+  if (!currentCategory) {
+    return { parent: null, targetCategories: findChildren(categories) };
+  }
+
+  while (currentCategory.children.length === 0) {
+    const parentSlug = currentCategory.parent?.slug;
+
+    if (!parentSlug) {
+      break;
     }
 
-    return category.parent?.slug === currentSlug;
-  });
-  const parent = categories.find((category) => category.slug === currentSlug);
+    const parentCategory = findBySlug(categories, parentSlug);
 
-  return { parent: parent || null, targetCategories: children };
+    if (!parentCategory) {
+      break;
+    }
+
+    currentCategory = parentCategory;
+  }
+
+  return {
+    parent: currentCategory || null,
+    targetCategories: findChildren(categories, currentCategory.slug),
+  };
 }
