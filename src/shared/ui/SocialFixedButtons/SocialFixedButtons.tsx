@@ -1,6 +1,6 @@
 "use client";
 
-import { type ComponentType, useEffect, useState } from "react";
+import { type ComponentType } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import classNames from "./SocialFixedButtons.module.css";
