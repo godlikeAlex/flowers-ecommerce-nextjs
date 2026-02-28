@@ -1,0 +1,79 @@
+.social-fixed-btns-mobile {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  list-style: none;
+  background-color: #fff;
+  border-top: 1px solid #e6e6e6;
+}
+
+.social-fixed-btns-mobile li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 64px;
+  width: 100%;
+  text-decoration: none;
+  border-radius: 12px;
+  background-color: var(--ghost-color);
+  color: var(--heading-color);
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--primary-color);
+}
+
+.icon-box :global(svg) {
+  width: 24px;
+  height: 24px;
+  color: #fff !important;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.text {
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.social-fixed-btns-mobile li:nth-child(1) .icon-box {
+  background: var(--primary-color);
+}
+
+.social-fixed-btns-mobile li:nth-child(2) .icon-box {
+  background: #25d366;
+}
+
+.social-fixed-btns-mobile li:nth-child(3) .icon-box {
+  background-image: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+@media (min-width: 992px) {
+  .social-fixed-btns-mobile {
+    display: none;
+  }
+}
