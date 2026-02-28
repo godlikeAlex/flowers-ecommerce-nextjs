@@ -211,10 +211,10 @@
   border-radius: 11px 0px 0px 11px;
 
   background-image:
-    linear-gradient(to right, var(--primary-color) 50%, #fff 50%),
-    linear-gradient(to right, var(--primary-color) 50%, #fff 50%),
-    linear-gradient(to bottom, var(--primary-color) 50%, #fff 50%),
-    linear-gradient(to bottom, var(--primary-color) 50%, #fff 50%);
+    linear-gradient(to right, var(--primary-color) 50%, transparent 50%),
+    linear-gradient(to right, var(--primary-color) 50%, transparent 50%),
+    linear-gradient(to bottom, var(--primary-color) 50%, transparent 50%),
+    linear-gradient(to bottom, var(--primary-color) 50%, transparent 50%);
 
   background-size:
     20px 1.5px,
