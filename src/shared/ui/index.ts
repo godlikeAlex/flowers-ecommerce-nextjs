@@ -25,5 +25,7 @@ export { InputLabel } from "./InputLabel";
 export { WhatsAppWidget } from "./WhatsAppWidget";
 export { AnnouncementWidget } from "./AnnouncementWidget";
 export { TimeSlots } from "./TimeSlots";
+export { SocialFixedButtons } from "./SocialFixedButtons";
+export { SocialFixedButtonsMobile } from "./SocialFixedButtonsMobile";
 
 export * from "./icons";
