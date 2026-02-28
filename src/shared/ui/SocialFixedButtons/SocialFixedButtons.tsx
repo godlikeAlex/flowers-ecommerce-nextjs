@@ -53,7 +53,7 @@ const socialButtons: Array<{
 export default function SocialFixedButtons() {
   return (
     <ul className={clsx(classNames["social-fixed-btns"])}>
-      {socialButtons.map((button, index) => {
+      {socialButtons.map((button) => {
         const Icon = button.icon;
 
         return (
