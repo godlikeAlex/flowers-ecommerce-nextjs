@@ -139,7 +139,10 @@ export default function Footer({ categories }: Props) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="">
+                    <Link
+                      href="https://www.tiktok.com/@bluemelle12"
+                      target="_blank"
+                    >
                       <TiktokLogoIcon />
                     </Link>
                   </li>
