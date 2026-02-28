@@ -15,8 +15,8 @@ const GoogleMapIcon: ComponentType = () => (
     src={googleMapIcon}
     alt="Our location"
     unoptimized
-    width={32}
-    height={32}
+    width={18}
+    height={18}
   />
 );
 
@@ -24,16 +24,19 @@ const socialButtons: Array<{
   text: string;
   link: string;
   icon: ComponentType;
+  iconTheme?: "instagram" | "whatsapp";
 }> = [
   {
     text: "Instagram",
     link: "https://www.instagram.com/bluemelle_flowers_nj/",
     icon: InstagramLogoIcon,
+    iconTheme: "instagram",
   },
   {
     text: "WhatsApps",
     link: "https://api.whatsapp.com/send?phone=18483450492",
     icon: WhatsappLogoIcon,
+    iconTheme: "whatsapp",
   },
   {
     text: "+1 848-345-0492",
@@ -57,7 +60,15 @@ export default function SocialFixedButtons() {
           <li key={button.link}>
             <a href={button.link} target="_blank" rel="noopener noreferrer">
               <div className={clsx(classNames["icon-box"])}>
-                <Icon />
+                <div
+                  className={clsx(
+                    classNames["icon-wrapper"],
+                    button.iconTheme &&
+                      classNames[`icon-wrapper-${button.iconTheme}`],
+                  )}
+                >
+                  <Icon />
+                </div>
               </div>
               <span>{button.text}</span>
             </a>
