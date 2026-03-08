@@ -22,11 +22,13 @@ export default function HeroSection() {
             <div className="col-md-6">
               <div className={clsx(styles["text-block"])}>
                 <h1 className={clsx(styles.title)}>
-                  Family Floral <span className="color-primary">Boutique</span>{" "}
+                  Family Floral{" "}
+                  <span className={styles.accentColor}>Boutique</span> <br />
+                  Delivering <span className={styles.accentColor}>
+                    Emotion
+                  </span>{" "}
                   <br />
-                  Delivering <span className="color-primary">Emotion</span>{" "}
-                  <br />
-                  Through <span className="color-primary">Flowers</span>
+                  Through <span className={styles.accentColor}>Flowers</span>
                 </h1>
 
                 <div className={clsx(styles["btn-block"])}>

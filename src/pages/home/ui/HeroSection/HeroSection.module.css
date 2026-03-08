@@ -4,7 +4,7 @@
 
 .title {
   /*font-size: 40px;*/
-  font-size: clamp(18px, 4.5vw, 45px);
+  font-size: clamp(23px, 4.5vw, 45px);
   text-shadow: 1px 1px 18px rgba(0, 0, 0, 0.45);
   color: white;
 }
@@ -12,6 +12,10 @@
   position: relative;
   z-index: 2;
   color: white;
+}
+
+.accentColor {
+  color: var(--primary-color);
 }
 
 .hero-banner .content .text-block {
@@ -25,7 +29,16 @@
 }
 @media (max-width: 767px) {
   .hero-banner .content .text-block {
-    padding: 150px 0 150px;
+    padding: 250px 0px 32px;
+  }
+
+  .title {
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    text-shadow: rgba(0, 0, 0, 0.94) 1px 1px 18px;
+  }
+  .accentColor {
+    color: white;
   }
 }
 /*@media (max-width: 575px) {
@@ -77,6 +90,6 @@
 
 @media (max-width: 767px) {
   .hero-image {
-    object-position: -70px center;
+    object-position: 44% center;
   }
 }

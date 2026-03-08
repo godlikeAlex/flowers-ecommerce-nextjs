@@ -1,5 +1,7 @@
 import { PageBanner } from "@/shared/ui";
 
+import styles from "./PrivacyPolicy.module.css";
+
 export default function PrivacyPolicyPage() {
   return (
     <>
@@ -12,6 +14,23 @@ export default function PrivacyPolicyPage() {
               Bluemelle (we, our, or us) operates the Bluemelle website. This
               page informs you of our policies regarding the collection, use,
               and disclosure of personal information when you use our services.
+            </p>
+
+            <h6 className="mt-4 color-primary">Return Policy</h6>
+            <p className={styles.paragraph}>
+              All sales are final. Due to the perishable nature of flowers, we
+              do not accept returns or issue refunds on floral arrangements or
+              other products.
+            </p>
+            <p className={styles.paragraph}>
+              If your order arrives damaged or incorrect, please contact us
+              within 24 hours of delivery and include photos so we can review
+              the issue.
+            </p>
+            <p className={styles.paragraph}>
+              Bluemelle LLC reserves the right to substitute flowers or
+              containers with similar items based on seasonal availability while
+              maintaining the overall design and value of the arrangement. 🌸
             </p>
 
             <h6 className="mt-4 color-primary">Information We Collect</h6>
