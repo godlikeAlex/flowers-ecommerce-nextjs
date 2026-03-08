@@ -8,7 +8,7 @@ import styles from "./AboutSection.module.css";
 import clsx from "clsx";
 import Image from "next/image";
 
-import imageAbout from "./about-2.png";
+import imageAbout from "./about-3.png";
 import Link from "next/link";
 import { ROUTES } from "@/shared/config";
 
