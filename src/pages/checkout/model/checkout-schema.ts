@@ -5,8 +5,13 @@ import {
   usTelephoneSchema,
 } from "@/shared/model/schemas";
 import { isPointWithinRadius } from "geolib";
-import { DELIVERY_DISTANCE, RADIUS_CENTER_POSITION } from "@/shared/config";
+import {
+  DELIVERY_DISTANCE,
+  RADIUS_CENTER_POSITION,
+  ZIP_CODES,
+} from "@/shared/config";
 import { milesToMeters } from "@/shared/lib";
+import { getZipCode } from "../utils/get-zip-code";
 
 const baseCheckoutSchema = {
   name: nameSchema,
@@ -43,16 +48,11 @@ const deliverySchema = z
   })
   .refine(
     ({ shippingAddress }) => {
-      const lat = shippingAddress.geometry?.location?.lat();
-      const lng = shippingAddress.geometry?.location?.lng();
+      const zipCode = getZipCode(shippingAddress);
 
-      if (!lat || !lng) return;
+      if (!zipCode) return;
 
-      return isPointWithinRadius(
-        RADIUS_CENTER_POSITION,
-        { lat, lng },
-        milesToMeters(DELIVERY_DISTANCE),
-      );
+      return ZIP_CODES.includes(zipCode);
     },
     {
       error:
