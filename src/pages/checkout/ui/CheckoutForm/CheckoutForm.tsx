@@ -227,15 +227,17 @@ export default function CheckoutForm({
             </div>
           ) : null}
 
-          <div className="col-md-12">
-            <Textarea
-              rows={6}
-              label="Shipping notes (optional)"
-              disabled={paymentIsProccessing}
-              error={errors.shippingNotes?.message}
-              {...register("shippingNotes")}
-            />
-          </div>
+          {orderType === "delivery" ? (
+            <div className="col-md-12">
+              <Textarea
+                rows={6}
+                label="Shipping notes (optional)"
+                disabled={paymentIsProccessing}
+                error={errors.shippingNotes?.message}
+                {...register("shippingNotes")}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
     </form>
