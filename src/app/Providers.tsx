@@ -1,13 +1,17 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import { Toaster } from "sonner";
 import { YandexMetricaProvider } from "next-yandex-metrica";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { getQueryClient } from "@/shared/lib";
 import { SlideOverCartProvider } from "@/widgets/cart";
 
-export default function Providers({ children }: { children: ReactNode }) {
+interface Props {
+  ip: string;
+}
+
+export default function Providers({ children, ip }: PropsWithChildren<Props>) {
   const queryClient = getQueryClient();
 
   return (
@@ -18,6 +22,7 @@ export default function Providers({ children }: { children: ReactNode }) {
         trackLinks: true,
         accurateTrackBounce: true,
         webvisor: true,
+        params: { ip },
       }}
       router="app"
     >

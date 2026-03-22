@@ -28,6 +28,7 @@ import NextTopLoader from "nextjs-toploader";
 import "react-loading-skeleton/dist/skeleton.css";
 import { ScrollToTop } from "./ScrollToTop";
 import { SlideOverCart } from "@/widgets/cart/ui";
+import { getIp } from "./get-ip";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bluemelle.com"),
@@ -57,6 +58,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const categories = await getMenuCategories();
+  const ip = await getIp();
 
   return (
     <html lang="en" className={bluemelleFont.className}>
@@ -66,7 +68,7 @@ export default async function RootLayout({
       >
         <ScrollToTop />
         <main className="main">
-          <Providers>
+          <Providers ip={ip}>
             <NextTopLoader color="#0b5bb2" />
             <SlideOverCart />
             <SocialFixedButtonsMobile />
