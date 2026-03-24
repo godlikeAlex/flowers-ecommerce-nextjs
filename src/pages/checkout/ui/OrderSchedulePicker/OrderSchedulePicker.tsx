@@ -54,6 +54,10 @@ export default function OrderSchedulePicker({
 
   return (
     <OrderScheduleFields
+      label={orderType === "delivery" ? "Shipping interval" : "Pickup Date"}
+      placeholder={
+        orderType === "delivery" ? "Select Shipping Date" : "Select Pickup Date"
+      }
       paymentIsProccessing={paymentIsProccessing}
       fulfillment={fulfillment}
     />
