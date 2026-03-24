@@ -9,11 +9,15 @@ import { useEffect, useMemo } from "react";
 interface Props {
   fulfillment: FulfillmentChannelSchedule;
   paymentIsProccessing: boolean;
+  label?: string;
+  placeholder: string;
 }
 
 export default function OrderScheduleFields({
   fulfillment,
   paymentIsProccessing,
+  placeholder,
+  label,
 }: Props) {
   const {
     formState: { errors },
@@ -48,7 +52,7 @@ export default function OrderScheduleFields({
   return (
     <>
       <div className="col-md-6">
-        <InputLabel>Shipping interval</InputLabel>
+        <InputLabel>{label}</InputLabel>
         <Controller
           control={control}
           disabled={paymentIsProccessing}
@@ -60,7 +64,7 @@ export default function OrderScheduleFields({
               mode="single"
               selected={field.value}
               onSelect={field.onChange}
-              placeholder="Select Shipping Date"
+              placeholder={placeholder}
               disabled={checkAvailabilityDate(fulfillment)}
               error={
                 errors.deliveryDate?.message || errors.deliveryTime?.message
