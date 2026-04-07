@@ -16,7 +16,7 @@ export default function PageBanner({ title }: Props) {
         <div className="row">
           <div className="col-md-12 text-center">
             <div className={styles.content}>
-              <h2>{title}</h2>
+              <h1>{title}</h1>
             </div>
           </div>
         </div>

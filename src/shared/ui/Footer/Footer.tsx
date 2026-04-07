@@ -175,7 +175,7 @@ export default function Footer({ categories }: Props) {
                   className={clsx("unstyled links-list", styles["links-list"])}
                 >
                   <li>
-                    <Anchor variant="hover" href="contact.html">
+                    <Anchor variant="hover" href={ROUTES.CONTACT_US()}>
                       Contact us
                     </Anchor>
                   </li>
