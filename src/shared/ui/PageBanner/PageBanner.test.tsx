@@ -9,7 +9,7 @@ describe("Page banner component", () => {
     render(<PageBanner title={title} />);
 
     expect(
-      screen.getByRole("heading", { level: 2, name: title }),
+      screen.getByRole("heading", { level: 1, name: title }),
     ).toBeInTheDocument();
   });
 });
