@@ -29,8 +29,9 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { ScrollToTop } from "./ScrollToTop";
 import { SlideOverCart } from "@/widgets/cart/ui";
 import { getIp } from "./get-ip";
+import { headers } from "next/headers";
 
-export const metadata: Metadata = {
+export const metadata = {
   metadataBase: new URL("https://bluemelle.com"),
   title: "BLUEMELLE Flower Boutique — Fresh Blooms, Modern Design",
   description:
