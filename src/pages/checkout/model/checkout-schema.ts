@@ -19,8 +19,20 @@ const baseCheckoutSchema = {
   phone: usTelephoneSchema,
   deliveryDate: z.date({ error: "Please select delivery date" }),
   deliveryTime: z.string({ error: "Please select delivery time" }),
-  notes: z.string().optional(),
-  shippingNotes: z.string().optional(),
+  notes: z
+    .string()
+    .max(
+      240,
+      "Your message is a little too long. Please use 240 characters or fewer",
+    )
+    .optional(),
+  shippingNotes: z
+    .string()
+    .max(
+      240,
+      "Your message is a little too long. Please use 240 characters or fewer",
+    )
+    .optional(),
   termsAccepted: z
     .boolean("You must accept the terms")
     .refine((accepted) => accepted === true, {
